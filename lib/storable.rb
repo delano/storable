@@ -187,10 +187,9 @@ class Storable
   end
   
   # Create a new instance of the object from a JSON string. 
-  # +from+ a JSON string split into an array by line.
-  def self.from_json(from=[])
-    # from is an array of strings
-    from_str = from.join('')
+  # +from+ a YAML String or Array (split into by line). 
+  def self.from_json(*from)
+    from_str = [from].flatten.compact.join('')
     tmp = JSON::load(from_str)
     hash_sym = tmp.keys.inject({}) do |hash, key|
        hash[key.to_sym] = tmp[key]
