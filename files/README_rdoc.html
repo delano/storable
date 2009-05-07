@@ -31,7 +31,7 @@
         </div>
         <div class='last-update'>
           Last Update:
-          <span class='datetime'>Thu May 07 08:03:09 -0400 2009</span>
+          <span class='datetime'>Thu May 07 11:12:04 -0400 2009</span>
         </div>
       </div>
       <div id='content'>
@@ -42,6 +42,8 @@
             Marshal Ruby classes into and out of multiple formats (yaml, json, csv,
             tsv)
             </p>
+            <h2>Example</h2>
+            <pre>require 'storable'&#x000A;&#x000A;class Machine &lt; Storable&#x000A;  field :environment            # Define field names for Machine. The&#x000A;  field :role                   # default type is String, but you can&#x000A;  field :position =&gt; Integer    # specify a type using a hash syntax.&#x000A;end&#x000A;&#x000A;mac1 = Machine.new              # Instances of Machine have accessors&#x000A;mac1.environment = &quot;stage&quot;      # just like regular attributes.&#x000A;mac1.role = &quot;app&quot;&#x000A;mac1.position = 1&#x000A;&#x000A;puts &quot;# YAML&quot;, mac1.to_yaml     # Note: the field order is maintained&#x000A;puts &quot;# CSV&quot;, mac1.to_csv       # =&gt; stage,app,1&#x000A;puts &quot;# JSON&quot;, mac1.to_json     # Note: field order not maintained.&#x000A;&#x000A;mac2 = Machine.from_yaml(mac1.to_yaml)&#x000A;puts mac2.environment           # =&gt; &quot;stage&quot;&#x000A;puts mac2.position.class        # =&gt; Fixnum</pre>
             <h2>Installation</h2>
             <p>
             Via Rubygems, one of:
@@ -57,6 +59,12 @@
             </li>
             <li><a
             href="http://github.com/delano/storable/zipball/latest">storable-latest.zip</a>
+            
+            </li>
+            </ul>
+            <h2>Prerequisites</h2>
+            <ul>
+            <li>Ruby 1.8, Ruby 1.9, or JRuby 1.2
             
             </li>
             </ul>
