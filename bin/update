@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "Updating docs..."
+rm -rf pkg
+rm -rf files classes && mv doc/* . && rm -rf doc
+git add . 
+
