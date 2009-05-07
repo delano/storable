@@ -1,6 +1,12 @@
 STORABLE, CHANGES
 
 
+#### 0.5.1 (2009-05-07) #############################
+
+* FIXED: Bug in from_hash which was incorrectly parsing some data types (incl. Integer)
+* ADDED: bin/example
+* ADDED: OrderedHash for Ruby 1.8.x (still unordered in JRuby. Need to investigate.)
+
 #### 0.5 (2009-05-07) ###############################
 
 * First public release. See commit history for solutious-stella, solutious-rudy, 

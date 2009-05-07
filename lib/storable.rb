@@ -1,20 +1,23 @@
 #--
 # TODO: Handle nested hashes and arrays. 
 # TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
-# TODO: Rename to Stuffany
 #++
+
+
+USE_ORDERED_HASH = (RUBY_VERSION =~ /1.9/).nil?
+require 'orderedhash' if USE_ORDERED_HASH
+require 'json' rescue nil
 
 require 'yaml'
 require 'fileutils'
-
-
+  
 # Storable makes data available in multiple formats and can
 # re-create objects from files. Fields are defined using the 
 # Storable.field method which tells Storable the order and 
 # name.
 class Storable
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
-    VERSION = 5
+    VERSION = 0.5
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
@@ -46,7 +49,7 @@ class Storable
   # The value is not touched when the type is not provided. 
   def self.field(args={})
     # TODO: Examine casting from: http://codeforpeople.com/lib/ruby/fattr/fattr-1.0.3/
-    args = {args => nil} unless args.is_a? Hash
+    args = {args => nil} unless args.kind_of?(Hash)
 
     args.each_pair do |m,t|
       
@@ -127,14 +130,15 @@ class Storable
       
       if field_types[index] == Array
         ((value ||= []) << stored_value).flatten 
-      elsif field_types[index] == Hash
+      elsif field_types[index].kind_of?(Hash)
         
         value = stored_value
       else
         
         # SimpleDB stores attribute shit as lists of values
-        value = stored_value.first if stored_value.is_a?(Array) && stored_value.size == 1
-
+        ##value = stored_value.first if stored_value.is_a?(Array) && stored_value.size == 1
+        value = (stored_value.is_a?(Array) && stored_value.size == 1) ? stored_value.first : stored_value
+        
         if field_types[index] == Time
           value = Time.parse(value)
         elsif field_types[index] == DateTime
@@ -145,10 +149,11 @@ class Storable
           value = value.to_f
         elsif field_types[index] == Integer
           value = value.to_i
-        elsif field_types[index].kind_of?(Storable) && stored_value.is_a?(Hash)
-          value = field_types[index].from_hash(stored_value)
-        else
-          value = (stored_value.is_a?(Array) && stored_value.size == 1) ? stored_value.first : stored_value
+        elsif field_types[index].kind_of?(Storable) && stored_value.kind_of?(Hash)
+          # I don't know why this is here so I'm going to raise an exception
+          # and wait a while for an error in one of my other projects. 
+          #value = field_types[index].from_hash(stored_value)
+          raise "Delano, delano, delano. Clean up Storable!"
         end
       end
       
@@ -162,7 +167,7 @@ class Storable
   # Return the object data as a hash
   # +with_titles+ is ignored. 
   def to_hash(with_titles=true)
-    tmp = {}
+    tmp = USE_ORDERED_HASH ? OrderedHash.new : {}
     field_names.each do |fname|
       tmp[fname] = self.send(fname)
     end
@@ -170,12 +175,11 @@ class Storable
   end
   
   # Create a new instance of the object from YAML. 
-  # +from+ a YAML string split into an array by line. 
-  def self.from_yaml(from=[])
-    # from is an array of strings
-    from_str = from.join('')
+  # +from+ a YAML String or Array (split into by line). 
+  def self.from_yaml(*from)
+    from_str = [from].flatten.compact.join('')
     hash = YAML::load(from_str)
-    hash = from_hash(hash) if hash.is_a? Hash 
+    hash = from_hash(hash) if hash.kind_of?(Hash)
     hash
   end
   def to_yaml(with_titles=true)
@@ -185,7 +189,6 @@ class Storable
   # Create a new instance of the object from a JSON string. 
   # +from+ a JSON string split into an array by line.
   def self.from_json(from=[])
-    require 'json'
     # from is an array of strings
     from_str = from.join('')
     tmp = JSON::load(from_str)
@@ -193,11 +196,10 @@ class Storable
        hash[key.to_sym] = tmp[key]
        hash
     end
-    hash_sym = from_hash(hash_sym) if hash_sym.is_a? Hash  
+    hash_sym = from_hash(hash_sym) if hash_sym.kind_of?(Hash)  
     hash_sym
   end
   def to_json(with_titles=true)
-    require 'json'
     to_hash.to_json
   end
   
@@ -255,7 +257,7 @@ class Storable
       next unless values[index]
       hash[key.to_sym] = values[index]
     end
-    hash = from_hash(hash) if hash.is_a? Hash 
+    hash = from_hash(hash) if hash.kind_of?(Hash) 
     hash
   end
 
