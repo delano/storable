@@ -28,14 +28,15 @@
   s.files = %w(
   CHANGES.txt
   LICENSE.txt
-  README.txt
+  README.rdoc
   Rakefile
-  virginia.gemspec
+  lib/storable.rb
+  storable.gemspec
   )
   
-  s.extra_rdoc_files = %w[README.txt LICENSE.txt]
+  s.extra_rdoc_files = %w[README.rdoc LICENSE.txt]
   s.has_rdoc = true
-  s.rdoc_options = ["--line-numbers", "--title", s.summary, "--main", "README.txt"]
+  s.rdoc_options = ["--line-numbers", "--title", s.summary, "--main", "README.rdoc"]
   s.require_paths = %w[lib]
   s.rubygems_version = '1.3.0'
 
