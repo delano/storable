@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rake/clean'
 require 'rake/gempackagetask'
-require 'rake/rdoctask'
+require 'hanna/rdoctask'
 require 'fileutils'
 include FileUtils
  
@@ -10,7 +10,7 @@ task :default => :package
 # CONFIG =============================================================
 
 # Change the following according to your needs
-README = "README.txt"
+README = "README.rdoc"
 CHANGES = "CHANGES.txt"
 LICENSE = "LICENSE.txt"
 
@@ -75,7 +75,7 @@ Rake::RDocTask.new do |t|
 	t.rdoc_files.include(README)
 	t.rdoc_files.include(CHANGES)
 	#t.rdoc_files.include('bin/*')
-	#t.rdoc_files.include('lib/**/*.rb')
+	t.rdoc_files.include('lib/**/*.rb')
 end
 
 
