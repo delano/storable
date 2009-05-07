@@ -1,0 +1,23 @@
+= Storable - v0.5
+
+All your system-independent infoz in one handy class. 
+
+== Installation
+
+Via Rubygems, one of:
+
+    $ sudo gem install storable
+    $ sudo gem install delano-storable --source http://gems.github.com/
+
+or via download:
+* storable-latest.tar.gz[http://github.com/delano/storable/tarball/latest]
+* storable-latest.zip[http://github.com/delano/storable/zipball/latest]
+ 
+
+== Credits
+
+* Delano Mandelbaum (delano@solutious.com)
+
+== License
+
+See: LICENSE.txt
