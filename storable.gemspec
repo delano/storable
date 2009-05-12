@@ -1,7 +1,7 @@
 @spec = Gem::Specification.new do |s|
 	s.name = "storable"
   s.rubyforge_project = "storable"
-	s.version = "0.5.1"
+	s.version = "0.5.2"
 	s.summary = "Storable: Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)"
 	s.description = s.summary
   s.author = "Delano Mandelbaum"
@@ -16,8 +16,7 @@
   
   # = DEPENDENCIES =
   # Add all gem dependencies
-  s.add_dependency 'sysinfo', '>= 0.5.0'
-    
+  
   # = MANIFEST =
   # The complete list of files to be included in the release. When GitHub packages your gem, 
   # it doesn't allow you to run any command that accesses the filesystem. You will get an
@@ -30,6 +29,7 @@
   README.rdoc
   Rakefile
   lib/storable.rb
+  lib/storable/orderedhash.rb
   storable.gemspec
   )
   

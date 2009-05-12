@@ -8,12 +8,12 @@
 # THANKS
 #    Andrew Johnson for his suggestions and fixes of Hash[],
 #    merge, to_a, inspect and shift
-class OrderedHash < ::Hash
+class Storable::OrderedHash < ::Hash
     attr_accessor :order
 
     class << self
         def [] *args
-          hsh = OrderedHash.new
+          hsh = Storable::OrderedHash.new
           if Hash === args[0]
             hsh.replace args[0]
           elsif (args.size % 2) != 0
@@ -146,7 +146,9 @@ class OrderedHash < ::Hash
     end
     alias :merge! update
     def merge hsh2
-        self.dup update(hsh2)
+        ##self.dup update(hsh2)   ## 2009-05-12 -- delano
+        update hsh2               ## dup doesn't take an argument
+                                  ## and there's no need for it here
     end
     def select
         ary = []
@@ -157,7 +159,7 @@ class OrderedHash < ::Hash
       Hash
     end
     def __class__
-      OrderedHash
+      Storable::OrderedHash
     end
 
     attr_accessor "to_yaml_style"
@@ -192,8 +194,6 @@ class OrderedHash < ::Hash
       @order.each_with_index { |k, index| yield k, self[k], index }
       self
     end
-end # class OrderedHash
+end # class Storable::OrderedHash
 
-def OrderedHash(*a, &b)
-  OrderedHash.new(*a, &b)
-end
+

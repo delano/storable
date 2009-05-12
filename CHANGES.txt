@@ -1,6 +1,12 @@
 STORABLE, CHANGES
 
 
+#### 0.5.2 (2009-05-12) #############################
+
+* CHANGE: Put OrderedHash into Storable namespace and imported merge fix from Caesars
+* FIXED: Circular dependency with Sysinfo
+
+
 #### 0.5.1 (2009-05-07) #############################
 
 * FIXED: Bug in from_hash which was incorrectly parsing some data types (incl. Integer)

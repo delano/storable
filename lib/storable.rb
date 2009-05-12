@@ -5,7 +5,7 @@
 
 
 USE_ORDERED_HASH = (RUBY_VERSION =~ /1.9/).nil?
-require 'orderedhash' if USE_ORDERED_HASH
+
 require 'json' rescue nil
 
 require 'yaml'
@@ -16,6 +16,7 @@ require 'fileutils'
 # Storable.field method which tells Storable the order and 
 # name.
 class Storable
+  require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
     VERSION = 0.5
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
@@ -167,7 +168,7 @@ class Storable
   # Return the object data as a hash
   # +with_titles+ is ignored. 
   def to_hash(with_titles=true)
-    tmp = USE_ORDERED_HASH ? OrderedHash.new : {}
+    tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
     field_names.each do |fname|
       tmp[fname] = self.send(fname)
     end

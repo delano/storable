@@ -46,6 +46,7 @@ or via download:
 == Credits
 
 * Delano Mandelbaum (delano@solutious.com)
+* OrderedHash implementation by Jan Molic
 
 == License
 
