@@ -6,8 +6,12 @@
 
 USE_ORDERED_HASH = (RUBY_VERSION =~ /1.9/).nil?
 
-require 'json' rescue nil
-
+begin
+  require 'json'
+rescue LoadError
+  # Silently!
+end
+  
 require 'yaml'
 require 'fileutils'
   

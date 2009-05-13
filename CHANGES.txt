@@ -1,6 +1,11 @@
 STORABLE, CHANGES
 
 
+#### 0.5.3 (2009-05-12) #############################
+
+* FIXED: Corrected error handling when json not available (ignore and continue)
+
+
 #### 0.5.2 (2009-05-12) #############################
 
 * CHANGE: Put OrderedHash into Storable namespace and imported merge fix from Caesars
