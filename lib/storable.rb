@@ -22,7 +22,7 @@ require 'fileutils'
 class Storable
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
-    VERSION = 0.5
+    VERSION = "0.5.4"
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
@@ -125,13 +125,17 @@ class Storable
   def self.from_hash(from={})
     return nil if !from || from.empty?
     me = self.new
-        
+    me.from_hash(from)
+  end
+  
+  def from_hash(from={})
     fnames = field_names
     fnames.each_with_index do |key,index|
       
       stored_value = from[key] || from[key.to_s] # support for symbol keys and string keys
       
-      # TODO: Correct this horrible implementation (sorry, me. It's just one of those days.)
+      # TODO: Correct this horrible implementation 
+      # (sorry, me. It's just one of those days.) -- circa 2009-09-15
       
       if field_types[index] == Array
         ((value ||= []) << stored_value).flatten 
@@ -162,12 +166,11 @@ class Storable
         end
       end
       
-      me.send("#{key}=", value) if self.method_defined?("#{key}=")  
+      self.send("#{key}=", value) if self.respond_to?("#{key}=")  
     end
-    
-    me.postprocess
-    
-    me
+
+    self.postprocess
+    self
   end
   # Return the object data as a hash
   # +with_titles+ is ignored. 
