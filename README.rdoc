@@ -43,6 +43,11 @@ or via download:
 * Ruby 1.8, Ruby 1.9, or JRuby 1.2
 
 
+== Thanks
+
+* Pierre Riteau (priteau[http://github.com/priteau]) for bug fixes. 
+
+
 == Credits
 
 * Delano Mandelbaum (delano@solutious.com)
