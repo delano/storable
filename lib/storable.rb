@@ -14,6 +14,7 @@ end
   
 require 'yaml'
 require 'fileutils'
+require 'time'
   
 # Storable makes data available in multiple formats and can
 # re-create objects from files. Fields are defined using the 
