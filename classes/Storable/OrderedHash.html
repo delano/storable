@@ -455,7 +455,7 @@
                   <a class='source-toggle' href='#' onclick="toggleCode('M000048-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000048-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 93</span>&#x000A;93:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;94:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;95:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000048-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 93</span>&#x000A;93:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;94:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;95:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='public-instance method' id='method-M000049'>
@@ -468,7 +468,7 @@
                   <a class='source-toggle' href='#' onclick="toggleCode('M000049-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000049-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 96</span>&#x000A;96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;97:         <span class="ruby-identifier">hsh2</span> = <span class="ruby-identifier">reject</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;98:         <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">hsh2</span>&#x000A;99:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000049-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 96</span>&#x000A;96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;97:         <span class="ruby-identifier">hsh2</span> = <span class="ruby-identifier">reject</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;98:         <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">hsh2</span>&#x000A;99:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='public-instance method' id='method-M000050'>
