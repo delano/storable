@@ -91,10 +91,10 @@ class Storable::OrderedHash < ::Hash
         hsh2
     end
     def reject &block
-        self.dup.delete_if &block
+        self.dup.delete_if( &block)
     end
     def reject! &block
-        hsh2 = reject &block
+        hsh2 = reject( &block)
         self == hsh2 ? nil : hsh2
     end
     def replace hsh2

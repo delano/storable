@@ -1,7 +1,7 @@
 @spec = Gem::Specification.new do |s|
 	s.name = "storable"
   s.rubyforge_project = "storable"
-	s.version = "0.5.4"
+	s.version = "0.5.5"
 	s.summary = "Storable: Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)"
 	s.description = s.summary
   s.author = "Delano Mandelbaum"

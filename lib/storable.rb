@@ -23,7 +23,7 @@ require 'time'
 class Storable
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
-    VERSION = "0.5.4"
+    VERSION = "0.5.5"
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
@@ -136,7 +136,7 @@ class Storable
       stored_value = from[key] || from[key.to_s] # support for symbol keys and string keys
       
       # TODO: Correct this horrible implementation 
-      # (sorry, me. It's just one of those days.) -- circa 2009-09-15
+      # (sorry, me. It's just one of those days.) -- circa 2008-09-15
       
       if field_types[index] == Array
         ((value ||= []) << stored_value).flatten 

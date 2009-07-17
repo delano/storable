@@ -1,5 +1,10 @@
 STORABLE, CHANGES
 
+
+#### 0.5.5 (2009-07-17) #############################
+
+* FIXED: require 'time' for Time.parse. 
+
 #### 0.5.4 (2009-05-25) #############################
 
 * CHANGE: Removed RedCloth dependency from gemspec.
