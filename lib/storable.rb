@@ -73,6 +73,13 @@ class Storable
     end
   end
   
+  def self.has_field?(n)
+    field_names.member? n.to_sym
+  end
+  def has_field?(n)
+    self.class.field_names.member? n.to_sym
+  end
+  
   # Returns an array of field names defined by self.field
   def self.field_names
     class_variable_get(:@@field_names)
