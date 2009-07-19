@@ -5,7 +5,6 @@ STORABLE, CHANGES
 
 * ADDED: has_field?
 
-
 #### 0.5.5 (2009-07-17) #############################
 
 * FIXED: require 'time' for Time.parse. 
