@@ -53,37 +53,39 @@
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000027">append_file</a></li>
+              <li><a href="#M000029">append_file</a></li>
               <li><a href="#M000003">field</a></li>
-              <li><a href="#M000004">field_names</a></li>
-              <li><a href="#M000006">field_types</a></li>
-              <li><a href="#M000023">from_csv</a></li>
-              <li><a href="#M000024">from_delimited</a></li>
-              <li><a href="#M000010">from_file</a></li>
-              <li><a href="#M000012">from_hash</a></li>
-              <li><a href="#M000017">from_json</a></li>
-              <li><a href="#M000022">from_tsv</a></li>
-              <li><a href="#M000015">from_yaml</a></li>
-              <li><a href="#M000025">read_file_to_array</a></li>
-              <li><a href="#M000026">write_file</a></li>
-              <li><a href="#M000028">write_or_append_file</a></li>
+              <li><a href="#M000006">field_names</a></li>
+              <li><a href="#M000008">field_types</a></li>
+              <li><a href="#M000025">from_csv</a></li>
+              <li><a href="#M000026">from_delimited</a></li>
+              <li><a href="#M000012">from_file</a></li>
+              <li><a href="#M000014">from_hash</a></li>
+              <li><a href="#M000019">from_json</a></li>
+              <li><a href="#M000024">from_tsv</a></li>
+              <li><a href="#M000017">from_yaml</a></li>
+              <li><a href="#M000004">has_field?</a></li>
+              <li><a href="#M000027">read_file_to_array</a></li>
+              <li><a href="#M000028">write_file</a></li>
+              <li><a href="#M000030">write_or_append_file</a></li>
             </ol>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000008">dump</a></li>
-              <li><a href="#M000005">field_names</a></li>
-              <li><a href="#M000007">field_types</a></li>
+              <li><a href="#M000010">dump</a></li>
+              <li><a href="#M000007">field_names</a></li>
+              <li><a href="#M000009">field_types</a></li>
               <li><a href="#M000001">format=</a></li>
-              <li><a href="#M000013">from_hash</a></li>
+              <li><a href="#M000015">from_hash</a></li>
+              <li><a href="#M000005">has_field?</a></li>
               <li><a href="#M000002">postprocess</a></li>
-              <li><a href="#M000021">to_csv</a></li>
-              <li><a href="#M000019">to_delimited</a></li>
-              <li><a href="#M000011">to_file</a></li>
-              <li><a href="#M000014">to_hash</a></li>
-              <li><a href="#M000018">to_json</a></li>
-              <li><a href="#M000009">to_string</a></li>
-              <li><a href="#M000020">to_tsv</a></li>
-              <li><a href="#M000016">to_yaml</a></li>
+              <li><a href="#M000023">to_csv</a></li>
+              <li><a href="#M000021">to_delimited</a></li>
+              <li><a href="#M000013">to_file</a></li>
+              <li><a href="#M000016">to_hash</a></li>
+              <li><a href="#M000020">to_json</a></li>
+              <li><a href="#M000011">to_string</a></li>
+              <li><a href="#M000022">to_tsv</a></li>
+              <li><a href="#M000018">to_yaml</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -98,7 +100,7 @@
                   <tr class='top-aligned-row context-row'>
                     <td class='context-item-name'>VERSION</td>
                     <td>=</td>
-                    <td class='context-item-value'>&quot;0.5.5&quot;</td>
+                    <td class='context-item-value'>&quot;0.5.6&quot;</td>
                   </tr>
                   <tr class='top-aligned-row context-row'>
                     <td class='context-item-name'>NICE_TIME_FORMAT</td>
@@ -131,17 +133,17 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='public-class method' id='method-M000027'>
-                <a name='M000027'>      </a>
+              <div class='public-class method' id='method-M000029'>
+                <a name='M000029'>      </a>
                 <div class='synopsis'>
                   <span class='name'>append_file</span>
                   <span class='arguments'>(path, content, flush=true)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000027-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000029-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000027-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 287</span>&#x000A;287:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">append_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>=<span class="ruby-keyword kw">true</span>)&#x000A;288:     <span class="ruby-identifier">write_or_append_file</span>(<span class="ruby-value str">'a'</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>)&#x000A;289:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000029-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 294</span>&#x000A;294:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">append_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>=<span class="ruby-keyword kw">true</span>)&#x000A;295:     <span class="ruby-identifier">write_or_append_file</span>(<span class="ruby-value str">'a'</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>)&#x000A;296:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='public-class method' id='method-M000003'>
@@ -170,8 +172,8 @@
                   <pre id='M000003-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 56</span>&#x000A;56:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field</span>(<span class="ruby-identifier">args</span>={})&#x000A;57:     <span class="ruby-comment cmt"># TODO: Examine casting from: http://codeforpeople.com/lib/ruby/fattr/fattr-1.0.3/</span>&#x000A;58:     <span class="ruby-identifier">args</span> = {<span class="ruby-identifier">args</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;59: &#x000A;60:     <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">t</span><span class="ruby-operator">|</span>&#x000A;61:       &#x000A;62:       [[<span class="ruby-identifier">:@@field_names</span>, <span class="ruby-identifier">m</span>], [<span class="ruby-identifier">:@@field_types</span>, <span class="ruby-identifier">t</span>]].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tuple</span><span class="ruby-operator">|</span>&#x000A;63:         <span class="ruby-identifier">class_variable_set</span>(<span class="ruby-identifier">tuple</span>[<span class="ruby-value">0</span>], []) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">class_variable_defined?</span>(<span class="ruby-identifier">tuple</span>[<span class="ruby-value">0</span>])&#x000A;64:         <span class="ruby-identifier">class_variable_set</span>(<span class="ruby-identifier">tuple</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">class_variable_get</span>(<span class="ruby-identifier">tuple</span>[<span class="ruby-value">0</span>]) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tuple</span>[<span class="ruby-value">1</span>])&#x000A;65:       <span class="ruby-keyword kw">end</span>&#x000A;66:       &#x000A;67:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">method_defined?</span>(<span class="ruby-identifier">m</span>)&#x000A;68:       &#x000A;69:       <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">m</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{m}&quot;</span>) <span class="ruby-keyword kw">end</span>&#x000A;70:       <span class="ruby-identifier">define_method</span>(<span class="ruby-node">&quot;#{m}=&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span> &#x000A;71:         <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{m}&quot;</span>,<span class="ruby-identifier">val</span>)&#x000A;72:       <span class="ruby-keyword kw">end</span>&#x000A;73:     <span class="ruby-keyword kw">end</span>&#x000A;74:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000004'>
-                <a name='M000004'>      </a>
+              <div class='public-class method' id='method-M000006'>
+                <a name='M000006'>      </a>
                 <div class='synopsis'>
                   <span class='name'>field_names</span>
                   <span class='arguments'>()</span>
@@ -182,14 +184,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000006-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000004-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 77</span>&#x000A;77:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field_names</span>&#x000A;78:     <span class="ruby-identifier">class_variable_get</span>(<span class="ruby-identifier">:@@field_names</span>)&#x000A;79:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000006-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 84</span>&#x000A;84:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field_names</span>&#x000A;85:     <span class="ruby-identifier">class_variable_get</span>(<span class="ruby-identifier">:@@field_names</span>)&#x000A;86:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000006'>
-                <a name='M000006'>      </a>
+              <div class='public-class method' id='method-M000008'>
+                <a name='M000008'>      </a>
                 <div class='synopsis'>
                   <span class='name'>field_types</span>
                   <span class='arguments'>()</span>
@@ -201,14 +203,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000006-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000006-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 86</span>&#x000A;86:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field_types</span>&#x000A;87:     <span class="ruby-identifier">class_variable_get</span>(<span class="ruby-identifier">:@@field_types</span>)&#x000A;88:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000008-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 93</span>&#x000A;93:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field_types</span>&#x000A;94:     <span class="ruby-identifier">class_variable_get</span>(<span class="ruby-identifier">:@@field_types</span>)&#x000A;95:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000023'>
-                <a name='M000023'>      </a>
+              <div class='public-class method' id='method-M000025'>
+                <a name='M000025'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_csv</span>
                   <span class='arguments'>(from=[])</span>
@@ -220,14 +222,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000023-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000025-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000023-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 243</span>&#x000A;243:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_csv</span>(<span class="ruby-identifier">from</span>=[])&#x000A;244:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_delimited</span>(<span class="ruby-identifier">from</span>, <span class="ruby-value str">','</span>)&#x000A;245:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000025-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 250</span>&#x000A;250:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_csv</span>(<span class="ruby-identifier">from</span>=[])&#x000A;251:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_delimited</span>(<span class="ruby-identifier">from</span>, <span class="ruby-value str">','</span>)&#x000A;252:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000024'>
-                <a name='M000024'>      </a>
+              <div class='public-class method' id='method-M000026'>
+                <a name='M000026'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_delimited</span>
                   <span class='arguments'>(from=[],delim=',')</span>
@@ -240,14 +242,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000024-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000026-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000024-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 250</span>&#x000A;250:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_delimited</span>(<span class="ruby-identifier">from</span>=[],<span class="ruby-identifier">delim</span>=<span class="ruby-value str">','</span>)&#x000A;251:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">empty?</span>&#x000A;252:     <span class="ruby-comment cmt"># We grab an instance of the class so we can </span>&#x000A;253:     <span class="ruby-identifier">hash</span> = {}&#x000A;254:     &#x000A;255:     <span class="ruby-identifier">fnames</span> = <span class="ruby-identifier">values</span> = []&#x000A;256:     <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">from</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">from</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">empty?</span>)&#x000A;257:       <span class="ruby-identifier">fnames</span> = <span class="ruby-identifier">from</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>)&#x000A;258:       <span class="ruby-identifier">values</span> = <span class="ruby-identifier">from</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>)&#x000A;259:     <span class="ruby-keyword kw">else</span>&#x000A;260:       <span class="ruby-identifier">fnames</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field_names</span>&#x000A;261:       <span class="ruby-identifier">values</span> = <span class="ruby-identifier">from</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>)&#x000A;262:     <span class="ruby-keyword kw">end</span>&#x000A;263:     &#x000A;264:     <span class="ruby-identifier">fnames</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">index</span><span class="ruby-operator">|</span>&#x000A;265:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">values</span>[<span class="ruby-identifier">index</span>]&#x000A;266:       <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">values</span>[<span class="ruby-identifier">index</span>]&#x000A;267:     <span class="ruby-keyword kw">end</span>&#x000A;268:     <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>) &#x000A;269:     <span class="ruby-identifier">hash</span>&#x000A;270:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000026-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 257</span>&#x000A;257:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_delimited</span>(<span class="ruby-identifier">from</span>=[],<span class="ruby-identifier">delim</span>=<span class="ruby-value str">','</span>)&#x000A;258:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">empty?</span>&#x000A;259:     <span class="ruby-comment cmt"># We grab an instance of the class so we can </span>&#x000A;260:     <span class="ruby-identifier">hash</span> = {}&#x000A;261:     &#x000A;262:     <span class="ruby-identifier">fnames</span> = <span class="ruby-identifier">values</span> = []&#x000A;263:     <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">from</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">from</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">empty?</span>)&#x000A;264:       <span class="ruby-identifier">fnames</span> = <span class="ruby-identifier">from</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>)&#x000A;265:       <span class="ruby-identifier">values</span> = <span class="ruby-identifier">from</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>)&#x000A;266:     <span class="ruby-keyword kw">else</span>&#x000A;267:       <span class="ruby-identifier">fnames</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">field_names</span>&#x000A;268:       <span class="ruby-identifier">values</span> = <span class="ruby-identifier">from</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>)&#x000A;269:     <span class="ruby-keyword kw">end</span>&#x000A;270:     &#x000A;271:     <span class="ruby-identifier">fnames</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">index</span><span class="ruby-operator">|</span>&#x000A;272:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">values</span>[<span class="ruby-identifier">index</span>]&#x000A;273:       <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">values</span>[<span class="ruby-identifier">index</span>]&#x000A;274:     <span class="ruby-keyword kw">end</span>&#x000A;275:     <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>) &#x000A;276:     <span class="ruby-identifier">hash</span>&#x000A;277:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000010'>
-                <a name='M000010'>      </a>
+              <div class='public-class method' id='method-M000012'>
+                <a name='M000012'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_file</span>
                   <span class='arguments'>(file_path, format='yaml')</span>
@@ -258,14 +260,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000010-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 108</span>&#x000A;108:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_file</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-identifier">format</span>=<span class="ruby-value str">'yaml'</span>)&#x000A;109:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Cannot read file (#{file_path})&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)&#x000A;110:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{self} doesn't support from_#{format}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;from_#{format}&quot;</span>)&#x000A;111:     <span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file_path</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">''</span>)&#x000A;112:     <span class="ruby-identifier">me</span> = <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;from_#{format}&quot;</span>, <span class="ruby-identifier">read_file_to_array</span>(<span class="ruby-identifier">file_path</span>))&#x000A;113:     <span class="ruby-identifier">me</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span>&#x000A;114:     <span class="ruby-identifier">me</span>&#x000A;115:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000012-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 115</span>&#x000A;115:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_file</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-identifier">format</span>=<span class="ruby-value str">'yaml'</span>)&#x000A;116:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Cannot read file (#{file_path})&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)&#x000A;117:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{self} doesn't support from_#{format}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;from_#{format}&quot;</span>)&#x000A;118:     <span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file_path</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">''</span>)&#x000A;119:     <span class="ruby-identifier">me</span> = <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;from_#{format}&quot;</span>, <span class="ruby-identifier">read_file_to_array</span>(<span class="ruby-identifier">file_path</span>))&#x000A;120:     <span class="ruby-identifier">me</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span>&#x000A;121:     <span class="ruby-identifier">me</span>&#x000A;122:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000012'>
-                <a name='M000012'>      </a>
+              <div class='public-class method' id='method-M000014'>
+                <a name='M000014'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_hash</span>
                   <span class='arguments'>(from={})</span>
@@ -276,14 +278,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000014-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000012-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 126</span>&#x000A;126:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">from</span>={})&#x000A;127:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">from</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">empty?</span>&#x000A;128:     <span class="ruby-identifier">me</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>&#x000A;129:     <span class="ruby-identifier">me</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">from</span>)&#x000A;130:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000014-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 133</span>&#x000A;133:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">from</span>={})&#x000A;134:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">from</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">empty?</span>&#x000A;135:     <span class="ruby-identifier">me</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>&#x000A;136:     <span class="ruby-identifier">me</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">from</span>)&#x000A;137:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000017'>
-                <a name='M000017'>      </a>
+              <div class='public-class method' id='method-M000019'>
+                <a name='M000019'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_json</span>
                   <span class='arguments'>(*from)</span>
@@ -295,14 +297,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000017-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000017-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 200</span>&#x000A;200:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">from</span>)&#x000A;201:     <span class="ruby-identifier">from_str</span> = [<span class="ruby-identifier">from</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)&#x000A;202:     <span class="ruby-identifier">tmp</span> = <span class="ruby-constant">JSON</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">from_str</span>)&#x000A;203:     <span class="ruby-identifier">hash_sym</span> = <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span>&#x000A;204:        <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">tmp</span>[<span class="ruby-identifier">key</span>]&#x000A;205:        <span class="ruby-identifier">hash</span>&#x000A;206:     <span class="ruby-keyword kw">end</span>&#x000A;207:     <span class="ruby-identifier">hash_sym</span> = <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">hash_sym</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash_sym</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)  &#x000A;208:     <span class="ruby-identifier">hash_sym</span>&#x000A;209:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000019-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 207</span>&#x000A;207:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">from</span>)&#x000A;208:     <span class="ruby-identifier">from_str</span> = [<span class="ruby-identifier">from</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)&#x000A;209:     <span class="ruby-identifier">tmp</span> = <span class="ruby-constant">JSON</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">from_str</span>)&#x000A;210:     <span class="ruby-identifier">hash_sym</span> = <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span>&#x000A;211:        <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">tmp</span>[<span class="ruby-identifier">key</span>]&#x000A;212:        <span class="ruby-identifier">hash</span>&#x000A;213:     <span class="ruby-keyword kw">end</span>&#x000A;214:     <span class="ruby-identifier">hash_sym</span> = <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">hash_sym</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash_sym</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)  &#x000A;215:     <span class="ruby-identifier">hash_sym</span>&#x000A;216:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000022'>
-                <a name='M000022'>      </a>
+              <div class='public-class method' id='method-M000024'>
+                <a name='M000024'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_tsv</span>
                   <span class='arguments'>(from=[])</span>
@@ -314,14 +316,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000022-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000024-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000022-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 238</span>&#x000A;238:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_tsv</span>(<span class="ruby-identifier">from</span>=[])&#x000A;239:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_delimited</span>(<span class="ruby-identifier">from</span>, <span class="ruby-value str">&quot;\t&quot;</span>)&#x000A;240:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000024-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 245</span>&#x000A;245:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_tsv</span>(<span class="ruby-identifier">from</span>=[])&#x000A;246:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_delimited</span>(<span class="ruby-identifier">from</span>, <span class="ruby-value str">&quot;\t&quot;</span>)&#x000A;247:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000015'>
-                <a name='M000015'>      </a>
+              <div class='public-class method' id='method-M000017'>
+                <a name='M000017'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_yaml</span>
                   <span class='arguments'>(*from)</span>
@@ -333,54 +335,67 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000015-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000017-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000015-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 188</span>&#x000A;188:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_yaml</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">from</span>)&#x000A;189:     <span class="ruby-identifier">from_str</span> = [<span class="ruby-identifier">from</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)&#x000A;190:     <span class="ruby-identifier">hash</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">from_str</span>)&#x000A;191:     <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;192:     <span class="ruby-identifier">hash</span>&#x000A;193:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000017-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 195</span>&#x000A;195:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_yaml</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">from</span>)&#x000A;196:     <span class="ruby-identifier">from_str</span> = [<span class="ruby-identifier">from</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)&#x000A;197:     <span class="ruby-identifier">hash</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">from_str</span>)&#x000A;198:     <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;199:     <span class="ruby-identifier">hash</span>&#x000A;200:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-class method' id='method-M000025'>
-                <a name='M000025'>      </a>
+              <div class='public-class method' id='method-M000004'>
+                <a name='M000004'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>has_field?</span>
+                  <span class='arguments'>(n)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000004-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 76</span>&#x000A;76:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_field?</span>(<span class="ruby-identifier">n</span>)&#x000A;77:     <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">member?</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_sym</span>&#x000A;78:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='public-class method' id='method-M000027'>
+                <a name='M000027'>      </a>
                 <div class='synopsis'>
                   <span class='name'>read_file_to_array</span>
                   <span class='arguments'>(path)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000025-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000027-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000025-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 272</span>&#x000A;272:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_file_to_array</span>(<span class="ruby-identifier">path</span>)&#x000A;273:     <span class="ruby-identifier">contents</span> = []&#x000A;274:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">contents</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">path</span>)&#x000A;275:     &#x000A;276:     <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'r'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>&#x000A;277:       <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">readlines</span>&#x000A;278:     <span class="ruby-keyword kw">end</span>&#x000A;279: &#x000A;280:     <span class="ruby-identifier">contents</span>&#x000A;281:   <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-class method' id='method-M000026'>
-                <a name='M000026'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>write_file</span>
-                  <span class='arguments'>(path, content, flush=true)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000026-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000026-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 283</span>&#x000A;283:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>=<span class="ruby-keyword kw">true</span>)&#x000A;284:     <span class="ruby-identifier">write_or_append_file</span>(<span class="ruby-value str">'w'</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>)&#x000A;285:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000027-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 279</span>&#x000A;279:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_file_to_array</span>(<span class="ruby-identifier">path</span>)&#x000A;280:     <span class="ruby-identifier">contents</span> = []&#x000A;281:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">contents</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">path</span>)&#x000A;282:     &#x000A;283:     <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'r'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>&#x000A;284:       <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">readlines</span>&#x000A;285:     <span class="ruby-keyword kw">end</span>&#x000A;286: &#x000A;287:     <span class="ruby-identifier">contents</span>&#x000A;288:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='public-class method' id='method-M000028'>
                 <a name='M000028'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>write_or_append_file</span>
-                  <span class='arguments'>(write_or_append, path, content = '', flush = true)</span>
+                  <span class='name'>write_file</span>
+                  <span class='arguments'>(path, content, flush=true)</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000028-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000028-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 291</span>&#x000A;291:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write_or_append_file</span>(<span class="ruby-identifier">write_or_append</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span> = <span class="ruby-value str">''</span>, <span class="ruby-identifier">flush</span> = <span class="ruby-keyword kw">true</span>)&#x000A;292:     <span class="ruby-comment cmt">#STDERR.puts &quot;Writing to #{ path }...&quot; </span>&#x000A;293:     <span class="ruby-identifier">create_dir</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>))&#x000A;294:     &#x000A;295:     <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">write_or_append</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> &#x000A;296:       <span class="ruby-identifier">f</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">content</span>&#x000A;297:       <span class="ruby-identifier">f</span>.<span class="ruby-identifier">flush</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flush</span>;&#x000A;298:     <span class="ruby-keyword kw">end</span>&#x000A;299:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">chmod</span>(<span class="ruby-value">0600</span>, <span class="ruby-identifier">path</span>)&#x000A;300:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000028-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 290</span>&#x000A;290:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>=<span class="ruby-keyword kw">true</span>)&#x000A;291:     <span class="ruby-identifier">write_or_append_file</span>(<span class="ruby-value str">'w'</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">flush</span>)&#x000A;292:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='public-class method' id='method-M000030'>
+                <a name='M000030'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>write_or_append_file</span>
+                  <span class='arguments'>(write_or_append, path, content = '', flush = true)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000030-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000030-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 298</span>&#x000A;298:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write_or_append_file</span>(<span class="ruby-identifier">write_or_append</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">content</span> = <span class="ruby-value str">''</span>, <span class="ruby-identifier">flush</span> = <span class="ruby-keyword kw">true</span>)&#x000A;299:     <span class="ruby-comment cmt">#STDERR.puts &quot;Writing to #{ path }...&quot; </span>&#x000A;300:     <span class="ruby-identifier">create_dir</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>))&#x000A;301:     &#x000A;302:     <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">write_or_append</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> &#x000A;303:       <span class="ruby-identifier">f</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">content</span>&#x000A;304:       <span class="ruby-identifier">f</span>.<span class="ruby-identifier">flush</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flush</span>;&#x000A;305:     <span class="ruby-keyword kw">end</span>&#x000A;306:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">chmod</span>(<span class="ruby-value">0600</span>, <span class="ruby-identifier">path</span>)&#x000A;307:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <h2>Public instance methods</h2>
-              <div class='public-instance method' id='method-M000008'>
-                <a name='M000008'>      </a>
+              <div class='public-instance method' id='method-M000010'>
+                <a name='M000010'>      </a>
                 <div class='synopsis'>
                   <span class='name'>dump</span>
                   <span class='arguments'>(format=nil, with_titles=false)</span>
@@ -391,14 +406,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000008-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 96</span>&#x000A; 96:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span>(<span class="ruby-identifier">format</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>)&#x000A; 97:     <span class="ruby-identifier">format</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">to_sym</span>&#x000A; 98:     <span class="ruby-identifier">format</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'s'</span> <span class="ruby-comment cmt"># as in, to_s</span>&#x000A; 99:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Format not defined (#{format})&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">SUPPORTED_FORMATS</span>.<span class="ruby-identifier">member?</span>(<span class="ruby-identifier">format</span>)&#x000A;100:     <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;to_#{format}&quot;</span>, <span class="ruby-identifier">with_titles</span>) &#x000A;101:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000010-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 103</span>&#x000A;103:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span>(<span class="ruby-identifier">format</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>)&#x000A;104:     <span class="ruby-identifier">format</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">to_sym</span>&#x000A;105:     <span class="ruby-identifier">format</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'s'</span> <span class="ruby-comment cmt"># as in, to_s</span>&#x000A;106:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Format not defined (#{format})&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">SUPPORTED_FORMATS</span>.<span class="ruby-identifier">member?</span>(<span class="ruby-identifier">format</span>)&#x000A;107:     <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;to_#{format}&quot;</span>, <span class="ruby-identifier">with_titles</span>) &#x000A;108:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000005'>
-                <a name='M000005'>      </a>
+              <div class='public-instance method' id='method-M000007'>
+                <a name='M000007'>      </a>
                 <div class='synopsis'>
                   <span class='name'>field_names</span>
                   <span class='arguments'>()</span>
@@ -409,14 +424,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000005-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 81</span>&#x000A;81:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field_names</span>&#x000A;82:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:class_variable_get</span>, <span class="ruby-identifier">:@@field_names</span>)&#x000A;83:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000007-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 88</span>&#x000A;88:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field_names</span>&#x000A;89:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:class_variable_get</span>, <span class="ruby-identifier">:@@field_names</span>)&#x000A;90:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000007'>
-                <a name='M000007'>      </a>
+              <div class='public-instance method' id='method-M000009'>
+                <a name='M000009'>      </a>
                 <div class='synopsis'>
                   <span class='name'>field_types</span>
                   <span class='arguments'>()</span>
@@ -428,10 +443,10 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000007-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 91</span>&#x000A;91:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field_types</span>&#x000A;92:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:class_variable_get</span>, <span class="ruby-identifier">:@@field_types</span>)&#x000A;93:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000009-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 98</span>&#x000A; 98:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field_types</span>&#x000A; 99:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:class_variable_get</span>, <span class="ruby-identifier">:@@field_types</span>)&#x000A;100:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='public-instance method' id='method-M000001'>
@@ -452,17 +467,30 @@
                   <pre id='M000001-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 36</span>&#x000A;36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format=</span>(<span class="ruby-identifier">v</span>)&#x000A;37:     <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_sym</span>&#x000A;38:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unsupported format: #{v}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">SUPPORTED_FORMATS</span>.<span class="ruby-identifier">member?</span>(<span class="ruby-identifier">v</span>)&#x000A;39:     <span class="ruby-ivar">@format</span> = <span class="ruby-identifier">v</span>&#x000A;40:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000013'>
-                <a name='M000013'>      </a>
+              <div class='public-instance method' id='method-M000015'>
+                <a name='M000015'>      </a>
                 <div class='synopsis'>
                   <span class='name'>from_hash</span>
                   <span class='arguments'>(from={})</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000013-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000015-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000013-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 132</span>&#x000A;132:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">from</span>={})&#x000A;133:     <span class="ruby-identifier">fnames</span> = <span class="ruby-identifier">field_names</span>&#x000A;134:     <span class="ruby-identifier">fnames</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">index</span><span class="ruby-operator">|</span>&#x000A;135:       &#x000A;136:       <span class="ruby-identifier">stored_value</span> = <span class="ruby-identifier">from</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">from</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-comment cmt"># support for symbol keys and string keys</span>&#x000A;137:       &#x000A;138:       <span class="ruby-comment cmt"># TODO: Correct this horrible implementation </span>&#x000A;139:       <span class="ruby-comment cmt"># (sorry, me. It's just one of those days.) -- circa 2008-09-15</span>&#x000A;140:       &#x000A;141:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Array</span>&#x000A;142:         ((<span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> []) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">stored_value</span>).<span class="ruby-identifier">flatten</span> &#x000A;143:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;144:         &#x000A;145:         <span class="ruby-identifier">value</span> = <span class="ruby-identifier">stored_value</span>&#x000A;146:       <span class="ruby-keyword kw">else</span>&#x000A;147:         &#x000A;148:         <span class="ruby-comment cmt"># SimpleDB stores attribute shit as lists of values</span>&#x000A;149:         <span class="ruby-comment cmt">##value = stored_value.first if stored_value.is_a?(Array) &amp;&amp; stored_value.size == 1</span>&#x000A;150:         <span class="ruby-identifier">value</span> = (<span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">stored_value</span>&#x000A;151:         &#x000A;152:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Time</span>&#x000A;153:           <span class="ruby-identifier">value</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">value</span>)&#x000A;154:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">DateTime</span>&#x000A;155:           <span class="ruby-identifier">value</span> = <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">value</span>)&#x000A;156:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">TrueClass</span>&#x000A;157:           <span class="ruby-identifier">value</span> = (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;true&quot;</span>)&#x000A;158:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Float</span>&#x000A;159:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_f</span>&#x000A;160:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Integer</span>&#x000A;161:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>&#x000A;162:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Storable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;163:           <span class="ruby-comment cmt"># I don't know why this is here so I'm going to raise an exception</span>&#x000A;164:           <span class="ruby-comment cmt"># and wait a while for an error in one of my other projects. </span>&#x000A;165:           <span class="ruby-comment cmt">#value = field_types[index].from_hash(stored_value)</span>&#x000A;166:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Delano, delano, delano. Clean up Storable!&quot;</span>&#x000A;167:         <span class="ruby-keyword kw">end</span>&#x000A;168:       <span class="ruby-keyword kw">end</span>&#x000A;169:       &#x000A;170:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{key}=&quot;</span>, <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;#{key}=&quot;</span>)  &#x000A;171:     <span class="ruby-keyword kw">end</span>&#x000A;172: &#x000A;173:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">postprocess</span>&#x000A;174:     <span class="ruby-keyword kw">self</span>&#x000A;175:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000015-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 139</span>&#x000A;139:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">from</span>={})&#x000A;140:     <span class="ruby-identifier">fnames</span> = <span class="ruby-identifier">field_names</span>&#x000A;141:     <span class="ruby-identifier">fnames</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">index</span><span class="ruby-operator">|</span>&#x000A;142:       &#x000A;143:       <span class="ruby-identifier">stored_value</span> = <span class="ruby-identifier">from</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">from</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-comment cmt"># support for symbol keys and string keys</span>&#x000A;144:       &#x000A;145:       <span class="ruby-comment cmt"># TODO: Correct this horrible implementation </span>&#x000A;146:       <span class="ruby-comment cmt"># (sorry, me. It's just one of those days.) -- circa 2008-09-15</span>&#x000A;147:       &#x000A;148:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Array</span>&#x000A;149:         ((<span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> []) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">stored_value</span>).<span class="ruby-identifier">flatten</span> &#x000A;150:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;151:         &#x000A;152:         <span class="ruby-identifier">value</span> = <span class="ruby-identifier">stored_value</span>&#x000A;153:       <span class="ruby-keyword kw">else</span>&#x000A;154:         &#x000A;155:         <span class="ruby-comment cmt"># SimpleDB stores attribute shit as lists of values</span>&#x000A;156:         <span class="ruby-comment cmt">##value = stored_value.first if stored_value.is_a?(Array) &amp;&amp; stored_value.size == 1</span>&#x000A;157:         <span class="ruby-identifier">value</span> = (<span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">stored_value</span>&#x000A;158:         &#x000A;159:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Time</span>&#x000A;160:           <span class="ruby-identifier">value</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">value</span>)&#x000A;161:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">DateTime</span>&#x000A;162:           <span class="ruby-identifier">value</span> = <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">value</span>)&#x000A;163:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">TrueClass</span>&#x000A;164:           <span class="ruby-identifier">value</span> = (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;true&quot;</span>)&#x000A;165:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Float</span>&#x000A;166:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_f</span>&#x000A;167:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Integer</span>&#x000A;168:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>&#x000A;169:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">field_types</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Storable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">stored_value</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)&#x000A;170:           <span class="ruby-comment cmt"># I don't know why this is here so I'm going to raise an exception</span>&#x000A;171:           <span class="ruby-comment cmt"># and wait a while for an error in one of my other projects. </span>&#x000A;172:           <span class="ruby-comment cmt">#value = field_types[index].from_hash(stored_value)</span>&#x000A;173:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Delano, delano, delano. Clean up Storable!&quot;</span>&#x000A;174:         <span class="ruby-keyword kw">end</span>&#x000A;175:       <span class="ruby-keyword kw">end</span>&#x000A;176:       &#x000A;177:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{key}=&quot;</span>, <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;#{key}=&quot;</span>)  &#x000A;178:     <span class="ruby-keyword kw">end</span>&#x000A;179: &#x000A;180:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">postprocess</span>&#x000A;181:     <span class="ruby-keyword kw">self</span>&#x000A;182:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='public-instance method' id='method-M000005'>
+                <a name='M000005'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>has_field?</span>
+                  <span class='arguments'>(n)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000005-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 79</span>&#x000A;79:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_field?</span>(<span class="ruby-identifier">n</span>)&#x000A;80:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">member?</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_sym</span>&#x000A;81:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='public-instance method' id='method-M000002'>
@@ -478,8 +506,8 @@
                   <pre id='M000002-source'>    <span class="ruby-comment cmt"># File lib/storable.rb, line 42</span>&#x000A;42:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">postprocess</span>&#x000A;43:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000021'>
-                <a name='M000021'>      </a>
+              <div class='public-instance method' id='method-M000023'>
+                <a name='M000023'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_csv</span>
                   <span class='arguments'>(with_titles=false)</span>
@@ -491,14 +519,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000021-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000023-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000021-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 233</span>&#x000A;233:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_csv</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>)&#x000A;234:     <span class="ruby-identifier">to_delimited</span>(<span class="ruby-identifier">with_titles</span>, <span class="ruby-value str">','</span>)&#x000A;235:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000023-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 240</span>&#x000A;240:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_csv</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>)&#x000A;241:     <span class="ruby-identifier">to_delimited</span>(<span class="ruby-identifier">with_titles</span>, <span class="ruby-value str">','</span>)&#x000A;242:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000019'>
-                <a name='M000019'>      </a>
+              <div class='public-instance method' id='method-M000021'>
+                <a name='M000021'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_delimited</span>
                   <span class='arguments'>(with_titles=false, delim=',')</span>
@@ -511,14 +539,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000021-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000019-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 217</span>&#x000A;217:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_delimited</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">delim</span>=<span class="ruby-value str">','</span>)&#x000A;218:     <span class="ruby-identifier">values</span> = []&#x000A;219:     <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>&#x000A;220:       <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">fname</span>.<span class="ruby-identifier">to_s</span>)   <span class="ruby-comment cmt"># TODO: escape values</span>&#x000A;221:     <span class="ruby-keyword kw">end</span>&#x000A;222:     <span class="ruby-identifier">output</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">delim</span>)&#x000A;223:     <span class="ruby-identifier">output</span> = <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">delim</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">$/</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">output</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">with_titles</span>&#x000A;224:     <span class="ruby-identifier">output</span>&#x000A;225:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000021-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 224</span>&#x000A;224:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_delimited</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">delim</span>=<span class="ruby-value str">','</span>)&#x000A;225:     <span class="ruby-identifier">values</span> = []&#x000A;226:     <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>&#x000A;227:       <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">fname</span>.<span class="ruby-identifier">to_s</span>)   <span class="ruby-comment cmt"># TODO: escape values</span>&#x000A;228:     <span class="ruby-keyword kw">end</span>&#x000A;229:     <span class="ruby-identifier">output</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">delim</span>)&#x000A;230:     <span class="ruby-identifier">output</span> = <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">delim</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">$/</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">output</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">with_titles</span>&#x000A;231:     <span class="ruby-identifier">output</span>&#x000A;232:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000011'>
-                <a name='M000011'>      </a>
+              <div class='public-instance method' id='method-M000013'>
+                <a name='M000013'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_file</span>
                   <span class='arguments'>(file_path=nil, with_titles=true)</span>
@@ -529,14 +557,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000013-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000011-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 117</span>&#x000A;117:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_file</span>(<span class="ruby-identifier">file_path</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;118:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Cannot store to nil path&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file_path</span>.<span class="ruby-identifier">nil?</span>&#x000A;119:     <span class="ruby-identifier">format</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file_path</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">''</span>)&#x000A;120:     <span class="ruby-identifier">format</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">to_sym</span>&#x000A;121:     <span class="ruby-identifier">format</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@format</span>&#x000A;122:     <span class="ruby-constant">Storable</span>.<span class="ruby-identifier">write_file</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-identifier">dump</span>(<span class="ruby-identifier">format</span>, <span class="ruby-identifier">with_titles</span>))&#x000A;123:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000013-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 124</span>&#x000A;124:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_file</span>(<span class="ruby-identifier">file_path</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;125:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Cannot store to nil path&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file_path</span>.<span class="ruby-identifier">nil?</span>&#x000A;126:     <span class="ruby-identifier">format</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file_path</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">''</span>)&#x000A;127:     <span class="ruby-identifier">format</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">to_sym</span>&#x000A;128:     <span class="ruby-identifier">format</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@format</span>&#x000A;129:     <span class="ruby-constant">Storable</span>.<span class="ruby-identifier">write_file</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-identifier">dump</span>(<span class="ruby-identifier">format</span>, <span class="ruby-identifier">with_titles</span>))&#x000A;130:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000014'>
-                <a name='M000014'>      </a>
+              <div class='public-instance method' id='method-M000016'>
+                <a name='M000016'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_hash</span>
                   <span class='arguments'>(with_titles=true)</span>
@@ -547,40 +575,40 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000014-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000016-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000014-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 178</span>&#x000A;178:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;179:     <span class="ruby-identifier">tmp</span> = <span class="ruby-constant">USE_ORDERED_HASH</span> <span class="ruby-value">? </span><span class="ruby-constant">Storable</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> {}&#x000A;180:     <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>&#x000A;181:       <span class="ruby-identifier">tmp</span>[<span class="ruby-identifier">fname</span>] = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">fname</span>)&#x000A;182:     <span class="ruby-keyword kw">end</span>&#x000A;183:     <span class="ruby-identifier">tmp</span>&#x000A;184:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000016-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 185</span>&#x000A;185:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;186:     <span class="ruby-identifier">tmp</span> = <span class="ruby-constant">USE_ORDERED_HASH</span> <span class="ruby-value">? </span><span class="ruby-constant">Storable</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> {}&#x000A;187:     <span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>&#x000A;188:       <span class="ruby-identifier">tmp</span>[<span class="ruby-identifier">fname</span>] = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">fname</span>)&#x000A;189:     <span class="ruby-keyword kw">end</span>&#x000A;190:     <span class="ruby-identifier">tmp</span>&#x000A;191:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000018'>
-                <a name='M000018'>      </a>
+              <div class='public-instance method' id='method-M000020'>
+                <a name='M000020'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_json</span>
                   <span class='arguments'>(with_titles=true)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000018-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000020-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000018-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 210</span>&#x000A;210:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;211:     <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_json</span>&#x000A;212:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000020-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 217</span>&#x000A;217:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;218:     <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_json</span>&#x000A;219:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000009'>
-                <a name='M000009'>      </a>
+              <div class='public-instance method' id='method-M000011'>
+                <a name='M000011'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_string</span>
                   <span class='arguments'>(*args)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000009-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 103</span>&#x000A;103:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_string</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)&#x000A;104:     <span class="ruby-identifier">to_s</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)&#x000A;105:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000011-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 110</span>&#x000A;110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_string</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)&#x000A;111:     <span class="ruby-identifier">to_s</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)&#x000A;112:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000020'>
-                <a name='M000020'>      </a>
+              <div class='public-instance method' id='method-M000022'>
+                <a name='M000022'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_tsv</span>
                   <span class='arguments'>(with_titles=false)</span>
@@ -592,23 +620,23 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000020-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000022-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000020-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 228</span>&#x000A;228:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_tsv</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>)&#x000A;229:     <span class="ruby-identifier">to_delimited</span>(<span class="ruby-identifier">with_titles</span>, <span class="ruby-value str">&quot;\t&quot;</span>)&#x000A;230:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000022-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 235</span>&#x000A;235:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_tsv</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">false</span>)&#x000A;236:     <span class="ruby-identifier">to_delimited</span>(<span class="ruby-identifier">with_titles</span>, <span class="ruby-value str">&quot;\t&quot;</span>)&#x000A;237:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='public-instance method' id='method-M000016'>
-                <a name='M000016'>      </a>
+              <div class='public-instance method' id='method-M000018'>
+                <a name='M000018'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_yaml</span>
                   <span class='arguments'>(with_titles=true)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000016-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000018-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000016-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 194</span>&#x000A;194:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;195:     <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_yaml</span>&#x000A;196:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000018-source'>     <span class="ruby-comment cmt"># File lib/storable.rb, line 201</span>&#x000A;201:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>(<span class="ruby-identifier">with_titles</span>=<span class="ruby-keyword kw">true</span>)&#x000A;202:     <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_yaml</span>&#x000A;203:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
