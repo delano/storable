@@ -1,5 +1,5 @@
 #--
-# TODO: Handle nested hashes and arrays. 
+# TODO: Handle nested hashes and arrays.
 # TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 #++
 
@@ -198,8 +198,8 @@ class Storable
     hash = from_hash(hash) if hash.kind_of?(Hash)
     hash
   end
-  def to_yaml(with_titles=true)
-    to_hash.to_yaml
+  def to_yaml(*args)
+    to_hash.to_yaml(*args)
   end
   
   # Create a new instance of the object from a JSON string. 
