@@ -1,6 +1,13 @@
 STORABLE, CHANGES
 
 
+#### 0.5.8 (2009-10-06) #############################
+
+* FIXED: "wrong argument type false (expected Hash)". I think
+  that's the last of it. 
+* CHANGE: Removed with_titles argument for Storable#dump.
+
+
 #### 0.5.7 (2009-09-15) #############################
 
 * FIXED: "wrong argument type String (expected Data)" in to_yaml (finally!)

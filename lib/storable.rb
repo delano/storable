@@ -23,7 +23,7 @@ require 'time'
 class Storable
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
-    VERSION = "0.5.7"
+    VERSION = "0.5.8"
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
@@ -104,7 +104,7 @@ class Storable
     format &&= format.to_sym
     format ||= 's' # as in, to_s
     raise "Format not defined (#{format})" unless SUPPORTED_FORMATS.member?(format)
-    send("to_#{format}", with_titles) 
+    send("to_#{format}") 
   end
   
   def to_string(*args)
@@ -182,7 +182,7 @@ class Storable
   end
   # Return the object data as a hash
   # +with_titles+ is ignored. 
-  def to_hash(with_titles=true)
+  def to_hash
     tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
     field_names.each do |fname|
       tmp[fname] = self.send(fname)
@@ -198,8 +198,8 @@ class Storable
     hash = from_hash(hash) if hash.kind_of?(Hash)
     hash
   end
-  def to_yaml(*args)
-    to_hash.to_yaml(*args)
+  def to_yaml
+    to_hash.to_yaml
   end
   
   # Create a new instance of the object from a JSON string. 
