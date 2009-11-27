@@ -48,12 +48,15 @@ class Storable
   #
   #     field :product
   #     field :product => Integer
+  #     field :product do |val|
+  #       # modify val before it's stored. 
+  #     end
   #
   # The order they're defined determines the order the will be output. The fields
   # data is available by the standard accessors, class.product and class.product= etc...
   # The value of the field will be cast to the type (if provided) when read from a file. 
   # The value is not touched when the type is not provided. 
-  def self.field(args={})
+  def self.field(args={}, &processor)
     # TODO: Examine casting from: http://codeforpeople.com/lib/ruby/fattr/fattr-1.0.3/
     args = {args => nil} unless args.kind_of?(Hash)
 
@@ -64,7 +67,11 @@ class Storable
         class_variable_set(tuple[0], class_variable_get(tuple[0]) << tuple[1])
       end
       
-      next if method_defined?(m)
+      unless processor.nil?
+        define_method("_storable_processor_#{m}", &processor)
+      end
+      
+      next if method_defined?(m) # don't refine the accessor methods
       
       define_method(m) do instance_variable_get("@#{m}") end
       define_method("#{m}=") do |val| 
@@ -185,9 +192,22 @@ class Storable
   def to_hash
     tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
     field_names.each do |fname|
-      tmp[fname] = self.send(fname)
+      v = self.send(fname)
+      v = process(fname, v) if has_processor?(fname)
+      if Array === v
+        v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_hash : v2 } 
+      end
+      tmp[fname] = v.kind_of?(Storable) ? v.to_hash : v
     end
     tmp
+  end
+  
+  def process(fname, val)
+    self.send :"_storable_processor_#{fname}", val
+  end
+  
+  def has_processor?(fname)
+    self.respond_to? :"_storable_processor_#{fname}"
   end
   
   # Create a new instance of the object from YAML. 
@@ -195,11 +215,8 @@ class Storable
   def self.from_yaml(*from)
     from_str = [from].flatten.compact.join('')
     hash = YAML::load(from_str)
-    hash = from_hash(hash) if hash.kind_of?(Hash)
+    hash = from_hash(hash) if Hash === hash
     hash
-  end
-  def to_yaml
-    to_hash.to_yaml
   end
   
   # Create a new instance of the object from a JSON string. 
@@ -213,9 +230,6 @@ class Storable
     end
     hash_sym = from_hash(hash_sym) if hash_sym.kind_of?(Hash)  
     hash_sym
-  end
-  def to_json(with_titles=true)
-    to_hash.to_json
   end
   
   # Return the object data as a delimited string. 
