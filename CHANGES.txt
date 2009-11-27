@@ -2,6 +2,7 @@ STORABLE, CHANGES
 
 #### 0.6.0 (2009-11-27) #############################
 
+* FIXED: Undefined @@field_names error when no fields specified
 * ADDED: Support for field output processors
 
 

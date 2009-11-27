@@ -28,6 +28,10 @@ class Storable
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
   
+  class << self
+    attr_accessor :field_names, :field_types
+  end
+  
   # This value will be used as a default unless provided on-the-fly.
   # See SUPPORTED_FORMATS for available values.
   attr_reader :format
@@ -61,11 +65,10 @@ class Storable
     args = {args => nil} unless args.kind_of?(Hash)
 
     args.each_pair do |m,t|
-      
-      [[:@@field_names, m], [:@@field_types, t]].each do |tuple|
-        class_variable_set(tuple[0], []) unless class_variable_defined?(tuple[0])
-        class_variable_set(tuple[0], class_variable_get(tuple[0]) << tuple[1])
-      end
+      self.field_names ||= []
+      self.field_types ||= []
+      self.field_names << m
+      self.field_types << t unless t.nil?
       
       unless processor.nil?
         define_method("_storable_processor_#{m}", &processor)
@@ -87,23 +90,15 @@ class Storable
     self.class.field_names.member? n.to_sym
   end
   
-  # Returns an array of field names defined by self.field
-  def self.field_names
-    class_variable_get(:@@field_names)
-  end
+
   # Returns an array of field names defined by self.field
   def field_names
-    self.class.send(:class_variable_get, :@@field_names)
-  end
-  # Returns an array of field types defined by self.field. Fields that did 
-  # not receive a type are set to nil. 
-  def self.field_types
-    class_variable_get(:@@field_types)
+    self.class.field_names
   end
   # Returns an array of field types defined by self.field. Fields that did 
   # not receive a type are set to nil.
   def field_types
-    self.class.send(:class_variable_get, :@@field_types)
+    self.class.field_types
   end
 
   # Dump the object data to the given format. 
