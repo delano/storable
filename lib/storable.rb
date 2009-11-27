@@ -197,6 +197,14 @@ class Storable
     tmp
   end
   
+  def to_json(*from, &blk)
+    to_hash.to_json(*from, &blk)
+  end
+  
+  def to_yaml(*from, &blk)
+    to_hash.to_yaml(*from, &blk)
+  end
+
   def process(fname, val)
     self.send :"_storable_processor_#{fname}", val
   end
