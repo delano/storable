@@ -15,12 +15,29 @@ end
 require 'yaml'
 require 'fileutils'
 require 'time'
-  
+
+
+class Storable
+  module DefaultProcessors
+    def hash_proc_processor 
+      Proc.new do |procs|
+        a = {}
+        procs.each_pair { |n,v| 
+          a[n] = (Proc === v) ? v.source : v 
+        }
+        a
+      end
+    end
+  end
+end
+
 # Storable makes data available in multiple formats and can
 # re-create objects from files. Fields are defined using the 
 # Storable.field method which tells Storable the order and 
 # name.
 class Storable
+  extend Storable::DefaultProcessors
+  
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
     VERSION = "0.5.8"
@@ -323,4 +340,5 @@ class Storable
     File.chmod(0600, path)
   end
 end
+
 

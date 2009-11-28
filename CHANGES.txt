@@ -4,6 +4,7 @@ STORABLE, CHANGES
 
 * FIXED: Undefined @@field_names error when no fields specified
 * ADDED: Support for field output processors
+* ADDED: Storable::DefaultProcessors
 
 
 #### 0.5.8 (2009-10-06) #############################
