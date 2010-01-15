@@ -107,6 +107,14 @@ class Storable
     self.class.field_names.member? n.to_sym
   end
   
+  # +args+ is a list of values to set amongst the fields. 
+  # It's assumed that the order values matches the order
+  def initialize(*args)
+    (self.class.field_names || []).each_with_index do |n,index|
+      break if (index+1) >= args.size
+      self.send("#{n}=", args[index])
+    end
+  end
 
   # Returns an array of field names defined by self.field
   def field_names
