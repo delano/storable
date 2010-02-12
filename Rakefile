@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'rake/clean'
 require 'rake/gempackagetask'
-require 'hanna/rdoctask'
 require 'fileutils'
 include FileUtils
  
@@ -65,6 +64,11 @@ end
 
 
 # RUBY DOCS TASK ==================================
+begin
+  require 'hanna/rdoctask'
+rescue LoadError
+  require 'rake/rdoctask'
+end
 
 Rake::RDocTask.new do |t|
 	t.rdoc_dir = 'doc'
