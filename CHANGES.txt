@@ -1,5 +1,9 @@
 STORABLE, CHANGES
 
+#### 0.6.2 (2010-02-12) #############################
+
+* CHANGE: Removed hanna dependency [Flameeyes]
+
 #### 0.6.1 (2010-01-15) #############################
 
 * ADDED: Default initialize for Storable objects which can set field values. 
