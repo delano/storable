@@ -2,7 +2,7 @@ STORABLE, CHANGES
 
 #### 0.6.2 (2010-02-12) #############################
 
-* CHANGE: Removed hanna dependency [Flameeyes]
+* CHANGE: Removed hanna dependency [Diego Elio 'Flameeyes' Pettenò]
 
 #### 0.6.1 (2010-01-15) #############################
 
