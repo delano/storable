@@ -166,16 +166,14 @@ class Storable
   def from_hash(from={})
     fnames = field_names
     fnames.each_with_index do |key,index|
-      
       stored_value = from[key] || from[key.to_s] # support for symbol keys and string keys
       
       # TODO: Correct this horrible implementation 
       # (sorry, me. It's just one of those days.) -- circa 2008-09-15
       
       if field_types[index] == Array
-        ((value ||= []) << stored_value).flatten 
+        value = Array === stored_value ? stored_value : [stored_value]
       elsif field_types[index].kind_of?(Hash)
-        
         value = stored_value
       else
         

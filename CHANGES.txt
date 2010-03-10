@@ -2,9 +2,10 @@ STORABLE, CHANGES
 
 * TODO: field_types and field_names go out of order when defining some fields with types and others not. The quick fix is to define fields with no type at the end
 
-#### 0.6.3 (2010-03-10) #############################
+#### 0.6.4 (2010-03-10) #############################
 
 * FIXED: Don't pull the first value out of an array if there is only one element.
+* FIXED: Stored Arrays were nested in another Array in some cases
 
 #### 0.6.2 (2010-02-12) #############################
 
