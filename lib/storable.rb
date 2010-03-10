@@ -179,9 +179,7 @@ class Storable
         value = stored_value
       else
         
-        # SimpleDB stores attribute shit as lists of values
-        ##value = stored_value.first if stored_value.is_a?(Array) && stored_value.size == 1
-        value = (stored_value.is_a?(Array) && stored_value.size == 1) ? stored_value.first : stored_value
+        value = stored_value
         
         if field_types[index] == Time
           value = Time.parse(value)
