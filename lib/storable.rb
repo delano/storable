@@ -6,12 +6,20 @@
 
 USE_ORDERED_HASH = (RUBY_VERSION =~ /^1.9/).nil?
 
-begin
-  require 'json'
+YAJL_LOADED = begin   
+  require 'yajl'
+  true
 rescue LoadError
-  # Silently!
+  false
 end
-  
+
+JSON_LOADED = begin
+  require 'json' unless YAJL_LOADED
+  true
+rescue LoadError
+  false
+end
+
 require 'yaml'
 require 'fileutils'
 require 'time'
@@ -219,7 +227,14 @@ class Storable
   end
   
   def to_json(*from, &blk)
-    to_hash.to_json(*from, &blk)
+    hash = to_hash
+    if YAJL_LOADED
+      Yajl::Encoder.encode(hash)
+    elsif JSON_LOADED
+      hash.to_json(*from, &blk)
+    else 
+      raise "no JSON parser loaded"
+    end
   end
   
   def to_yaml(*from, &blk)
@@ -247,7 +262,13 @@ class Storable
   # +from+ a YAML String or Array (split into by line). 
   def self.from_json(*from)
     from_str = [from].flatten.compact.join('')
-    tmp = JSON::load(from_str)
+    if YAJL_LOADED
+      tmp = Yajl::Parser.parse(from_str)
+    elsif JSON_LOADED
+      tmp = JSON::load(from_str)
+    else
+      raise "JSON parser not loaded"
+    end
     hash_sym = tmp.keys.inject({}) do |hash, key|
        hash[key.to_sym] = tmp[key]
        hash
