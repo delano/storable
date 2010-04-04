@@ -1,10 +1,12 @@
 STORABLE, CHANGES
 
+* TODO: Handle nested hashes and arrays.                                 
+* TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
 #### 0.6.6 (2010-04-03) #############################
 
-* FIXED: Default initialized missed the last argument
-
+* FIXED: Default initialize method missed the last argument
+* CHANGE: Remove unused "require 'fileutils'"
 
 #### 0.6.5 (2010-03-23) #############################
 

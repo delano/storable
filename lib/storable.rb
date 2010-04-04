@@ -1,8 +1,3 @@
-#--
-# TODO: Handle nested hashes and arrays.
-# TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
-#++
-
 
 USE_ORDERED_HASH = (RUBY_VERSION =~ /^1.9/).nil?
 
@@ -21,23 +16,7 @@ rescue LoadError
 end
 
 require 'yaml'
-require 'fileutils'
 require 'time'
-
-
-class Storable
-  module DefaultProcessors
-    def hash_proc_processor 
-      Proc.new do |procs|
-        a = {}
-        procs.each_pair { |n,v| 
-          a[n] = (Proc === v) ? v.source : v 
-        }
-        a
-      end
-    end
-  end
-end
 
 # Storable makes data available in multiple formats and can
 # re-create objects from files. Fields are defined using the 
@@ -372,3 +351,17 @@ class Storable
 end
 
 
+
+class Storable
+  module DefaultProcessors
+    def hash_proc_processor 
+      Proc.new do |procs|
+        a = {}
+        procs.each_pair { |n,v| 
+          a[n] = (Proc === v) ? v.source : v 
+        }
+        a
+      end
+    end
+  end
+end
