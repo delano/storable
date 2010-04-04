@@ -44,7 +44,7 @@ class Storable
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
   
-  @debug = true
+  @debug = false
   class << self
     attr_accessor :field_names, :field_types, :debug
   end
@@ -80,7 +80,7 @@ class Storable
   def self.field(args={}, &processor)
     # TODO: Examine casting from: http://codeforpeople.com/lib/ruby/fattr/fattr-1.0.3/
     args = {args => nil} unless args.kind_of?(Hash)
-
+    
     args.each_pair do |m,t|
       self.field_names ||= []
       self.field_types ||= {}
@@ -182,7 +182,7 @@ class Storable
         value = ''
       elsif ftype == Array
         value = Array === value_orig ? value_orig : [value_orig]
-      elsif ftype.kind_of?(Hash)
+      elsif ftype == Hash
         value = value_orig
       else
         if    [Time, DateTime].member?(ftype)
@@ -194,11 +194,11 @@ class Storable
         elsif ftype == Integer
           value = value_orig.to_i
         elsif ftype == Proc && String === value_orig
-          value = Proc.from_string value_orig 
-        else
-          value = value_orig
+          value = Proc.from_string value_orig           
         end
       end
+
+      value ||= value_orig
       
       if self.respond_to?("#{fname}=")
         self.send("#{fname}=", value) 
