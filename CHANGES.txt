@@ -7,6 +7,11 @@ STORABLE, CHANGES
 
 * FIXED: Default initialize method missed the last argument
 * CHANGE: Remove unused "require 'fileutils'"
+* CHANGE: field_types is now a Hash
+* CHANGE: Set the instance variable if a setter method doesn't exist. 
+* ADDED: Storable.debug
+* ADDED: Boolean class (candy for TrueClass fields)
+
 
 #### 0.6.5 (2010-03-23) #############################
 

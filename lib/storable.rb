@@ -24,6 +24,13 @@ require 'yaml'
 require 'fileutils'
 require 'time'
 
+unless defined?(Boolean)
+  # Used in field definitions. 
+  #
+  #     field :name => Boolean
+  #
+  class Boolean; end
+end
 
 # Storable makes data available in multiple formats and can
 # re-create objects from files. Fields are defined using the 
@@ -38,8 +45,9 @@ class Storable
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
   
+  @debug = true
   class << self
-    attr_accessor :field_names, :field_types
+    attr_accessor :field_names, :field_types, :debug
   end
   
   # This value will be used as a default unless provided on-the-fly.
@@ -75,16 +83,19 @@ class Storable
     args = {args => nil} unless args.kind_of?(Hash)
 
     args.each_pair do |m,t|
-      self.field_names ||= []  # TODO: FIX THIS SHITTY STORABLE FIELD NAME/TYPE MISMATCH PROBLEM!!!
-      self.field_types ||= []
+      self.field_names ||= []
+      self.field_types ||= {}
       self.field_names << m
-      self.field_types << t unless t.nil?
+      self.field_types[m] = t unless t.nil?
       
       unless processor.nil?
         define_method("_storable_processor_#{m}", &processor)
       end
       
-      next if method_defined?(m) # don't refine the accessor methods
+      if method_defined?(m) # don't redefine the accessor methods
+        STDERR.puts "method exists: #{self}##{m}" if Storable.debug
+        next
+      end
       
       define_method(m) do instance_variable_get("@#{m}") end
       define_method("#{m}=") do |val| 
@@ -158,38 +169,36 @@ class Storable
   
   def from_hash(from={})
     fnames = field_names
-    fnames.each_with_index do |key,index|
-      stored_value = from[key] || from[key.to_s] # support for symbol keys and string keys
+    fnames.each_with_index do |fname,index|
+      ftype = field_types[fname] || String
+      value_orig = from[fname] || from[fname.to_s]
       
-      # TODO: Correct this horrible implementation 
-      # (sorry, me. It's just one of those days.) -- circa 2008-09-15
-            
-      if field_types[index] == Array
-        value = Array === stored_value ? stored_value : [stored_value]
-      elsif field_types[index].kind_of?(Hash)
-        value = stored_value
+      if ftype == Array
+        value = Array === value_orig ? value_orig : [value_orig]
+      elsif ftype.kind_of?(Hash)
+        value = value_orig
       else
-        
-        value = stored_value
-        
-        if field_types[index] == Time
-          value = Time.parse(value)
-        elsif field_types[index] == DateTime
-          value = DateTime.parse(value)
-        elsif field_types[index] == TrueClass
-          value = (value.to_s == "true")
-        elsif field_types[index] == Float
-          value = value.to_f
-        elsif field_types[index] == Integer
-          value = value.to_i
-        elsif field_types[index].kind_of?(Storable) && stored_value.kind_of?(Hash)
-          # I don't know why this is here so I'm going to raise an exception
-          # and wait a while for an error in one of my other projects. 
-          #value = field_types[index].from_hash(stored_value)
-          raise "Delano, delano, delano. Clean up Storable!"
+        if    [Time, DateTime].member?(ftype)
+          value = ftype.parse(value_orig)
+        elsif [TrueClass, FalseClass, Boolean].member?(ftype)
+          value = (value_orig.to_s.upcase == "TRUE")
+        elsif ftype == Float
+          value = value_orig.to_f
+        elsif ftype == Integer
+          value = value_orig.to_i
+        elsif ftype == Proc
+          raise "todo"
+        else
+          value = value_orig
         end
       end
-      self.instance_variable_set("@#{key}", value) 
+      
+      if self.respond_to?("#{fname}=")
+        self.send("#{fname}=", value) 
+      else
+        self.instance_variable_set("@#{fname}", value) 
+      end
+      
     end
 
     self.postprocess
