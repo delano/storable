@@ -4,8 +4,6 @@
 #++
 
 
-USE_ORDERED_HASH = (RUBY_VERSION =~ /^1.9/).nil?
-
 YAJL_LOADED = begin   
   require 'yajl'
   true
@@ -37,6 +35,7 @@ end
 # Storable.field method which tells Storable the order and 
 # name.
 class Storable
+  USE_ORDERED_HASH = (RUBY_VERSION =~ /^1.9/).nil?
   require 'proc_source'  
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
@@ -87,6 +86,10 @@ class Storable
       self.field_types ||= {}
       self.field_names << m
       self.field_types[m] = t unless t.nil?
+      
+      # This processor automatically converts a Proc object
+      # to a String of its source. 
+      processor = proc_processor if t == Proc && processor.nil?
       
       unless processor.nil?
         define_method("_storable_processor_#{m}", &processor)
@@ -173,7 +176,11 @@ class Storable
       ftype = field_types[fname] || String
       value_orig = from[fname] || from[fname.to_s]
       
-      if ftype == Array
+      next if value_orig.nil?
+      
+      if ftype == String && value_orig.to_s.empty?
+        value = ''
+      elsif ftype == Array
         value = Array === value_orig ? value_orig : [value_orig]
       elsif ftype.kind_of?(Hash)
         value = value_orig
@@ -186,8 +193,8 @@ class Storable
           value = value_orig.to_f
         elsif ftype == Integer
           value = value_orig.to_i
-        elsif ftype == Proc
-          raise "todo"
+        elsif ftype == Proc && String === value_orig
+          value = Proc.from_string value_orig 
         else
           value = value_orig
         end
@@ -386,6 +393,11 @@ class Storable
           a[n] = (Proc === v) ? v.source : v 
         }
         a
+      end
+    end
+    def proc_processor
+      Proc.new do |val|
+        (Proc === val) ? val.source : val 
       end
     end
     # If the object already has a value for +@id+

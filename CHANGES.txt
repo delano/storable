@@ -3,14 +3,16 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
-#### 0.6.6 (2010-04-03) #############################
+#### 0.7.0 (2010-04-03) #############################
 
 * FIXED: Default initialize method missed the last argument
+* FIXED: Possible error in from_hash when a value is nil
 * CHANGE: Remove unused "require 'fileutils'"
 * CHANGE: field_types is now a Hash
 * CHANGE: Set the instance variable if a setter method doesn't exist. 
 * ADDED: Storable.debug
 * ADDED: Boolean class (candy for TrueClass fields)
+* ADDED: Automatically convert a Proc to a string of its source in to_hash
 
 
 #### 0.6.5 (2010-03-23) #############################

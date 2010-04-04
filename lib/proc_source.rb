@@ -176,7 +176,15 @@ class Proc #:nodoc:
     @source ||= ProcSource.find(*self.source_descriptor)
   end
   
-
+  # Create a Proc object from a string of Ruby code. 
+  # It's assumed the string contains do; end or { }.
+  #
+  #     Proc.from_string("do; 2+2; end")
+  #
+  def self.from_string(str)
+    eval "Proc.new #{str}"
+  end
+  
 end
 
 if $0 == __FILE__
