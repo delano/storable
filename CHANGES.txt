@@ -3,6 +3,10 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.7.1 (2010-04-04) #############################
+
+* FIXED: Missing proc_source.rb in gemspec.
+
 #### 0.7.0 (2010-04-03) #############################
 
 * FIXED: Default initialize method missed the last argument
