@@ -7,6 +7,7 @@ tryouts "Basic Usage", :api do
       field :one => String
       field :two => Integer
       field :three => Time
+      field :four => Boolean
     end
     class B < Storable
       field :one => String
@@ -18,10 +19,10 @@ tryouts "Basic Usage", :api do
     end
   end
 
-  dream ["string", 1, Time.parse("2010-03-04 23:00")]
+  dream ["string", 1, Time.parse("2010-03-04 23:00"), true]
   drill "Storable objects have a default initialize method" do
-    a = A.new "string", 1, Time.parse("2010-03-04 23:00")
-    [a.one, a.two, a.three]
+    a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
+    [a.one, a.two, a.three, a.four]
   end
   
   dream ["string", 1, Time.parse("2010-03-04 23:00")]
