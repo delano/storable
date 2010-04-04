@@ -1,12 +1,14 @@
 STORABLE, CHANGES
 
-* TODO: field_types and field_names go out of order when defining some fields with types and others not. The quick fix is to define fields with no type at the end
+
+#### 0.6.6 (2010-04-03) #############################
+
+* FIXED: Default initialized missed the last argument
 
 
 #### 0.6.5 (2010-03-23) #############################
 
 * ADDED: Use Yajl if it's available.
-
 
 #### 0.6.4 (2010-03-10) #############################
 

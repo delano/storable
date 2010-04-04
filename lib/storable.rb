@@ -90,7 +90,7 @@ class Storable
     args = {args => nil} unless args.kind_of?(Hash)
 
     args.each_pair do |m,t|
-      self.field_names ||= []
+      self.field_names ||= []  # TODO: FIX THIS SHITTY STORABLE FIELD NAME/TYPE MISMATCH PROBLEM!!!
       self.field_types ||= []
       self.field_names << m
       self.field_types << t unless t.nil?
@@ -119,7 +119,7 @@ class Storable
   # It's assumed that the order values matches the order
   def initialize(*args)
     (self.class.field_names || []).each_with_index do |n,index|
-      break if (index+1) >= args.size
+      break if (index+1) > args.size
       self.send("#{n}=", args[index])
     end
   end
@@ -137,7 +137,7 @@ class Storable
   # Dump the object data to the given format. 
   def dump(format=nil, with_titles=false)
     format &&= format.to_sym
-    format ||= 's' # as in, to_s
+    format ||= :s # as in, to_s
     raise "Format not defined (#{format})" unless SUPPORTED_FORMATS.member?(format)
     send("to_#{format}") 
   end
@@ -178,7 +178,7 @@ class Storable
       
       # TODO: Correct this horrible implementation 
       # (sorry, me. It's just one of those days.) -- circa 2008-09-15
-      
+            
       if field_types[index] == Array
         value = Array === stored_value ? stored_value : [stored_value]
       elsif field_types[index].kind_of?(Hash)
@@ -204,8 +204,7 @@ class Storable
           raise "Delano, delano, delano. Clean up Storable!"
         end
       end
-      
-      self.send("#{key}=", value) if self.respond_to?("#{key}=")  
+      self.instance_variable_set("@#{key}", value) 
     end
 
     self.postprocess
@@ -229,7 +228,11 @@ class Storable
   def to_json(*from, &blk)
     hash = to_hash
     if YAJL_LOADED
-      Yajl::Encoder.encode(hash)
+      ret = Yajl::Encoder.encode(hash)
+      #raise "DELANO"
+      #ret.force_encoding("ISO-8859-1")
+      #p [:to, ret.encoding.name] if ret.respond_to?(:encoding)
+      ret
     elsif JSON_LOADED
       hash.to_json(*from, &blk)
     else 
@@ -262,8 +265,10 @@ class Storable
   # +from+ a YAML String or Array (split into by line). 
   def self.from_json(*from)
     from_str = [from].flatten.compact.join('')
+    #from_str.force_encoding("ISO-8859-1")
+    #p [:from, from_str.encoding.name] if from_str.respond_to?(:encoding)
     if YAJL_LOADED
-      tmp = Yajl::Parser.parse(from_str)
+      tmp = Yajl::Parser.parse(from_str, :check_utf8 => false)
     elsif JSON_LOADED
       tmp = JSON::load(from_str)
     else
