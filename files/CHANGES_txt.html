@@ -31,7 +31,7 @@
         </div>
         <div class='last-update'>
           Last Update:
-          <span class='datetime'>2010-03-23 11:39:56 -0400</span>
+          <span class='datetime'>2010-04-03 23:47:50 -0400</span>
         </div>
       </div>
       <div id='content'>
@@ -41,9 +41,47 @@
             STORABLE, CHANGES
             </p>
             <ul>
-            <li>TODO: field_types and field_names go out of order when defining some fields
-            with types and others not. The quick fix is to define fields with no type
-            at the end
+            <li>TODO: Handle nested hashes and arrays.
+            
+            </li>
+            <li>TODO: to_xml, see: <a
+            href="http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README">codeforpeople.com/lib/ruby/xx/xx-2.0.0/README</a>
+            
+            </li>
+            </ul>
+            <p>
+            #### 0.7.0 (2010-04-03) #############################
+            </p>
+            <ul>
+            <li>FIXED: Default initialize method missed the last argument
+            
+            </li>
+            <li>FIXED: Possible error in from_hash when a value is nil
+            
+            </li>
+            <li>CHANGE: Remove unused &#8220;require &#8216;fileutils&#8217;&#8220;
+            
+            </li>
+            <li>CHANGE: field_types is now a Hash
+            
+            </li>
+            <li>CHANGE: Set the instance variable if a setter method doesn&#8217;t exist.
+            
+            </li>
+            <li>CHANGE: Will grab the first element of an Array if there is only one and a
+            field type is defined that is not an Array.
+            
+            </li>
+            <li>ADDED: Storable.debug
+            
+            </li>
+            <li>ADDED: Boolean class (candy for TrueClass fields)
+            
+            </li>
+            <li>ADDED: Automatically convert a Proc to a string of its source in to_hash
+            
+            </li>
+            <li>ADDED: Support for Symbol field type
             
             </li>
             </ul>

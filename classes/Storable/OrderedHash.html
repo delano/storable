@@ -59,48 +59,48 @@
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000001">[]</a></li>
-              <li><a href="#M000002">new</a></li>
-              <li><a href="#M000037">to_yaml</a></li>
+              <li><a href="#M000009">[]</a></li>
+              <li><a href="#M000010">new</a></li>
+              <li><a href="#M000045">to_yaml</a></li>
             </ol>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000007">==</a></li>
-              <li><a href="#M000006">[]=</a></li>
-              <li><a href="#M000035">__class__</a></li>
-              <li><a href="#M000034">class</a></li>
-              <li><a href="#M000008">clear</a></li>
-              <li><a href="#M000009">delete</a></li>
-              <li><a href="#M000014">delete_if</a></li>
-              <li><a href="#M000012">each</a></li>
-              <li><a href="#M000010">each_key</a></li>
-              <li><a href="#M000013">each_pair</a></li>
-              <li><a href="#M000011">each_value</a></li>
-              <li><a href="#M000039">each_with_index</a></li>
-              <li><a href="#M000017">first</a></li>
-              <li><a href="#M000029">inspect</a></li>
-              <li><a href="#M000019">invert</a></li>
-              <li><a href="#M000016">keys</a></li>
-              <li><a href="#M000018">last</a></li>
-              <li><a href="#M000032">merge</a></li>
-              <li><a href="#M000031">merge!</a></li>
-              <li><a href="#M000005">orig_store</a></li>
-              <li><a href="#M000026">pop</a></li>
-              <li><a href="#M000025">push</a></li>
-              <li><a href="#M000020">reject</a></li>
-              <li><a href="#M000021">reject!</a></li>
-              <li><a href="#M000022">replace</a></li>
-              <li><a href="#M000033">select</a></li>
-              <li><a href="#M000023">shift</a></li>
-              <li><a href="#M000004">store</a></li>
-              <li><a href="#M000003">store_only</a></li>
-              <li><a href="#M000027">to_a</a></li>
-              <li><a href="#M000028">to_s</a></li>
-              <li><a href="#M000024">unshift</a></li>
-              <li><a href="#M000030">update</a></li>
-              <li><a href="#M000015">values</a></li>
-              <li><a href="#M000038">yaml_inline!</a></li>
-              <li><a href="#M000036">yaml_inline=</a></li>
+              <li><a href="#M000015">==</a></li>
+              <li><a href="#M000014">[]=</a></li>
+              <li><a href="#M000043">__class__</a></li>
+              <li><a href="#M000042">class</a></li>
+              <li><a href="#M000016">clear</a></li>
+              <li><a href="#M000017">delete</a></li>
+              <li><a href="#M000022">delete_if</a></li>
+              <li><a href="#M000020">each</a></li>
+              <li><a href="#M000018">each_key</a></li>
+              <li><a href="#M000021">each_pair</a></li>
+              <li><a href="#M000019">each_value</a></li>
+              <li><a href="#M000047">each_with_index</a></li>
+              <li><a href="#M000025">first</a></li>
+              <li><a href="#M000037">inspect</a></li>
+              <li><a href="#M000027">invert</a></li>
+              <li><a href="#M000024">keys</a></li>
+              <li><a href="#M000026">last</a></li>
+              <li><a href="#M000040">merge</a></li>
+              <li><a href="#M000039">merge!</a></li>
+              <li><a href="#M000013">orig_store</a></li>
+              <li><a href="#M000034">pop</a></li>
+              <li><a href="#M000033">push</a></li>
+              <li><a href="#M000028">reject</a></li>
+              <li><a href="#M000029">reject!</a></li>
+              <li><a href="#M000030">replace</a></li>
+              <li><a href="#M000041">select</a></li>
+              <li><a href="#M000031">shift</a></li>
+              <li><a href="#M000012">store</a></li>
+              <li><a href="#M000011">store_only</a></li>
+              <li><a href="#M000035">to_a</a></li>
+              <li><a href="#M000036">to_s</a></li>
+              <li><a href="#M000032">unshift</a></li>
+              <li><a href="#M000038">update</a></li>
+              <li><a href="#M000023">values</a></li>
+              <li><a href="#M000046">yaml_inline!</a></li>
+              <li><a href="#M000044">yaml_inline=</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -123,508 +123,508 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='method public-class' id='method-M000001'>
-                <a name='M000001'>      </a>
+              <div class='method public-class' id='method-M000009'>
+                <a name='M000009'>      </a>
                 <div class='synopsis'>
                   <span class='name'>[]</span>
                   <span class='arguments'>(*args)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000001-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 15</span>&#x000A;15:         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>&#x000A;16:           <span class="ruby-identifier">hsh</span> = <span class="ruby-constant">Storable</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span>&#x000A;17:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]&#x000A;18:             <span class="ruby-identifier">hsh</span>.<span class="ruby-identifier">replace</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]&#x000A;19:           <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>&#x000A;20:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;odd number of elements for Hash&quot;</span>&#x000A;21:           <span class="ruby-keyword kw">else</span>&#x000A;22:             <span class="ruby-value">0</span>.<span class="ruby-identifier">step</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">2</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>&#x000A;23:               <span class="ruby-identifier">b</span> = <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>&#x000A;24:               <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">args</span>[<span class="ruby-identifier">a</span>]] = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">b</span>]&#x000A;25:             <span class="ruby-keyword kw">end</span>&#x000A;26:           <span class="ruby-keyword kw">end</span>&#x000A;27:           <span class="ruby-identifier">hsh</span>&#x000A;28:         <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000009-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 15</span>&#x000A;15:         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span> <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>&#x000A;16:           <span class="ruby-identifier">hsh</span> = <span class="ruby-constant">Storable</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span>&#x000A;17:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]&#x000A;18:             <span class="ruby-identifier">hsh</span>.<span class="ruby-identifier">replace</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]&#x000A;19:           <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>&#x000A;20:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;odd number of elements for Hash&quot;</span>&#x000A;21:           <span class="ruby-keyword kw">else</span>&#x000A;22:             <span class="ruby-value">0</span>.<span class="ruby-identifier">step</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">2</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>&#x000A;23:               <span class="ruby-identifier">b</span> = <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>&#x000A;24:               <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">args</span>[<span class="ruby-identifier">a</span>]] = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">b</span>]&#x000A;25:             <span class="ruby-keyword kw">end</span>&#x000A;26:           <span class="ruby-keyword kw">end</span>&#x000A;27:           <span class="ruby-identifier">hsh</span>&#x000A;28:         <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-class' id='method-M000002'>
-                <a name='M000002'>      </a>
+              <div class='method public-class' id='method-M000010'>
+                <a name='M000010'>      </a>
                 <div class='synopsis'>
                   <span class='name'>new</span>
                   <span class='arguments'>(*a, &amp;b)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000002-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 30</span>&#x000A;30:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)&#x000A;31:       <span class="ruby-keyword kw">super</span>&#x000A;32:       <span class="ruby-ivar">@order</span> = []&#x000A;33:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000010-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 30</span>&#x000A;30:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)&#x000A;31:       <span class="ruby-keyword kw">super</span>&#x000A;32:       <span class="ruby-ivar">@order</span> = []&#x000A;33:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-class' id='method-M000037'>
-                <a name='M000037'>      </a>
+              <div class='method public-class' id='method-M000045'>
+                <a name='M000045'>      </a>
                 <div class='synopsis'>
                   <span class='name'>to_yaml</span>
                   <span class='arguments'>(opts = {})</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000037-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000045-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000037-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 178</span>&#x000A;178:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span> <span class="ruby-identifier">opts</span> = {}&#x000A;179:               <span class="ruby-keyword kw">begin</span>&#x000A;180:                 <span class="ruby-ivar">@__yaml_inline</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@__yaml_inline_meth</span>[ <span class="ruby-identifier">opts</span> ] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>&#x000A;181:               <span class="ruby-keyword kw">rescue</span>&#x000A;182:                 <span class="ruby-ivar">@to_yaml_style</span> = <span class="ruby-identifier">:inline</span>&#x000A;183:                 <span class="ruby-keyword kw">super</span>&#x000A;184:               <span class="ruby-keyword kw">end</span>&#x000A;185:             <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000045-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 178</span>&#x000A;178:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span> <span class="ruby-identifier">opts</span> = {}&#x000A;179:               <span class="ruby-keyword kw">begin</span>&#x000A;180:                 <span class="ruby-ivar">@__yaml_inline</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@__yaml_inline_meth</span>[ <span class="ruby-identifier">opts</span> ] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>&#x000A;181:               <span class="ruby-keyword kw">rescue</span>&#x000A;182:                 <span class="ruby-ivar">@to_yaml_style</span> = <span class="ruby-identifier">:inline</span>&#x000A;183:                 <span class="ruby-keyword kw">super</span>&#x000A;184:               <span class="ruby-keyword kw">end</span>&#x000A;185:             <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <h2>Public instance methods</h2>
-              <div class='method public-instance' id='method-M000007'>
-                <a name='M000007'>      </a>
+              <div class='method public-instance' id='method-M000015'>
+                <a name='M000015'>      </a>
                 <div class='synopsis'>
                   <span class='name'>==</span>
                   <span class='arguments'>(hsh2)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000015-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000007-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 43</span>&#x000A;43:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span>&#x000A;44:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">order</span>&#x000A;45:         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">hsh2</span>&#x000A;46:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000015-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 43</span>&#x000A;43:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span>&#x000A;44:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">order</span>&#x000A;45:         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">hsh2</span>&#x000A;46:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000006'>
-                <a name='M000006'>      </a>
+              <div class='method public-instance' id='method-M000014'>
+                <a name='M000014'>      </a>
                 <div class='synopsis'>
                   <span class='name'>[]=</span>
                   <span class='arguments'>(a,b)</span>
                 </div>
                 <div class='description'>
                   <p>
-                  Alias for <a href="OrderedHash.html#M000004">store</a>
+                  Alias for <a href="OrderedHash.html#M000012">store</a>
                   </p>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000035'>
-                <a name='M000035'>      </a>
+              <div class='method public-instance' id='method-M000043'>
+                <a name='M000043'>      </a>
                 <div class='synopsis'>
                   <span class='name'>__class__</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000035-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000043-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000035-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 161</span>&#x000A;161:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__class__</span>&#x000A;162:       <span class="ruby-constant">Storable</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>&#x000A;163:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000043-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 161</span>&#x000A;161:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__class__</span>&#x000A;162:       <span class="ruby-constant">Storable</span><span class="ruby-operator">::</span><span class="ruby-constant">OrderedHash</span>&#x000A;163:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000034'>
-                <a name='M000034'>      </a>
+              <div class='method public-instance' id='method-M000042'>
+                <a name='M000042'>      </a>
                 <div class='synopsis'>
                   <span class='name'>class</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000034-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000042-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000034-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 158</span>&#x000A;158:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">class</span>&#x000A;159:       <span class="ruby-constant">Hash</span>&#x000A;160:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000008'>
-                <a name='M000008'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>clear</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000008-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 47</span>&#x000A;47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>&#x000A;48:         <span class="ruby-ivar">@order</span> = []&#x000A;49:         <span class="ruby-keyword kw">super</span>&#x000A;50:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000009'>
-                <a name='M000009'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>delete</span>
-                  <span class='arguments'>(key)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000009-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 51</span>&#x000A;51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span> <span class="ruby-identifier">key</span>&#x000A;52:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">key</span>&#x000A;53:         <span class="ruby-keyword kw">super</span>&#x000A;54:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000014'>
-                <a name='M000014'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>delete_if</span>
-                  <span class='arguments'>() {|k| ...}</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000014-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000014-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 68</span>&#x000A;68:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>&#x000A;69:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">clone</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> &#x000A;70:             <span class="ruby-identifier">delete</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">k</span>)&#x000A;71:         }&#x000A;72:         <span class="ruby-keyword kw">self</span>&#x000A;73:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000012'>
-                <a name='M000012'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>each</span>
-                  <span class='arguments'>() {|k,self[k]| ...}</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000012-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 63</span>&#x000A;63:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>&#x000A;64:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>,<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] }&#x000A;65:         <span class="ruby-keyword kw">self</span>&#x000A;66:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000010'>
-                <a name='M000010'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>each_key</span>
-                  <span class='arguments'>() {|k| ...}</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000010-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 55</span>&#x000A;55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_key</span>&#x000A;56:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span> }&#x000A;57:         <span class="ruby-keyword kw">self</span>&#x000A;58:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000013'>
-                <a name='M000013'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>each_pair</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Alias for <a href="OrderedHash.html#M000012">each</a>
-                  </p>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000011'>
-                <a name='M000011'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>each_value</span>
-                  <span class='arguments'>() {|self[k]| ...}</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000011-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 59</span>&#x000A;59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_value</span>&#x000A;60:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] }&#x000A;61:         <span class="ruby-keyword kw">self</span>&#x000A;62:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000039'>
-                <a name='M000039'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>each_with_index</span>
-                  <span class='arguments'>() {|k, self[k], index| ...}</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000039-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000039-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 193</span>&#x000A;193:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_with_index</span>&#x000A;194:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>, <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>], <span class="ruby-identifier">index</span> }&#x000A;195:       <span class="ruby-keyword kw">self</span>&#x000A;196:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000017'>
-                <a name='M000017'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>first</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000017-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000017-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 82</span>&#x000A;82:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>&#x000A;83:       {<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">first</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">first</span>]}&#x000A;84:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000029'>
-                <a name='M000029'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>inspect</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000029-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000029-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 138</span>&#x000A;138:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>&#x000A;139:         <span class="ruby-identifier">ary</span> = []&#x000A;140:         <span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">inspect</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;=&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">inspect</span>}&#x000A;141:         <span class="ruby-value str">'{'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'}'</span>&#x000A;142:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000019'>
-                <a name='M000019'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>invert</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000019-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 88</span>&#x000A;88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invert</span>&#x000A;89:         <span class="ruby-identifier">hsh2</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>    &#x000A;90:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hsh2</span>[<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>]] = <span class="ruby-identifier">k</span> }&#x000A;91:         <span class="ruby-identifier">hsh2</span>&#x000A;92:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000042-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 158</span>&#x000A;158:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">class</span>&#x000A;159:       <span class="ruby-constant">Hash</span>&#x000A;160:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='method public-instance' id='method-M000016'>
                 <a name='M000016'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>keys</span>
+                  <span class='name'>clear</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000016-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000016-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 79</span>&#x000A;79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>&#x000A;80:         <span class="ruby-ivar">@order</span>&#x000A;81:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000016-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 47</span>&#x000A;47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>&#x000A;48:         <span class="ruby-ivar">@order</span> = []&#x000A;49:         <span class="ruby-keyword kw">super</span>&#x000A;50:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000018'>
-                <a name='M000018'>      </a>
+              <div class='method public-instance' id='method-M000017'>
+                <a name='M000017'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>last</span>
-                  <span class='arguments'>()</span>
+                  <span class='name'>delete</span>
+                  <span class='arguments'>(key)</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000018-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000017-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000018-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 85</span>&#x000A;85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>&#x000A;86:       {<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last</span>]}&#x000A;87:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000032'>
-                <a name='M000032'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>merge</span>
-                  <span class='arguments'>(hsh2)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000032-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000032-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 148</span>&#x000A;148:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge</span> <span class="ruby-identifier">hsh2</span>&#x000A;149:         <span class="ruby-comment cmt">##self.dup update(hsh2)   ## 2009-05-12 -- delano</span>&#x000A;150:         <span class="ruby-identifier">update</span> <span class="ruby-identifier">hsh2</span>               <span class="ruby-comment cmt">## dup doesn't take an argument</span>&#x000A;151:                                   <span class="ruby-comment cmt">## and there's no need for it here</span>&#x000A;152:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000031'>
-                <a name='M000031'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>merge!</span>
-                  <span class='arguments'>(hsh2)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Alias for <a href="OrderedHash.html#M000030">update</a>
-                  </p>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000005'>
-                <a name='M000005'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>orig_store</span>
-                  <span class='arguments'>(a,b)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Alias for <a href="OrderedHash.html#M000004">store</a>
-                  </p>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000026'>
-                <a name='M000026'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>pop</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000026-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000026-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 126</span>&#x000A;126:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pop</span>&#x000A;127:         <span class="ruby-identifier">key</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last</span>&#x000A;128:         <span class="ruby-identifier">key</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">key</span>,<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>&#x000A;129:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000025'>
-                <a name='M000025'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>push</span>
-                  <span class='arguments'>(k,v)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000025-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000025-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 117</span>&#x000A;117:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>&#x000A;118:         <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">k</span>&#x000A;119:             <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">k</span>&#x000A;120:             <span class="ruby-identifier">orig_store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)&#x000A;121:             <span class="ruby-keyword kw">true</span>&#x000A;122:         <span class="ruby-keyword kw">else</span>&#x000A;123:             <span class="ruby-keyword kw">false</span>&#x000A;124:         <span class="ruby-keyword kw">end</span>&#x000A;125:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000020'>
-                <a name='M000020'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>reject</span>
-                  <span class='arguments'>(&amp;block)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000020-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000020-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 93</span>&#x000A;93:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;94:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;95:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000021'>
-                <a name='M000021'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>reject!</span>
-                  <span class='arguments'>(&amp;block)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000021-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000021-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 96</span>&#x000A;96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;97:         <span class="ruby-identifier">hsh2</span> = <span class="ruby-identifier">reject</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;98:         <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">hsh2</span>&#x000A;99:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000017-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 51</span>&#x000A;51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span> <span class="ruby-identifier">key</span>&#x000A;52:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">key</span>&#x000A;53:         <span class="ruby-keyword kw">super</span>&#x000A;54:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='method public-instance' id='method-M000022'>
                 <a name='M000022'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>replace</span>
-                  <span class='arguments'>(hsh2)</span>
+                  <span class='name'>delete_if</span>
+                  <span class='arguments'>() {|k| ...}</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000022-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000022-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 100</span>&#x000A;100:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span> <span class="ruby-identifier">hsh2</span>&#x000A;101:         <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">keys</span> &#x000A;102:         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">hsh2</span>&#x000A;103:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000022-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 68</span>&#x000A;68:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>&#x000A;69:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">clone</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> &#x000A;70:             <span class="ruby-identifier">delete</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">k</span>)&#x000A;71:         }&#x000A;72:         <span class="ruby-keyword kw">self</span>&#x000A;73:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000033'>
-                <a name='M000033'>      </a>
+              <div class='method public-instance' id='method-M000020'>
+                <a name='M000020'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>select</span>
-                  <span class='arguments'>() {|k,v| ...}</span>
+                  <span class='name'>each</span>
+                  <span class='arguments'>() {|k,self[k]| ...}</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000033-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000020-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000033-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 153</span>&#x000A;153:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span>&#x000A;154:         <span class="ruby-identifier">ary</span> = []&#x000A;155:         <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> }&#x000A;156:         <span class="ruby-identifier">ary</span>&#x000A;157:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000020-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 63</span>&#x000A;63:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>&#x000A;64:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>,<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] }&#x000A;65:         <span class="ruby-keyword kw">self</span>&#x000A;66:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000023'>
-                <a name='M000023'>      </a>
+              <div class='method public-instance' id='method-M000018'>
+                <a name='M000018'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>shift</span>
+                  <span class='name'>each_key</span>
+                  <span class='arguments'>() {|k| ...}</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000018-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000018-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 55</span>&#x000A;55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_key</span>&#x000A;56:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span> }&#x000A;57:         <span class="ruby-keyword kw">self</span>&#x000A;58:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000021'>
+                <a name='M000021'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>each_pair</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Alias for <a href="OrderedHash.html#M000020">each</a>
+                  </p>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000019'>
+                <a name='M000019'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>each_value</span>
+                  <span class='arguments'>() {|self[k]| ...}</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000019-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 59</span>&#x000A;59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_value</span>&#x000A;60:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] }&#x000A;61:         <span class="ruby-keyword kw">self</span>&#x000A;62:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000047'>
+                <a name='M000047'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>each_with_index</span>
+                  <span class='arguments'>() {|k, self[k], index| ...}</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000047-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000047-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 193</span>&#x000A;193:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_with_index</span>&#x000A;194:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>, <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>], <span class="ruby-identifier">index</span> }&#x000A;195:       <span class="ruby-keyword kw">self</span>&#x000A;196:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000025'>
+                <a name='M000025'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>first</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000023-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000025-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000023-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 104</span>&#x000A;104:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>&#x000A;105:         <span class="ruby-identifier">key</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">first</span>&#x000A;106:         <span class="ruby-identifier">key</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">key</span>,<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>&#x000A;107:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000025-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 82</span>&#x000A;82:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>&#x000A;83:       {<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">first</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">first</span>]}&#x000A;84:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000004'>
-                <a name='M000004'>      </a>
+              <div class='method public-instance' id='method-M000037'>
+                <a name='M000037'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>store</span>
-                  <span class='arguments'>(a,b)</span>
+                  <span class='name'>inspect</span>
+                  <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000037-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000004-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 38</span>&#x000A;38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;39:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">a</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">a</span>&#x000A;40:         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;41:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000003'>
-                <a name='M000003'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>store_only</span>
-                  <span class='arguments'>(a,b)</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000003-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 34</span>&#x000A;34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_only</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;35:         <span class="ruby-identifier">store</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;36:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000037-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 138</span>&#x000A;138:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>&#x000A;139:         <span class="ruby-identifier">ary</span> = []&#x000A;140:         <span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">inspect</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;=&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">inspect</span>}&#x000A;141:         <span class="ruby-value str">'{'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'}'</span>&#x000A;142:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='method public-instance' id='method-M000027'>
                 <a name='M000027'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>to_a</span>
+                  <span class='name'>invert</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000027-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000027-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 130</span>&#x000A;130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>&#x000A;131:         <span class="ruby-identifier">ary</span> = []&#x000A;132:         <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>] }&#x000A;133:         <span class="ruby-identifier">ary</span>&#x000A;134:     <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='method public-instance' id='method-M000028'>
-                <a name='M000028'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>to_s</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000028-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000028-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 135</span>&#x000A;135:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>&#x000A;136:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">to_s</span>&#x000A;137:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000027-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 88</span>&#x000A;88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invert</span>&#x000A;89:         <span class="ruby-identifier">hsh2</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>    &#x000A;90:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hsh2</span>[<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>]] = <span class="ruby-identifier">k</span> }&#x000A;91:         <span class="ruby-identifier">hsh2</span>&#x000A;92:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='method public-instance' id='method-M000024'>
                 <a name='M000024'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>unshift</span>
-                  <span class='arguments'>(k,v)</span>
+                  <span class='name'>keys</span>
+                  <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000024-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000024-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 108</span>&#x000A;108:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unshift</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>&#x000A;109:         <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">k</span>&#x000A;110:             <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">k</span>&#x000A;111:             <span class="ruby-identifier">orig_store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)&#x000A;112:             <span class="ruby-keyword kw">true</span>&#x000A;113:         <span class="ruby-keyword kw">else</span>&#x000A;114:             <span class="ruby-keyword kw">false</span>&#x000A;115:         <span class="ruby-keyword kw">end</span>&#x000A;116:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000024-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 79</span>&#x000A;79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>&#x000A;80:         <span class="ruby-ivar">@order</span>&#x000A;81:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000026'>
+                <a name='M000026'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>last</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000026-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000026-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 85</span>&#x000A;85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>&#x000A;86:       {<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last</span>]}&#x000A;87:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000040'>
+                <a name='M000040'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>merge</span>
+                  <span class='arguments'>(hsh2)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000040-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000040-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 148</span>&#x000A;148:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge</span> <span class="ruby-identifier">hsh2</span>&#x000A;149:         <span class="ruby-comment cmt">##self.dup update(hsh2)   ## 2009-05-12 -- delano</span>&#x000A;150:         <span class="ruby-identifier">update</span> <span class="ruby-identifier">hsh2</span>               <span class="ruby-comment cmt">## dup doesn't take an argument</span>&#x000A;151:                                   <span class="ruby-comment cmt">## and there's no need for it here</span>&#x000A;152:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000039'>
+                <a name='M000039'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>merge!</span>
+                  <span class='arguments'>(hsh2)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Alias for <a href="OrderedHash.html#M000038">update</a>
+                  </p>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000013'>
+                <a name='M000013'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>orig_store</span>
+                  <span class='arguments'>(a,b)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Alias for <a href="OrderedHash.html#M000012">store</a>
+                  </p>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000034'>
+                <a name='M000034'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>pop</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000034-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000034-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 126</span>&#x000A;126:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pop</span>&#x000A;127:         <span class="ruby-identifier">key</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last</span>&#x000A;128:         <span class="ruby-identifier">key</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">key</span>,<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>&#x000A;129:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000033'>
+                <a name='M000033'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>push</span>
+                  <span class='arguments'>(k,v)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000033-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000033-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 117</span>&#x000A;117:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>&#x000A;118:         <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">k</span>&#x000A;119:             <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">k</span>&#x000A;120:             <span class="ruby-identifier">orig_store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)&#x000A;121:             <span class="ruby-keyword kw">true</span>&#x000A;122:         <span class="ruby-keyword kw">else</span>&#x000A;123:             <span class="ruby-keyword kw">false</span>&#x000A;124:         <span class="ruby-keyword kw">end</span>&#x000A;125:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000028'>
+                <a name='M000028'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>reject</span>
+                  <span class='arguments'>(&amp;block)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000028-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000028-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 93</span>&#x000A;93:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;94:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;95:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000029'>
+                <a name='M000029'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>reject!</span>
+                  <span class='arguments'>(&amp;block)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000029-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000029-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 96</span>&#x000A;96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>&#x000A;97:         <span class="ruby-identifier">hsh2</span> = <span class="ruby-identifier">reject</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;98:         <span class="ruby-keyword kw">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hsh2</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">hsh2</span>&#x000A;99:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='method public-instance' id='method-M000030'>
                 <a name='M000030'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>update</span>
+                  <span class='name'>replace</span>
                   <span class='arguments'>(hsh2)</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000030-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000030-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 143</span>&#x000A;143:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span> <span class="ruby-identifier">hsh2</span>&#x000A;144:         <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }&#x000A;145:         <span class="ruby-keyword kw">self</span>&#x000A;146:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000030-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 100</span>&#x000A;100:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span> <span class="ruby-identifier">hsh2</span>&#x000A;101:         <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">keys</span> &#x000A;102:         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">hsh2</span>&#x000A;103:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000015'>
-                <a name='M000015'>      </a>
+              <div class='method public-instance' id='method-M000041'>
+                <a name='M000041'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>values</span>
+                  <span class='name'>select</span>
+                  <span class='arguments'>() {|k,v| ...}</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000041-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000041-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 153</span>&#x000A;153:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span>&#x000A;154:         <span class="ruby-identifier">ary</span> = []&#x000A;155:         <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> }&#x000A;156:         <span class="ruby-identifier">ary</span>&#x000A;157:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000031'>
+                <a name='M000031'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>shift</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000015-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000031-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000015-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 74</span>&#x000A;74:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>&#x000A;75:         <span class="ruby-identifier">ary</span> = []&#x000A;76:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">push</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] }&#x000A;77:         <span class="ruby-identifier">ary</span>&#x000A;78:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000031-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 104</span>&#x000A;104:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>&#x000A;105:         <span class="ruby-identifier">key</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">first</span>&#x000A;106:         <span class="ruby-identifier">key</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">key</span>,<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>&#x000A;107:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000038'>
-                <a name='M000038'>      </a>
+              <div class='method public-instance' id='method-M000012'>
+                <a name='M000012'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>yaml_inline!</span>
+                  <span class='name'>store</span>
+                  <span class='arguments'>(a,b)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000012-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 38</span>&#x000A;38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;39:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">a</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">a</span>&#x000A;40:         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;41:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000011'>
+                <a name='M000011'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>store_only</span>
+                  <span class='arguments'>(a,b)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000011-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 34</span>&#x000A;34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_only</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;35:         <span class="ruby-identifier">store</span> <span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>&#x000A;36:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000035'>
+                <a name='M000035'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>to_a</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000038-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000035-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000038-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 191</span>&#x000A;191:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">yaml_inline!</span>() <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaml_inline</span> = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000035-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 130</span>&#x000A;130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>&#x000A;131:         <span class="ruby-identifier">ary</span> = []&#x000A;132:         <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>] }&#x000A;133:         <span class="ruby-identifier">ary</span>&#x000A;134:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <div class='method public-instance' id='method-M000036'>
                 <a name='M000036'>      </a>
                 <div class='synopsis'>
-                  <span class='name'>yaml_inline=</span>
-                  <span class='arguments'>(bool)</span>
+                  <span class='name'>to_s</span>
+                  <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
                   <a class='source-toggle' href='#' onclick="toggleCode('M000036-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000036-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 166</span>&#x000A;166:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">yaml_inline=</span> <span class="ruby-identifier">bool</span>&#x000A;167:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value str">&quot;to_yaml_style&quot;</span>)&#x000A;168:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_yaml_style</span> = <span class="ruby-identifier">:inline</span>&#x000A;169:       <span class="ruby-keyword kw">else</span>&#x000A;170:         <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">defined?</span> <span class="ruby-ivar">@__yaml_inline_meth</span>&#x000A;171:           <span class="ruby-ivar">@__yaml_inline_meth</span> =&#x000A;172:             <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>&#x000A;173:               <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">quick_emit</span>(<span class="ruby-identifier">object_id</span>, <span class="ruby-identifier">opts</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">emitter</span><span class="ruby-operator">|</span>&#x000A;174:                 <span class="ruby-identifier">emitter</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'{ '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">kv</span><span class="ruby-operator">|</span> <span class="ruby-identifier">kv</span>.<span class="ruby-identifier">join</span> <span class="ruby-value str">': '</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' }'</span>&#x000A;175:               }&#x000A;176:             }&#x000A;177:           <span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>&#x000A;178:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span> <span class="ruby-identifier">opts</span> = {}&#x000A;179:               <span class="ruby-keyword kw">begin</span>&#x000A;180:                 <span class="ruby-ivar">@__yaml_inline</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@__yaml_inline_meth</span>[ <span class="ruby-identifier">opts</span> ] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>&#x000A;181:               <span class="ruby-keyword kw">rescue</span>&#x000A;182:                 <span class="ruby-ivar">@to_yaml_style</span> = <span class="ruby-identifier">:inline</span>&#x000A;183:                 <span class="ruby-keyword kw">super</span>&#x000A;184:               <span class="ruby-keyword kw">end</span>&#x000A;185:             <span class="ruby-keyword kw">end</span>&#x000A;186:           <span class="ruby-keyword kw">end</span>&#x000A;187:         <span class="ruby-keyword kw">end</span>&#x000A;188:       <span class="ruby-keyword kw">end</span>&#x000A;189:       <span class="ruby-ivar">@__yaml_inline</span> = <span class="ruby-identifier">bool</span>&#x000A;190:     <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000036-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 135</span>&#x000A;135:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>&#x000A;136:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">to_s</span>&#x000A;137:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000032'>
+                <a name='M000032'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>unshift</span>
+                  <span class='arguments'>(k,v)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000032-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000032-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 108</span>&#x000A;108:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unshift</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>&#x000A;109:         <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">k</span>&#x000A;110:             <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">k</span>&#x000A;111:             <span class="ruby-identifier">orig_store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)&#x000A;112:             <span class="ruby-keyword kw">true</span>&#x000A;113:         <span class="ruby-keyword kw">else</span>&#x000A;114:             <span class="ruby-keyword kw">false</span>&#x000A;115:         <span class="ruby-keyword kw">end</span>&#x000A;116:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000038'>
+                <a name='M000038'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>update</span>
+                  <span class='arguments'>(hsh2)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000038-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000038-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 143</span>&#x000A;143:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span> <span class="ruby-identifier">hsh2</span>&#x000A;144:         <span class="ruby-identifier">hsh2</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }&#x000A;145:         <span class="ruby-keyword kw">self</span>&#x000A;146:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000023'>
+                <a name='M000023'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>values</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000023-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000023-source'>    <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 74</span>&#x000A;74:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>&#x000A;75:         <span class="ruby-identifier">ary</span> = []&#x000A;76:         <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">push</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] }&#x000A;77:         <span class="ruby-identifier">ary</span>&#x000A;78:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000046'>
+                <a name='M000046'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>yaml_inline!</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000046-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000046-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 191</span>&#x000A;191:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">yaml_inline!</span>() <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaml_inline</span> = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000044'>
+                <a name='M000044'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>yaml_inline=</span>
+                  <span class='arguments'>(bool)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000044-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000044-source'>     <span class="ruby-comment cmt"># File lib/storable/orderedhash.rb, line 166</span>&#x000A;166:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">yaml_inline=</span> <span class="ruby-identifier">bool</span>&#x000A;167:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value str">&quot;to_yaml_style&quot;</span>)&#x000A;168:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_yaml_style</span> = <span class="ruby-identifier">:inline</span>&#x000A;169:       <span class="ruby-keyword kw">else</span>&#x000A;170:         <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">defined?</span> <span class="ruby-ivar">@__yaml_inline_meth</span>&#x000A;171:           <span class="ruby-ivar">@__yaml_inline_meth</span> =&#x000A;172:             <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>&#x000A;173:               <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">quick_emit</span>(<span class="ruby-identifier">object_id</span>, <span class="ruby-identifier">opts</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">emitter</span><span class="ruby-operator">|</span>&#x000A;174:                 <span class="ruby-identifier">emitter</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'{ '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">kv</span><span class="ruby-operator">|</span> <span class="ruby-identifier">kv</span>.<span class="ruby-identifier">join</span> <span class="ruby-value str">': '</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' }'</span>&#x000A;175:               }&#x000A;176:             }&#x000A;177:           <span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>&#x000A;178:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span> <span class="ruby-identifier">opts</span> = {}&#x000A;179:               <span class="ruby-keyword kw">begin</span>&#x000A;180:                 <span class="ruby-ivar">@__yaml_inline</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@__yaml_inline_meth</span>[ <span class="ruby-identifier">opts</span> ] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">super</span>&#x000A;181:               <span class="ruby-keyword kw">rescue</span>&#x000A;182:                 <span class="ruby-ivar">@to_yaml_style</span> = <span class="ruby-identifier">:inline</span>&#x000A;183:                 <span class="ruby-keyword kw">super</span>&#x000A;184:               <span class="ruby-keyword kw">end</span>&#x000A;185:             <span class="ruby-keyword kw">end</span>&#x000A;186:           <span class="ruby-keyword kw">end</span>&#x000A;187:         <span class="ruby-keyword kw">end</span>&#x000A;188:       <span class="ruby-keyword kw">end</span>&#x000A;189:       <span class="ruby-ivar">@__yaml_inline</span> = <span class="ruby-identifier">bool</span>&#x000A;190:     <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
