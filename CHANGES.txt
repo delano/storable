@@ -10,11 +10,12 @@ STORABLE, CHANGES
 * CHANGE: Remove unused "require 'fileutils'"
 * CHANGE: field_types is now a Hash
 * CHANGE: Set the instance variable if a setter method doesn't exist. 
-* CHANGE: Will grab the first element of an Array if there is only one and a field type is defined that is not an Array. 
+* CHANGE: Will grab the first element of an Array if there is only one
+  and a field type is defined that is not an Array. 
 * ADDED: Storable.debug
 * ADDED: Boolean class (candy for TrueClass fields)
 * ADDED: Automatically convert a Proc to a string of its source in to_hash
-* ADDED: Support for Symbol
+* ADDED: Support for Symbol field type
 
 
 #### 0.6.5 (2010-03-23) #############################
