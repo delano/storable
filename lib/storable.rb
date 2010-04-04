@@ -173,7 +173,7 @@ class Storable
   def from_hash(from={})
     fnames = field_names
     fnames.each_with_index do |fname,index|
-      ftype = field_types[fname] || String
+      ftype = field_types[fname]
       value_orig = from[fname] || from[fname.to_s]
       
       next if value_orig.nil?
@@ -184,7 +184,9 @@ class Storable
         value = Array === value_orig ? value_orig : [value_orig]
       elsif ftype == Hash
         value = value_orig
-      else
+      elsif !ftype.nil?
+        value_orig = value_orig.first if Array === value_orig && value_orig.size == 1
+        
         if    [Time, DateTime].member?(ftype)
           value = ftype.parse(value_orig)
         elsif [TrueClass, FalseClass, Boolean].member?(ftype)
@@ -193,6 +195,8 @@ class Storable
           value = value_orig.to_f
         elsif ftype == Integer
           value = value_orig.to_i
+        elsif ftype == Symbol
+          value = value_orig.to_s.to_sym
         elsif ftype == Proc && String === value_orig
           value = Proc.from_string value_orig           
         end
