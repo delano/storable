@@ -1,3 +1,8 @@
+#--
+# TODO: Handle nested hashes and arrays.
+# TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
+#++
+
 
 USE_ORDERED_HASH = (RUBY_VERSION =~ /^1.9/).nil?
 
@@ -16,15 +21,16 @@ rescue LoadError
 end
 
 require 'yaml'
+require 'fileutils'
 require 'time'
+
 
 # Storable makes data available in multiple formats and can
 # re-create objects from files. Fields are defined using the 
 # Storable.field method which tells Storable the order and 
 # name.
 class Storable
-  extend Storable::DefaultProcessors
-  
+  require 'proc_source'  
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
     VERSION = "0.6.5"
@@ -351,9 +357,19 @@ class Storable
 end
 
 
-
 class Storable
+  # These methods can be used by Storable objects as
+  # custom field processors.
+  #
+  # e.g.
+  #
+  #     class A < Storable
+  #       field :name => String, &hash_proc_processor
+  #     end
+  #
   module DefaultProcessors
+    # Replace a hash of Proc objects with a hash
+    # of 
     def hash_proc_processor 
       Proc.new do |procs|
         a = {}
@@ -363,5 +379,17 @@ class Storable
         a
       end
     end
+    # If the object already has a value for +@id+
+    # use it, otherwise return the current digest.
+    #
+    # This allows an object to have a preset ID. 
+    #
+    def gibbler_id_processor
+      Proc.new do |val|
+        @id || self.gibbler
+      end
+    end
   end
+  extend Storable::DefaultProcessors
 end
+
