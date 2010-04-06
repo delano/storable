@@ -3,6 +3,10 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.7.2 (2010-04-06) #############################
+
+* FIXED: Handle empty symbols like in Storable 0.6.4. Fixes "interning empty string" error. [Diego Elio 'Flameeyes' Pettenò]
+
 #### 0.7.1 (2010-04-04) #############################
 
 * FIXED: Missing proc_source.rb in gemspec.
