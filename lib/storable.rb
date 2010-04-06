@@ -178,7 +178,7 @@ class Storable
       
       next if value_orig.nil?
       
-      if ftype == String && value_orig.to_s.empty?
+      if ( ftype == String or ftype == Symbol ) && value_orig.to_s.empty?
         value = ''
       elsif ftype == Array
         value = Array === value_orig ? value_orig : [value_orig]
