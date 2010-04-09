@@ -166,12 +166,16 @@ class Storable
   # Create a new instance of the object from a hash.
   def self.from_hash(from={})
     return nil if !from || from.empty?
-    me = self.new
-    me.from_hash(from)
+    if self == Storable
+      Storable::Anonymous.new from
+    else
+      new.from_hash(from)
+    end
   end
   
   def from_hash(from={})
     fnames = field_names
+    return from if fnames.nil? || fnames.empty?
     fnames.each_with_index do |fname,index|
       ftype = field_types[fname]
       value_orig = from[fname] || from[fname.to_s]
@@ -374,6 +378,19 @@ class Storable
     end
     File.chmod(0600, path)
   end
+  
+  class Anonymous
+    def initialize from
+      @hash = from
+    end
+    def [](key)
+      @hash[meth.to_sym]
+    end
+    def method_missing(meth,*args)
+      @hash[meth.to_sym]
+    end
+  end
+  
 end
 
 
