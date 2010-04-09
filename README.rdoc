@@ -26,6 +26,30 @@ Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)
     puts mac2.position.class        # => Fixnum
 
 
+== Storing Procs
+
+Storable can also marshal Proc objects to and from their actual source code. 
+    
+    require 'storable'
+    
+    class Maths < Storable
+      field :x => Float
+      field :y => Float
+      field :calculate => Proc
+    end
+    
+    mat1 = Maths.new 2.0, 3.0
+    mat1.calculate = Proc.new { @x * @y }
+    
+    mat1.calculate.source            # => "{ @x * @y }"
+    mat1.call :calculate             # => 6.0
+    
+    dump = mat1.to_json
+    
+    mat2 = Maths.from_json dump
+    mat2.call :calculate             # => 6.0
+    
+    
 == Installation
 
 Via Rubygems, one of:
@@ -40,7 +64,7 @@ or via download:
 
 == Prerequisites
 
-* Ruby 1.8, Ruby 1.9, or JRuby 1.2
+* Ruby 1.8, Ruby 1.9, or JRuby 1.2+
 
 
 == Thanks

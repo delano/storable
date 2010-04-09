@@ -100,7 +100,9 @@ class Storable
         next
       end
       
-      define_method(m) do instance_variable_get("@#{m}") end
+      define_method(m) do 
+        instance_variable_get("@#{m}") 
+      end
       define_method("#{m}=") do |val| 
         instance_variable_set("@#{m}",val)
       end
@@ -162,7 +164,7 @@ class Storable
     format ||= @format
     Storable.write_file(file_path, dump(format, with_titles))
   end
-
+  
   # Create a new instance of the object from a hash.
   def self.from_hash(from={})
     return nil if !from || from.empty?
@@ -171,6 +173,14 @@ class Storable
     else
       new.from_hash(from)
     end
+  end
+  
+  def call(fname)
+    unless field_types[fname.to_sym] == Proc &&
+           Proc === self.send(fname)
+           raise "Field #{fname} is not a Proc"
+    end
+    self.instance_eval &self.send(fname)
   end
   
   def from_hash(from={})

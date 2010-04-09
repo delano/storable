@@ -7,6 +7,7 @@ STORABLE, CHANGES
 
 * ADDED: Allow anonymous objects via Storable.from_json etc.
 * ADDED: Enabled support for marshalling Proc objects in IRB sessions.
+* ADDED: Storable#call for calling Proc fields via instance_eval
 
 #### 0.7.2 (2010-04-06) #############################
 
