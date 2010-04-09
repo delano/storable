@@ -3,11 +3,13 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
-#### 0.7.3 (2010-04-??) #############################
+#### 0.7.3 (2010-04-10) #############################
 
 * ADDED: Allow anonymous objects via Storable.from_json etc.
 * ADDED: Enabled support for marshalling Proc objects in IRB sessions.
 * ADDED: Storable#call for calling Proc fields via instance_eval
+* ADDED: Support for Range field type (parse from a String when necessary) 
+
 
 #### 0.7.2 (2010-04-06) #############################
 

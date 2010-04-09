@@ -33,8 +33,8 @@ Storable can also marshal Proc objects to and from their actual source code.
     require 'storable'
     
     class Maths < Storable
-      field :x => Float
-      field :y => Float
+      field :x         => Float
+      field :y         => Float
       field :calculate => Proc
     end
     
@@ -50,6 +50,9 @@ Storable can also marshal Proc objects to and from their actual source code.
     mat2.call :calculate             # => 6.0
     
     
+Anything is possible when you keep your mind open and you use Ruby. 
+
+
 == Installation
 
 Via Rubygems, one of:

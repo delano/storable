@@ -39,7 +39,7 @@ class Storable
   require 'proc_source'  
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
-    VERSION = "0.7.2"
+    VERSION = "0.7.3"
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
@@ -211,6 +211,23 @@ class Storable
           value = value_orig.to_i
         elsif ftype == Symbol
           value = value_orig.to_s.to_sym
+        elsif ftype == Range
+          if Range === value_orig
+            value = value_orig
+          elsif Numeric === value_orig
+            value = value_orig..value_orig
+          else
+            value_orig = value_orig.to_s
+            if    value_orig.match(/\.\.\./)
+              el = value_orig.split('...')
+              value = el.first.to_f...el.last.to_f
+            elsif value_orig.match(/\.\./)
+              el = value_orig.split('..')
+              value = el.first.to_f..el.last.to_f
+            else
+              value = value_orig..value_orig
+            end
+          end
         elsif ftype == Proc && String === value_orig
           value = Proc.from_string value_orig           
         end
