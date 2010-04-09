@@ -48,6 +48,7 @@ module ProcSource
     retried = 0
     loop do
       lines = get_lines(filename, start_line)
+      return nil if lines.nil?
       #p [start_line, lines[0]]
       if !line_has_open?(lines.join) && start_line >= 0
         start_line -= 1 and retried +=1 and redo 
@@ -135,15 +136,11 @@ module ProcSource
     case filename
       when nil
         nil
-      ## NOTE: IRB AND EVAL LINES NOT TESTED
-      ### special "(irb)" descriptor?
-      ##when "(irb)"
-      ##  IRB.conf[:MAIN_CONTEXT].io.line(start_line .. -2)
-      ### special "(eval...)" descriptor?
-      ##when /^\(eval.+\)$/
-      ##  EVAL_LINES__[filename][start_line .. -2]
-      # regular file
-      else
+      when "(irb)"         # special "(irb)" descriptor?
+        IRB.conf[:MAIN_CONTEXT].io.line(start_line .. -2)
+      when /^\(eval.+\)$/  # special "(eval...)" descriptor?
+        EVAL_LINES__[filename][start_line .. -2]
+      else                 # regular file
         # Ruby already parsed this file? (see disclaimer above)
         if defined?(SCRIPT_LINES__) && SCRIPT_LINES__[filename]
           SCRIPT_LINES__[filename][(start_line - 1) .. -1]
