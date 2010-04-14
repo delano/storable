@@ -70,15 +70,21 @@ or via download:
 * Ruby 1.8, Ruby 1.9, or JRuby 1.2+
 
 
+== Credits
+
+* Delano Mandelbaum (delano@solutious.com)
+* lib/proc_source.rb is based on http://github.com/imedo/background
+* OrderedHash implementation by Jan Molic
+
+
 == Thanks
 
 * Pierre Riteau (priteau[http://github.com/priteau]) for bug fixes. 
 
 
-== Credits
+== More Info
 
-* Delano Mandelbaum (delano@solutious.com)
-* OrderedHash implementation by Jan Molic
+* Codes[http://github.com/delano/storable]
 
 == License
 
