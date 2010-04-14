@@ -45,8 +45,8 @@
             <h2>Methods</h2>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000005">get_props</a></li>
-              <li><a href="#M000004">open_tag?</a></li>
+              <li><a href="#M000044">get_props</a></li>
+              <li><a href="#M000043">open_tag?</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -69,30 +69,30 @@
             </div>
             <div id='methods'>
               <h2>Public instance methods</h2>
-              <div class='method public-instance' id='method-M000005'>
-                <a name='M000005'>      </a>
+              <div class='method public-instance' id='method-M000044'>
+                <a name='M000044'>      </a>
                 <div class='synopsis'>
                   <span class='name'>get_props</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000044-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000005-source'>    <span class="ruby-comment cmt"># File lib/proc_source.rb, line 35</span>&#x000A;35:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_props</span>&#x000A;36:     <span class="ruby-constant">RubyToken</span><span class="ruby-operator">::</span><span class="ruby-constant">TkReading2Token</span>[<span class="ruby-ivar">@name</span>]&#x000A;37:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000044-source'>    <span class="ruby-comment cmt"># File lib/proc_source.rb, line 35</span>&#x000A;35:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_props</span>&#x000A;36:     <span class="ruby-constant">RubyToken</span><span class="ruby-operator">::</span><span class="ruby-constant">TkReading2Token</span>[<span class="ruby-ivar">@name</span>]&#x000A;37:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000004'>
-                <a name='M000004'>      </a>
+              <div class='method public-instance' id='method-M000043'>
+                <a name='M000043'>      </a>
                 <div class='synopsis'>
                   <span class='name'>open_tag?</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000043-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000004-source'>    <span class="ruby-comment cmt"># File lib/proc_source.rb, line 27</span>&#x000A;27:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_tag?</span>&#x000A;28:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">get_props</span>.<span class="ruby-identifier">nil?</span>&#x000A;29:     <span class="ruby-identifier">a</span> = (<span class="ruby-identifier">get_props</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">RubyToken</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPR_BEG</span>) <span class="ruby-operator">&amp;&amp;</span>&#x000A;30:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/_MOD/</span>  <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-comment cmt"># ignore onliner if, unless, etc...</span>&#x000A;31:           <span class="ruby-operator">!</span><span class="ruby-constant">FAKIES</span>.<span class="ruby-identifier">member?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>)  &#x000A;32:     <span class="ruby-identifier">a</span> &#x000A;33:   <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000043-source'>    <span class="ruby-comment cmt"># File lib/proc_source.rb, line 27</span>&#x000A;27:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_tag?</span>&#x000A;28:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">get_props</span>.<span class="ruby-identifier">nil?</span>&#x000A;29:     <span class="ruby-identifier">a</span> = (<span class="ruby-identifier">get_props</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">RubyToken</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPR_BEG</span>) <span class="ruby-operator">&amp;&amp;</span>&#x000A;30:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/_MOD/</span>  <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-comment cmt"># ignore onliner if, unless, etc...</span>&#x000A;31:           <span class="ruby-operator">!</span><span class="ruby-constant">FAKIES</span>.<span class="ruby-identifier">member?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>)  &#x000A;32:     <span class="ruby-identifier">a</span> &#x000A;33:   <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
