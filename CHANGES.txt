@@ -3,6 +3,12 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.7.4 (2010-05-01) #############################
+
+* FIXED: Check separately if getter and setter methods are already defined
+* ADDED: Call Storable#preprocessor after an object is initialized
+
+
 #### 0.7.3 (2010-04-10) #############################
 
 * ADDED: Allow anonymous objects via Storable.from_json etc.

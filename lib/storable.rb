@@ -95,16 +95,20 @@ class Storable
         define_method("_storable_processor_#{m}", &processor)
       end
       
-      if method_defined?(m) # don't redefine the accessor methods
+      if method_defined?(m) # don't redefine the getter method
         STDERR.puts "method exists: #{self}##{m}" if Storable.debug
-        next
+      else
+        define_method(m) do 
+          instance_variable_get("@#{m}") 
+        end
       end
       
-      define_method(m) do 
-        instance_variable_get("@#{m}") 
-      end
-      define_method("#{m}=") do |val| 
-        instance_variable_set("@#{m}",val)
+      if method_defined?("#{m}=") # don't redefine the setter methods
+        STDERR.puts "method exists: #{self}##{m}=" if Storable.debug
+      else
+        define_method("#{m}=") do |val| 
+          instance_variable_set("@#{m}",val)
+        end
       end
     end
   end
