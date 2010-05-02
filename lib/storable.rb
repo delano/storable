@@ -127,6 +127,7 @@ class Storable
       break if (index+1) > args.size
       self.send("#{n}=", args[index])
     end
+    preprocess if respond_to?(:preprocess)
   end
 
   # Returns an array of field names defined by self.field
