@@ -361,17 +361,11 @@ class Storable
   # +delim+ is the field delimiter.
   def self.from_delimited(from=[],delim=',')
     return if from.empty?
-    # We grab an instance of the class so we can 
+    from = from.split($/) if String === from
     hash = {}
     
-    fnames = values = []
-    if (from.size > 1 && !from[1].empty?)
-      fnames = from[0].chomp.split(delim)
-      values = from[1].chomp.split(delim)
-    else
-      fnames = self.field_names
-      values = from[0].chomp.split(delim)
-    end
+    fnames = self.field_names
+    values = from[0].chomp.split(delim)
     
     fnames.each_with_index do |key,index|
       next unless values[index]

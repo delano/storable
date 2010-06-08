@@ -3,6 +3,12 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.7.5 (2010-06-08) #############################
+
+* FIXED: from_delimited now gracefully handles String input by splitting it by $/
+* CHANGE: Removed field name magic from from_delimited 
+
+
 #### 0.7.4 (2010-05-01) #############################
 
 * FIXED: Check separately if getter and setter methods are already defined
