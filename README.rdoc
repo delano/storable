@@ -55,16 +55,16 @@ Storable can also marshal Proc objects to and from their actual source code.
       field :calculate => Proc
     end
     
-    mat1 = Maths.new 2.0, 3.0
-    mat1.calculate = Proc.new { @x * @y }
+    m1 = Maths.new 2.0, 3.0
+    m1.calculate = Proc.new { @x * @y }
     
-    mat1.calculate.source            # => "{ @x * @y }"
-    mat1.call :calculate             # => 6.0
+    m1.calculate.source            # => "{ @x * @y }"
+    m1.call :calculate             # => 6.0
     
-    dump = mat1.to_json
+    dump = m1.to_json
     
-    mat2 = Maths.from_json dump
-    mat2.call :calculate             # => 6.0
+    m2 = Maths.from_json dump
+    m2.call :calculate             # => 6.0
     
    
 Anything is possible when you keep your mind open and you use Ruby. 

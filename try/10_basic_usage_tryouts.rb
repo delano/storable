@@ -26,9 +26,9 @@ a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
 [a.one, a.two, a.three, a.four]
 #=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
 
-## Supports to_a
+## Supports to_array
 a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
-a.to_a
+a.to_array
 #=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
 
 ## "Field types are optional"
@@ -61,11 +61,11 @@ d2 = d.to_hash
 d2[:five]
 #=> nil
 
-## Sensitive fields don't appear at as nil in to_a
+## Sensitive fields don't appear at as nil in to_array
 d = D.new
 d.five = 100
 d.sensitive!
-d.to_a.size
+d.to_array.size
 ## 4
 
 ## Supports inheritence

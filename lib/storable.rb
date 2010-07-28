@@ -53,9 +53,9 @@ class Storable
   # Passes along fields to inherited classes
   def self.inherited(obj)                           
     unless Storable == self                         
-      obj.sensitive_fields = self.sensitive_fields.clone
-      obj.field_names = self.field_names.clone  
-      obj.field_types = self.field_types.clone      
+      obj.sensitive_fields = self.sensitive_fields.clone if !self.sensitive_fields.nil?
+      obj.field_names = self.field_names.clone if !self.field_names.nil?
+      obj.field_types = self.field_types.clone if !self.field_types.nil?
     end                                             
   end                                               
     
@@ -300,7 +300,7 @@ class Storable
     tmp
   end
 
-  def to_a
+  def to_array
     fields = sensitive? ? (field_names-sensitive_fields) : field_names
     fields.collect do |fname|
       next if sensitive? && self.class.sensitive_field?(fname)
