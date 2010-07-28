@@ -64,6 +64,7 @@ class Storable
   end
   
   # TODO: from_args([HASH or ordered params])
+
   
   # Accepts field definitions in the one of the follow formats:
   #
@@ -265,10 +266,10 @@ class Storable
     end
     tmp
   end
-  
+
   def to_json(*from, &blk)
     hash = to_hash
-    if YAJL_LOADED
+    if YAJL_LOADED # set by Storable
       ret = Yajl::Encoder.encode(hash)
       #raise "DELANO"
       #ret.force_encoding("ISO-8859-1")
