@@ -25,7 +25,20 @@ Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)
     puts mac2.environment           # => "stage"
     puts mac2.position.class        # => Fixnum
 
+== Sensitive Fields
 
+    require 'storable'
+    
+    class Calc < Storable
+      field :one
+      field :two
+      field :three
+      sensitive_fields :three
+    end
+    
+    calc = Calc.new 1, 2, 3
+    calc.to_s
+    
 == Storing Procs
 
 Storable can also marshal Proc objects to and from their actual source code. 
@@ -49,7 +62,7 @@ Storable can also marshal Proc objects to and from their actual source code.
     mat2 = Maths.from_json dump
     mat2.call :calculate             # => 6.0
     
-    
+   
 Anything is possible when you keep your mind open and you use Ruby. 
 
 

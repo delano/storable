@@ -53,9 +53,9 @@ class Storable
   # Passes along fields to inherited classes
   def self.inherited(obj)                           
     unless Storable == self                         
-      obj.sensitive_fields = self.sensitive_fields  
-      obj.field_names = self.field_names            
-      obj.field_types = self.field_types            
+      obj.sensitive_fields = self.sensitive_fields.clone
+      obj.field_names = self.field_names.clone  
+      obj.field_types = self.field_types.clone      
     end                                             
   end                                               
     
@@ -283,6 +283,7 @@ class Storable
     self.postprocess
     self
   end
+  
   # Return the object data as a hash
   # +with_titles+ is ignored. 
   def to_hash
@@ -299,6 +300,18 @@ class Storable
     tmp
   end
 
+  def to_a
+    field_names.collect do |fname|
+      next if self.class.sensitive_field?(fname)
+      v = self.send(fname)
+      v = process(fname, v) if has_processor?(fname)
+      if Array === v
+        v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_a : v2 } 
+      end
+      v
+    end
+  end
+  
   def to_json(*from, &blk)
     hash = to_hash
     if YAJL_LOADED # set by Storable

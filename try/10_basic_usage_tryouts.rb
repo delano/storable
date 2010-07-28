@@ -25,7 +25,12 @@ end
 a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
 [a.one, a.two, a.three, a.four]
 #=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
-  
+
+## Supports to_a
+a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
+a.to_a
+#=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
+
 ## "Field types are optional"
 b = B.new "string", 1, Time.parse("2010-03-04 23:00") 
 b = B.from_json b.to_json
