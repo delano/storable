@@ -31,7 +31,7 @@
         </div>
         <div class='last-update'>
           Last Update:
-          <span class='datetime'>2010-04-14 14:47:35 -0400</span>
+          <span class='datetime'>2010-07-28 08:53:03 -0400</span>
         </div>
       </div>
       <div id='content'>
@@ -44,12 +44,14 @@
             </p>
             <h2>Example</h2>
             <pre>require 'storable'&#x000A;&#x000A;class Machine &lt; Storable&#x000A;  field :environment            # Define field names for Machine. The&#x000A;  field :role                   # default type is String, but you can&#x000A;  field :position =&gt; Integer    # specify a type using a hash syntax.&#x000A;end&#x000A;&#x000A;mac1 = Machine.new              # Instances of Machine have accessors&#x000A;mac1.environment = &quot;stage&quot;      # just like regular attributes.&#x000A;mac1.role = &quot;app&quot;&#x000A;mac1.position = 1&#x000A;&#x000A;puts &quot;# YAML&quot;, mac1.to_yaml     # Note: the field order is maintained&#x000A;puts &quot;# CSV&quot;, mac1.to_csv       # =&gt; stage,app,1&#x000A;puts &quot;# JSON&quot;, mac1.to_json     # Note: field order not maintained.&#x000A;&#x000A;mac2 = Machine.from_yaml(mac1.to_yaml)&#x000A;puts mac2.environment           # =&gt; &quot;stage&quot;&#x000A;puts mac2.position.class        # =&gt; Fixnum</pre>
+            <h2>Sensitive Fields</h2>
+            <pre>require 'storable'&#x000A;&#x000A;class Calc &lt; Storable&#x000A;  field :three&#x000A;  field :two&#x000A;  field :one&#x000A;  sensitive_fields :three&#x000A;end&#x000A;&#x000A;calc = Calc.new 3, 2, 1&#x000A;calc.to_a                       # =&gt; [3, 2, 1]&#x000A;calc.sensitive!&#x000A;calc.to_a                       # =&gt; [2, 1]</pre>
             <h2>Storing Procs</h2>
             <p>
             <a href="../classes/Storable.html">Storable</a> can also marshal Proc
             objects to and from their actual source code.
             </p>
-            <pre>require 'storable'&#x000A;&#x000A;class Maths &lt; Storable&#x000A;  field :x         =&gt; Float&#x000A;  field :y         =&gt; Float&#x000A;  field :calculate =&gt; Proc&#x000A;end&#x000A;&#x000A;mat1 = Maths.new 2.0, 3.0&#x000A;mat1.calculate = Proc.new { @x * @y }&#x000A;&#x000A;mat1.calculate.source            # =&gt; &quot;{ @x * @y }&quot;&#x000A;mat1.call :calculate             # =&gt; 6.0&#x000A;&#x000A;dump = mat1.to_json&#x000A;&#x000A;mat2 = Maths.from_json dump&#x000A;mat2.call :calculate             # =&gt; 6.0</pre>
+            <pre>require 'storable'&#x000A;&#x000A;class Maths &lt; Storable&#x000A;  field :x         =&gt; Float&#x000A;  field :y         =&gt; Float&#x000A;  field :calculate =&gt; Proc&#x000A;end&#x000A;&#x000A;m1 = Maths.new 2.0, 3.0&#x000A;m1.calculate = Proc.new { @x * @y }&#x000A;&#x000A;m1.calculate.source            # =&gt; &quot;{ @x * @y }&quot;&#x000A;m1.call :calculate             # =&gt; 6.0&#x000A;&#x000A;dump = m1.to_json&#x000A;&#x000A;m2 = Maths.from_json dump&#x000A;m2.call :calculate             # =&gt; 6.0</pre>
             <p>
             Anything is possible when you keep your mind open and you use Ruby.
             </p>
