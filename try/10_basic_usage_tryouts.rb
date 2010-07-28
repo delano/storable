@@ -15,7 +15,10 @@ end
 class C < Storable
   field :calc => Proc
 end
-
+class D < A
+  field :five
+  #sensitive_fields :five
+end
 
   
 ## "Storable objects have a default initialize method"
@@ -38,4 +41,30 @@ c= C.from_json c.to_json
 c.calc.call
 #=> 4
   
+## Supports sensitive fields
+d = D.new
+d.five = 100
+d.sensitive!
+d.sensitive?
+#=> true
+
+## Supports sensitive fields
+d = D.new
+d.five = 100
+d.sensitive!
+d2 = d.to_hash
+d2[:five]
+#=> nil
+
+## Supports inheritence
+## def self.inherited(obj)
+##   unless Storable == self
+##     obj.sensitive_fields = self.sensitive_fields
+##     obj.field_names = self.field_names
+##     obj.field_types = self.field_types
+##   end
+## end
+d = D.new
+d.one = 1
+#=> 1
 

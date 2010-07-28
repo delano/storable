@@ -46,26 +46,11 @@ class Storable
   
   @debug = false
   class << self
-    attr_accessor :field_names, :field_types, :debug
-  end
-  
-  # This value will be used as a default unless provided on-the-fly.
-  # See SUPPORTED_FORMATS for available values.
-  attr_reader :format
-  
-  # See SUPPORTED_FORMATS for available values
-  def format=(v)
-    v &&= v.to_sym
-    raise "Unsupported format: #{v}" unless SUPPORTED_FORMATS.member?(v)
-    @format = v
-  end
-  
-  def postprocess
+    attr_accessor :sensitive_fields, :field_names, :field_types, :debug
   end
   
   # TODO: from_args([HASH or ordered params])
-
-  
+    
   # Accepts field definitions in the one of the follow formats:
   #
   #     field :product
@@ -81,10 +66,10 @@ class Storable
   def self.field(args={}, &processor)
     # TODO: Examine casting from: http://codeforpeople.com/lib/ruby/fattr/fattr-1.0.3/
     args = {args => nil} unless args.kind_of?(Hash)
-    
+
+    self.field_names ||= []
+    self.field_types ||= {}
     args.each_pair do |m,t|
-      self.field_names ||= []
-      self.field_types ||= {}
       self.field_names << m
       self.field_types[m] = t unless t.nil?
       
@@ -114,12 +99,28 @@ class Storable
     end
   end
   
+  def self.sensitive_fields(*args)
+    @sensitive_fields ||= []
+    @sensitive_fields.push *args unless args.empty?
+    @sensitive_fields
+  end
+  
+  def self.sensitive_field?(name)
+    @sensitive_fields ||= []
+    @sensitive_fields.member?(name)
+  end
+  
   def self.has_field?(n)
     field_names.member? n.to_sym
   end
   def has_field?(n)
     self.class.field_names.member? n.to_sym
   end
+  
+  
+  # This value will be used as a default unless provided on-the-fly.
+  # See SUPPORTED_FORMATS for available values.
+  attr_reader :format
   
   # +args+ is a list of values to set amongst the fields. 
   # It's assumed that the order values matches the order
@@ -130,7 +131,25 @@ class Storable
     end
     preprocess if respond_to?(:preprocess)
   end
-
+  
+  # See SUPPORTED_FORMATS for available values
+  def format=(v)
+    v &&= v.to_sym
+    raise "Unsupported format: #{v}" unless SUPPORTED_FORMATS.member?(v)
+    @format = v
+  end
+  
+  def postprocess
+  end
+  
+  def sensitive?
+    @storable_sensitive == true
+  end
+  
+  def sensitive!
+    @storable_sensitive = true
+  end
+  
   # Returns an array of field names defined by self.field
   def field_names
     self.class.field_names
@@ -140,7 +159,10 @@ class Storable
   def field_types
     self.class.field_types
   end
-
+  def sensitive_fields
+    self.class.sensitive_fields
+  end
+  
   # Dump the object data to the given format. 
   def dump(format=nil, with_titles=false)
     format &&= format.to_sym
@@ -150,6 +172,7 @@ class Storable
   end
   
   def to_string(*args)
+    # TODO: sensitive?
     to_s(*args)
   end
   
@@ -257,6 +280,7 @@ class Storable
   def to_hash
     tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
     field_names.each do |fname|
+      next if self.class.sensitive_field?(fname)
       v = self.send(fname)
       v = process(fname, v) if has_processor?(fname)
       if Array === v
