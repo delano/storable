@@ -17,7 +17,7 @@ class C < Storable
 end
 class D < A
   field :five
-  #sensitive_fields :five
+  sensitive_fields :five
 end
 
   
@@ -41,7 +41,7 @@ c= C.from_json c.to_json
 c.calc.call
 #=> 4
   
-## Supports sensitive fields
+## Can specify a sensitive instance
 d = D.new
 d.five = 100
 d.sensitive!
@@ -57,14 +57,9 @@ d2[:five]
 #=> nil
 
 ## Supports inheritence
-## def self.inherited(obj)
-##   unless Storable == self
-##     obj.sensitive_fields = self.sensitive_fields
-##     obj.field_names = self.field_names
-##     obj.field_types = self.field_types
-##   end
-## end
 d = D.new
-d.one = 1
-#=> 1
+d.one = 100
+d2 = d.to_hash
+d2[:one]
+#=> 100
 

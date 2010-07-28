@@ -1,6 +1,7 @@
 #--
 # TODO: Handle nested hashes and arrays.
 # TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
+# TODO: from_args([HASH or ordered params])
 #++
 
 
@@ -49,7 +50,14 @@ class Storable
     attr_accessor :sensitive_fields, :field_names, :field_types, :debug
   end
   
-  # TODO: from_args([HASH or ordered params])
+  # Passes along fields to inherited classes
+  def self.inherited(obj)                           
+    unless Storable == self                         
+      obj.sensitive_fields = self.sensitive_fields  
+      obj.field_names = self.field_names            
+      obj.field_types = self.field_types            
+    end                                             
+  end                                               
     
   # Accepts field definitions in the one of the follow formats:
   #
