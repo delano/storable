@@ -289,7 +289,7 @@ class Storable
   def to_hash
     tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
     field_names.each do |fname|
-      next if self.class.sensitive_field?(fname)
+      next if sensitive? && self.class.sensitive_field?(fname)
       v = self.send(fname)
       v = process(fname, v) if has_processor?(fname)
       if Array === v
@@ -301,8 +301,9 @@ class Storable
   end
 
   def to_a
-    field_names.collect do |fname|
-      next if self.class.sensitive_field?(fname)
+    fields = sensitive? ? (field_names-sensitive_fields) : field_names
+    fields.collect do |fname|
+      next if sensitive? && self.class.sensitive_field?(fname)
       v = self.send(fname)
       v = process(fname, v) if has_processor?(fname)
       if Array === v

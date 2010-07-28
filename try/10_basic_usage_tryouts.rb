@@ -61,6 +61,13 @@ d2 = d.to_hash
 d2[:five]
 #=> nil
 
+## Sensitive fields don't appear at as nil in to_a
+d = D.new
+d.five = 100
+d.sensitive!
+d.to_a.size
+## 4
+
 ## Supports inheritence
 d = D.new
 d.one = 100

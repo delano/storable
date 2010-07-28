@@ -25,19 +25,23 @@ Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)
     puts mac2.environment           # => "stage"
     puts mac2.position.class        # => Fixnum
 
+
 == Sensitive Fields
 
     require 'storable'
     
     class Calc < Storable
-      field :one
-      field :two
       field :three
+      field :two
+      field :one
       sensitive_fields :three
     end
     
-    calc = Calc.new 1, 2, 3
-    calc.to_s
+    calc = Calc.new 3, 2, 1
+    calc.to_a                       # => [3, 2, 1]
+    calc.sensitive!
+    calc.to_a                       # => [2, 1]
+    
     
 == Storing Procs
 
