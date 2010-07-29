@@ -322,7 +322,7 @@ class Storable
       #p [:to, ret.encoding.name] if ret.respond_to?(:encoding)
       ret
     elsif JSON_LOADED
-      hash.to_json(*from, &blk)
+      JSON.generate(hash, *from, &blk)
     else 
       raise "no JSON parser loaded"
     end
