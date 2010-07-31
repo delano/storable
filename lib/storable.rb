@@ -375,7 +375,8 @@ class Storable
   # +delim+ is the field delimiter.
   def to_delimited(with_titles=false, delim=',')
     values = []
-    field_names.each do |fname|
+    fields = sensitive? ? (field_names-sensitive_fields) : field_names
+    fields.each do |fname|
       values << self.send(fname.to_s)   # TODO: escape values
     end
     output = values.join(delim)
@@ -406,12 +407,12 @@ class Storable
   # Create a new instance of the object from a delimited string.
   # +from+ a JSON string split into an array by line.
   # +delim+ is the field delimiter.
-  def self.from_delimited(from=[],delim=',')
+  def self.from_delimited(from=[],delim=',',sensitive=false)
     return if from.empty?
     from = from.split($/) if String === from
     hash = {}
     
-    fnames = self.field_names
+    fnames = sensitive? ? (field_names-sensitive_fields) : field_names
     values = from[0].chomp.split(delim)
     
     fnames.each_with_index do |key,index|
