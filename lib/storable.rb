@@ -395,13 +395,13 @@ class Storable
   end
   # Create a new instance from tab-delimited data.  
   # +from+ a JSON string split into an array by line.
-  def self.from_tsv(from=[])
-    self.from_delimited(from, "\t")
+  def self.from_tsv(from=[], sensitive=false)
+    self.from_delimited(from, "\t", sensitive)
   end
   # Create a new instance of the object from comma-delimited data.
   # +from+ a JSON string split into an array by line.
-  def self.from_csv(from=[])
-    self.from_delimited(from, ',')
+  def self.from_csv(from=[], sensitive=false)
+    self.from_delimited(from, ',', sensitive)
   end
   
   # Create a new instance of the object from a delimited string.
@@ -412,7 +412,7 @@ class Storable
     from = from.split($/) if String === from
     hash = {}
     
-    fnames = sensitive? ? (field_names-sensitive_fields) : field_names
+    fnames = sensitive ? (field_names-sensitive_fields) : field_names
     values = from[0].chomp.split(delim)
     
     fnames.each_with_index do |key,index|
