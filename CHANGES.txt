@@ -3,6 +3,11 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.8.1 (2010-07-31) #############################
+
+* CHANGE: to_delimited and from_delimited are sensitive. This means you need to keep 
+  track of data that is sensitive. 
+
 #### 0.8.0 (2010-07-28) #############################
 
 * FIXED: from_delimited now gracefully handles String input by splitting it by $/
