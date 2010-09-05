@@ -1,8 +1,3 @@
-#--
-# TODO: Handle nested hashes and arrays.
-# TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
-# TODO: from_args([HASH or ordered params])
-#++
 
 
 YAJL_LOADED = begin   
@@ -40,7 +35,7 @@ class Storable
   require 'proc_source'  
   require 'storable/orderedhash' if USE_ORDERED_HASH
   unless defined?(SUPPORTED_FORMATS) # We can assume all are defined
-    VERSION = "0.8.1"
+    VERSION = "0.8.2"
     NICE_TIME_FORMAT  = "%Y-%m-%d@%H:%M:%S".freeze 
     SUPPORTED_FORMATS = [:tsv, :csv, :yaml, :json, :s, :string].freeze 
   end
@@ -484,9 +479,11 @@ class Storable
     def hash_proc_processor 
       Proc.new do |procs|
         a = {}
-        procs.each_pair { |n,v| 
-          a[n] = (Proc === v) ? v.source : v 
-        }
+        unless procs.nil?
+          procs.each_pair { |n,v| 
+            a[n] = (Proc === v) ? v.source : v 
+          }
+        end
         a
       end
     end
@@ -509,3 +506,9 @@ class Storable
   extend Storable::DefaultProcessors
 end
 
+
+#--
+# TODO: Handle nested hashes and arrays.
+# TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
+# TODO: from_args([HASH or ordered params])
+#++
