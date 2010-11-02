@@ -3,6 +3,10 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.8.3 (2010-11-02) #############################
+
+* FIXED: Handling of Boolean fields when the value is null. 
+
 #### 0.8.2 (2010-09-05) #############################
 
 * FIXED: undefined method `each_pair' for nil:NilClass for hash_proc_processor

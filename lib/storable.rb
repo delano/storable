@@ -217,11 +217,11 @@ class Storable
   
   def from_hash(from={})
     fnames = field_names
+    
     return from if fnames.nil? || fnames.empty?
     fnames.each_with_index do |fname,index|
       ftype = field_types[fname]
       value_orig = from[fname] || from[fname.to_s]
-      
       next if value_orig.nil?
       
       if ( ftype == String or ftype == Symbol ) && value_orig.to_s.empty?
@@ -264,8 +264,8 @@ class Storable
           value = Proc.from_string value_orig           
         end
       end
-
-      value ||= value_orig
+      
+      value = value_orig if value.nil?
       
       if self.respond_to?("#{fname}=")
         self.send("#{fname}=", value) 
