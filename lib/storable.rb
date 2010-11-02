@@ -221,7 +221,7 @@ class Storable
     return from if fnames.nil? || fnames.empty?
     fnames.each_with_index do |fname,index|
       ftype = field_types[fname]
-      value_orig = from[fname] || from[fname.to_s]
+      value_orig = from[fname.to_s] || from[fname.to_s.to_sym]
       next if value_orig.nil?
       
       if ( ftype == String or ftype == Symbol ) && value_orig.to_s.empty?
