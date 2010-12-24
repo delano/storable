@@ -3,6 +3,13 @@ STORABLE, CHANGES
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
+#### 0.8.4 (2010-12-23) #############################
+
+* CHANGE: Moved initialize logic to Storable.from_array. 
+ 
+  NOTE: Classes that rely on this logic when creating
+  new instances will need to call from_array instead!
+
 
 #### 0.8.3 (2010-11-02) #############################
 

@@ -128,11 +128,7 @@ class Storable
   # +args+ is a list of values to set amongst the fields. 
   # It's assumed that the order values matches the order
   def initialize(*args)
-    (self.class.field_names || []).each_with_index do |n,index|
-      break if (index+1) > args.size
-      self.send("#{n}=", args[index])
-    end
-    preprocess if respond_to?(:preprocess)
+    preprocess if respond_to? :preprocess
   end
   
   # See SUPPORTED_FORMATS for available values
@@ -204,6 +200,14 @@ class Storable
       Storable::Anonymous.new from
     else
       new.from_hash(from)
+    end
+  end
+  
+  def self.from_array(from=[])
+    return nil if !from || from.empty?
+    (self.class.field_names || []).each_with_index do |n,index|
+      break if index >= from.size
+      self.send("#{n}=", from[index])
     end
   end
   
