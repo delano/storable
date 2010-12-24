@@ -1,38 +1,41 @@
 require 'storable'
 
 
-class A < Storable
+class ::A < Storable
   field :one => String
   field :two => Integer
   field :three => Time
   field :four => Boolean
 end
-class B < Storable
+class ::B < Storable
   field :one => String
   field :two 
   field :three => Time
 end
-class C < Storable
+class ::C < Storable
   field :calc => Proc
 end
-class D < A
+class ::D < A
   field :five
   sensitive_fields :five
 end
 
-  
+## Has instance methods
+A.instance_methods(false).collect(&:to_s).sort
+#=> ["four", "four=", "one", "one=", "three", "three=", "two", "two="]
+
 ## "Storable objects have a default initialize method"
-a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
+a = A.from_array "string", 1, Time.parse("2010-03-04 23:00"), true
 [a.one, a.two, a.three, a.four]
 #=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
 
 ## Supports to_array
-a = A.new "string", 1, Time.parse("2010-03-04 23:00"), true
+a = A.from_array "string", 1, Time.parse("2010-03-04 23:00"), true
 a.to_array
 #=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
 
 ## "Field types are optional"
-b = B.new "string", 1, Time.parse("2010-03-04 23:00") 
+b = B.from_array "string", 1, Time.parse("2010-03-04 23:00") 
 b = B.from_json b.to_json
 [b.one, b.two, b.three]
 #=> ["string", 1, Time.parse("2010-03-04 23:00")]
@@ -41,7 +44,7 @@ b = B.from_json b.to_json
 calc = Proc.new do
   2+2
 end
-c = C.new calc
+c = C.from_array calc
 c= C.from_json c.to_json
 c.calc.call
 #=> 4
