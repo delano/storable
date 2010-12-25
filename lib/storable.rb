@@ -197,14 +197,18 @@ class Storable
     end
   end
   
-  def self.from_array(*from)
+  def from_array *from
+    (self.field_names || []).each_with_index do |n,index|
+      break if index >= from.size
+      send("#{n}=", from[index])
+    end
+  end
+  
+  def self.from_array *from
     from = from.flatten.compact
     return nil if !from || from.empty?
     me = new
-    (self.field_names || []).each_with_index do |n,index|
-      break if index >= from.size
-      me.send("#{n}=", from[index])
-    end
+    me.from_array *from
     me.postprocess
     me
   end

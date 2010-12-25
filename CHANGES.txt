@@ -8,6 +8,7 @@ STORABLE, CHANGES
 * FIXED: Added calls to preprocess in the to_FORMAT methods.
 * FIXED: Added calls to postprocess in from_delimited
 * CHANGE: Remove initialize completely
+* ADDED: Storable#from_array (instance method)
 
 
 #### 0.8.4 (2010-12-23) #############################
