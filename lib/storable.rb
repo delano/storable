@@ -125,12 +125,6 @@ class Storable
   # See SUPPORTED_FORMATS for available values.
   attr_reader :format
   
-  # +args+ is a list of values to set amongst the fields. 
-  # It's assumed that the order values matches the order
-  def initialize(*args)
-    preprocess if respond_to? :preprocess
-  end
-  
   # See SUPPORTED_FORMATS for available values
   def format=(v)
     v &&= v.to_sym
@@ -211,6 +205,7 @@ class Storable
       break if index >= from.size
       me.send("#{n}=", from[index])
     end
+    me.postprocess
     me
   end
   
@@ -289,6 +284,7 @@ class Storable
   # Return the object data as a hash
   # +with_titles+ is ignored. 
   def to_hash
+    preprocess if respond_to? :preprocess
     tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
     field_names.each do |fname|
       next if sensitive? && self.class.sensitive_field?(fname)
@@ -303,6 +299,7 @@ class Storable
   end
 
   def to_array
+    preprocess if respond_to? :preprocess
     fields = sensitive? ? (field_names-sensitive_fields) : field_names
     fields.collect do |fname|
       next if sensitive? && self.class.sensitive_field?(fname)
@@ -316,6 +313,7 @@ class Storable
   end
   
   def to_json(*from, &blk)
+    preprocess if respond_to? :preprocess
     hash = to_hash
     if YAJL_LOADED # set by Storable
       ret = Yajl::Encoder.encode(hash)
@@ -331,6 +329,7 @@ class Storable
   end
   
   def to_yaml(*from, &blk)
+    preprocess if respond_to? :preprocess
     to_hash.to_yaml(*from, &blk)
   end
 
@@ -376,6 +375,7 @@ class Storable
   # +with_titles+ specifiy whether to include field names (default: false)
   # +delim+ is the field delimiter.
   def to_delimited(with_titles=false, delim=',')
+    preprocess if respond_to? :preprocess
     values = []
     fields = sensitive? ? (field_names-sensitive_fields) : field_names
     fields.each do |fname|
