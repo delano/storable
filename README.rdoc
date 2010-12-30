@@ -1,4 +1,4 @@
-= Storable - v0.7
+= Storable - v0.8
 
 Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)
 
