@@ -9,6 +9,7 @@ STORABLE, CHANGES
 * FIXED: Added calls to postprocess in from_delimited
 * CHANGE: Remove initialize completely
 * ADDED: Storable#from_array (instance method)
+* ADDED: Storable#init (a default for Familia objects)
 
 
 #### 0.8.4 (2010-12-23) #############################
