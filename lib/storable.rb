@@ -200,6 +200,10 @@ class Storable
   def init *args
     from_array *args
   end
+
+  def initialize *args
+    init *args
+  end
   
   def from_array *from
     (self.field_names || []).each_with_index do |n,index|
