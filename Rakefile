@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rake/clean'
 require 'rake/gempackagetask'
+require 'rspec/core/rake_task'
 require 'fileutils'
 include FileUtils
 
@@ -33,7 +34,9 @@ version = @spec.version
 
 # TESTS/SPECS =========================================================
 
-
+RSpec::Core::RakeTask.new(:test) do |t|
+#  t.rspec_opts = ["-f documentation"]
+end
 
 # INSTALL =============================================================
 
