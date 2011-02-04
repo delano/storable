@@ -5,28 +5,72 @@ describe ProcString do
 
   subject { ProcString.new "{ false }" }
   
-  it { should == "{ false }" }
+  it "string should be set" do
+    subject.should == "{ false }"
+  end
   
-  it "sets #file" do
+  it "#file can be set" do
     subject.file = "test.rb"
     subject.file.should == "test.rb"
   end
   
-  it "sets #lines" do
+  it "#lines can be set" do
     subject.lines = 1..10
     subject.lines.should == (1..10)
   end
   
-  it "sets #arity" do
-    subject.arity = 1
-    subject.arity.should == 1
+  describe "#to_proc" do
+    it "should create a proc" do
+      ps = ProcString.new "do\n false\n end"
+      ps.to_proc.should be_kind_of(Proc)
+    end
+    
+    it "should connect #file and #lines to the proc" do
+      ps = ProcString.new "do\n false\n end"
+      ps.file = "to_proc_test"
+      ps.lines = (100..102)
+      p = ps.to_proc
+      p.inspect.should include "to_proc_test"
+      p.inspect.should include "100"
+    end
+    
+    it "should fail if #file is set and #lines is a non Range" do
+      ps = ProcString.new "do\n false\n end"
+      ps.file = "to_proc_test"
+      ps.lines = 100
+      expect{ ps.to_proc }.to raise_error(RuntimeError)
+    end
   end
   
-  it "sets #kind" do
-    subject.kind = Proc
-    subject.kind.should == Proc
+  describe "#to_lambda" do
+    it "should create a lambda" do
+      ps = ProcString.new "do\n return false\n end"
+      @l = ps.to_lambda
+      # Test is from: http://en.wikipedia.org/wiki/Closure_(computer_science)#Closure_leaving
+      def lambda?
+        @l.call
+        return true
+      end
+      @l.call.should == false
+      lambda?.should == true
+    end
   end
   
+  describe "Marshal" do
+    it "should dump and load" do
+      test = "do\n false\n end"
+      file = "ps_test"
+      lines = (23..25)
+      p1 = ProcString.new test
+      p1.file = file
+      p1.lines = lines
+      str = Marshal.dump(p1)
+      p2 = Marshal.load str
+      p2.should == test
+      p2.file.should == file
+      p2.lines.should == lines
+    end
+  end
 end
 
 
@@ -204,5 +248,35 @@ pending "This currently fails on ruby 1.9. It returns the surrounding block."
     
   end
   
-  
+  describe "Marshal" do
+    it "should fail if #source is nil" do
+      p1 = eval "Proc.new { false }"
+      p1.source.should be_nil
+      expect{ Marshal.dump p1 }.to raise_error RuntimeError
+    end
+    
+    it "should work with simple proc" do
+      p1 = Proc.new do false end
+      str = Marshal.dump(p1)
+      p2 = Marshal.load str
+      p1.source.should == p2.source
+      p1.call.should == p2.call
+      p1.source_descriptor.should == p2.source_descriptor
+    end
+    
+    it "should work with more complex proc" do
+      p1 = Proc.new do |a,b,c,d|
+        sum = 0
+        (1..10).each do |i|
+          sum += a*i + b*i + c*i + d*i
+        end
+        sum
+      end
+      p2 = Marshal.load(Marshal.dump(p1))
+      p2.source.should == p1.source
+      p1.call(2,3,5,7).should == 935
+      p2.call(2,3,5,7).should == 935
+    end
+    
+  end
 end

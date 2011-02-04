@@ -8,14 +8,31 @@ require 'irb/ruby-lex'
 #SCRIPT_LINES__ = {} unless defined? SCRIPT_LINES__
 
 class ProcString < String
-  attr_accessor :file, :lines, :arity, :kind
+  # Filename where the proc is defined
+  attr_accessor :file
+  
+  # Range of lines where the proc is defined
+  #   ex. (12..16)
+  attr_accessor :lines
+  
+  attr_accessor :arity, :kind     # :nodoc:  FIXME: Should be removed?
+  
+  # Return a Proc object
+  # If #lines and #file is specified, these are tied to the proc.
   def to_proc(kind="proc")
-    result = eval("#{kind} #{self}")
+    if @file && @lines
+      raise "#lines must be a range" unless @lines.kind_of? Range
+      result = eval("#{kind} #{self}", binding, @file, @lines.min)
+    else
+      result = eval("#{kind} #{self}")
+    end
     result.source = self
     result
   end
+  
+  # Return a lambda
   def to_lambda
-    to_proc "lamda"
+    to_proc "lambda"
   end
 end
 
@@ -173,6 +190,23 @@ class Proc #:nodoc:
     @source ||= ProcSource.find(*self.source_descriptor)
   end
   
+  # Dump to Marshal format.
+  #   p = Proc.new { false }
+  #   Marshal.dump p
+  def _dump(limit)
+    raise "can't dump proc, #source is nil" if source.nil?
+    str = Marshal.dump(source)
+    str
+  end
+  
+  # Load from Marshal format.
+  #   p = Proc.new { false }
+  #   Marshal.load Marshal.dump p
+  def self._load(str)
+    @source = Marshal.load(str)
+    @source.to_proc
+  end
+    
   # Create a Proc object from a string of Ruby code. 
   # It's assumed the string contains do; end or { }.
   #
