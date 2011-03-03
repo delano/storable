@@ -1,5 +1,9 @@
 require 'proc_source'
 
+# NOTE: These tests were converted from the specs in
+#       https://github.com/notro/storable
+#
+
 @subject = ProcString.new "{ false }"
 
 def lambda?
@@ -63,5 +67,4 @@ str = Marshal.dump(p1)
 p2 = Marshal.load str
 [p2, p2.file, p2.lines]
 #=> [@test, @file, @lines]
-
 
