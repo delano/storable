@@ -64,7 +64,7 @@ end
 #
 module ProcSource
   
-  def self.find(filename, start_line=0, block_only=true)
+  def self.find(filename, start_line=1, block_only=true)
     lines, lexer = nil, nil
     retried = 0
     loop do
@@ -157,7 +157,7 @@ module ProcSource
   end
   
   
-  def self.get_lines(filename, start_line = 0)
+  def self.get_lines(filename, start_line = 1)
     case filename
       when nil
         nil
