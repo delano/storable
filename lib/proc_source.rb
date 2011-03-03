@@ -226,7 +226,24 @@ class Proc #:nodoc:
     @source = Marshal.load(str)
     @source.to_proc
   end
-    
+  
+  # Dump to JSON string
+  def to_json(*args)
+    raise "can't serialize proc, #source is nil" if source.nil?
+    {
+      'json_class' => self.class.name,
+      'data'       => [source.to_s, source.file, source.lines.min, source.lines.max]
+    }.to_json#(*args)
+  end
+  
+  def self.json_create(o)
+    s, file, min, max = o['data']
+    ps = ProcString.new s
+    ps.file = file
+    ps.lines = (min..max)
+    ps.to_proc
+  end
+  
   # Create a Proc object from a string of Ruby code. 
   # It's assumed the string contains do; end or { }.
   #
