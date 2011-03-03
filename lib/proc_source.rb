@@ -93,6 +93,8 @@ module ProcSource
           break
         end
         nesting -= 1
+      elsif RubyToken::TkLBRACE === token
+        nesting += 1
       elsif RubyToken::TkBITOR === token && stoken
         #nothing
       elsif RubyToken::TkNL === token && stoken && etoken
@@ -137,6 +139,8 @@ module ProcSource
       when RubyToken::TkNL
         break
       when RubyToken::TkDO
+        success = true
+      when RubyToken::TkfLBRACE
         success = true
       when RubyToken::TkCONSTANT
         if token.name == "Proc" &&

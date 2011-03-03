@@ -127,11 +127,9 @@ describe Proc do
     end
     
     it "should handle a {} block passed to a method" do
-pending "This currently fails on ruby 1.9. It returns the surrounding block."
       block_method {
         false
       }
-#      puts @block.source
       @block.source.split.join(' ').should == "{ false }"
     end
     
