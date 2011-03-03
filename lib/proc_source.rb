@@ -182,7 +182,6 @@ module ProcSource
 end
 
 class Proc #:nodoc:
-  attr_reader :file, :line
   attr_writer :source
   
   def source_descriptor
@@ -193,11 +192,22 @@ class Proc #:nodoc:
         @file, @line = md.captures
       end
     end
-    [@file, @line.to_i]
+    @line = @line.to_i
+    [@file, @line]
   end
   
   def source
     @source ||= ProcSource.find(*self.source_descriptor)
+  end
+  
+  def line
+    source_descriptor
+    @line
+  end
+  
+  def file
+    source_descriptor
+    @file
   end
   
   # Dump to Marshal format.
