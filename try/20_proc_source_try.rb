@@ -6,12 +6,6 @@ require 'proc_source'
 
 @subject = ProcString.new "{ false }"
 
-def lambda?
-  @l.call
-  return true
-end
-
-
 ## string should be set
 @subject
 #=> "{ false }"
@@ -53,6 +47,10 @@ end
 ## Test is from: http://en.wikipedia.org/wiki/Closure_(computer_science)#Closure_leaving
 ps = ProcString.new "do\n return false\n end"
 @l = ps.to_lambda
+def self.lambda? # Added "self." for Ruby 1.8
+  @l.call
+  return true
+end
 [@l.call, lambda?]
 #=> [false, true]
 
