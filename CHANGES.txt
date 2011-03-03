@@ -1,5 +1,6 @@
 STORABLE, CHANGES
 
+* TODO: https://github.com/delano/storable/pull/2
 * TODO: Handle nested hashes and arrays.                                 
 * TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
 
