@@ -96,7 +96,8 @@ or via download:
 
 == Thanks
 
-* Pierre Riteau (priteau[http://github.com/priteau]) for bug fixes. 
+* Pierre Riteau (priteau[https://github.com/priteau]) for bug fixes. 
+* notro[https://github.com/priteau] for proc_source improvements.
 
 
 == More Info

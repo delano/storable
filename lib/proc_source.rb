@@ -1,6 +1,8 @@
 #--
 # Based on:
 # http://github.com/imedo/background
+# With improvements by:
+# https://github.com/notro/storable
 #++
 
 require 'stringio'
