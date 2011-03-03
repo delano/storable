@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'rake/clean'
 require 'rake/gempackagetask'
-require 'rspec/core/rake_task'
 require 'fileutils'
 include FileUtils
 
@@ -34,8 +33,8 @@ version = @spec.version
 
 # TESTS/SPECS =========================================================
 
-RSpec::Core::RakeTask.new(:test) do |t|
-#  t.rspec_opts = ["-f documentation"]
+task :test do
+	sh "try"
 end
 
 # INSTALL =============================================================
@@ -44,7 +43,7 @@ Rake::GemPackageTask.new(@spec) do |p|
   p.need_tar = true if RUBY_PLATFORM !~ /mswin/
 end
 
-task :build => [ :package ]
+task :build => [ :test, :package ]
 task :release => [ :rdoc, :package ]
 task :install => [ :rdoc, :package ] do
 	sh %{sudo gem install pkg/#{name}-#{version}.gem}
