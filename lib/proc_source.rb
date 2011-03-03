@@ -41,8 +41,12 @@ class RubyToken::Token
     # These EXPR_BEG tokens don't have associated end tags
   FAKIES = [RubyToken::TkWHEN, RubyToken::TkELSIF, RubyToken::TkTHEN]
   
+  def name
+    @name ||= nil
+  end
+  
   def open_tag?
-    return false if @name.nil? || get_props.nil?
+    return false if name.nil? || get_props.nil?
     a = (get_props[1] == RubyToken::EXPR_BEG) &&
           self.class.to_s !~ /_MOD/  && # ignore onliner if, unless, etc...
           !FAKIES.member?(self.class)  
@@ -50,7 +54,7 @@ class RubyToken::Token
   end
   
   def get_props
-    RubyToken::TkReading2Token[@name]
+    RubyToken::TkReading2Token[name]
   end
   
 end
@@ -76,7 +80,7 @@ module ProcSource
     end
     stoken, etoken, nesting = nil, nil, 0
     while token = lexer.token
-      n = token.instance_variable_get(:@name)
+      n = token.name
       
       if RubyToken::TkIDENTIFIER === token
         #nothing
@@ -135,11 +139,11 @@ module ProcSource
       when RubyToken::TkDO
         success = true
       when RubyToken::TkCONSTANT
-        if token.instance_variable_get(:@name) == "Proc" &&
+        if token.name == "Proc" &&
            lexer.token.is_a?(RubyToken::TkDOT)
           method = lexer.token
           if method.is_a?(RubyToken::TkIDENTIFIER) &&
-             method.instance_variable_get(:@name) == "new"
+             method.name == "new"
             success = true
           end
         end
@@ -178,6 +182,8 @@ class Proc #:nodoc:
   attr_writer :source
   
   def source_descriptor
+    @file ||= nil
+    @line ||= nil
     unless @file && @line
       if md = /^#<Proc:0x[0-9A-Fa-f]+@(.+):(\d+)(.+?)?>$/.match(inspect)
         @file, @line = md.captures
