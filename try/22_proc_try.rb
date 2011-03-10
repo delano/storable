@@ -101,6 +101,16 @@ true # comment
 p.source
 #=> "{ \n# comment\ntrue # comment\n# comment\n}\n"
   
+## should handle if, elsif, else statement
+p = Proc.new {
+if false
+elsif true
+else
+end
+}
+p.source
+#=> "{\nif false\nelsif true\nelse\nend\n}\n"
+
 ## #lines should be correct for one line proc
 @line = __LINE__ + 1
 p = Proc.new { false }

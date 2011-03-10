@@ -41,7 +41,7 @@ end
 class RubyToken::Token
   
     # These EXPR_BEG tokens don't have associated end tags
-  FAKIES = [RubyToken::TkWHEN, RubyToken::TkELSIF, RubyToken::TkTHEN]
+  FAKIES = [RubyToken::TkWHEN, RubyToken::TkELSIF, RubyToken::TkELSE, RubyToken::TkTHEN]
   
   def name
     @name ||= nil
