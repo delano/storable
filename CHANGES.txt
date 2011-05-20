@@ -2,7 +2,12 @@ STORABLE, CHANGES
 
 * TODO: https://github.com/delano/storable/pull/2
 * TODO: Handle nested hashes and arrays.                                 
-* TODO: to_xml, see: http://codeforpeople.com/lib/ruby/xx/xx-2.0.0/README
+
+
+#### 0.8.7 (2010-05-20) #############################
+
+* CHANGE: to_hash and to_array will set field values if the object isn't 
+  frozen and the field has a processor.
 
 #### 0.8.6 (2010-12-31) #############################
 

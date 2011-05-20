@@ -145,15 +145,15 @@ class Storable
   
   # Returns an array of field names defined by self.field
   def field_names
-    self.class.field_names
+    self.class.field_names #|| self.class.ancestors.first.field_names
   end
   # Returns an array of field types defined by self.field. Fields that did 
   # not receive a type are set to nil.
   def field_types
-    self.class.field_types
+    self.class.field_types #|| self.class.ancestors.first.field_types
   end
   def sensitive_fields
-    self.class.sensitive_fields
+    self.class.sensitive_fields #|| self.class.ancestors.first.sensitive_fields
   end
   
   # Dump the object data to the given format. 
@@ -298,14 +298,19 @@ class Storable
   def to_hash
     preprocess if respond_to? :preprocess
     tmp = USE_ORDERED_HASH ? Storable::OrderedHash.new : {}
-    field_names.each do |fname|
-      next if sensitive? && self.class.sensitive_field?(fname)
-      v = self.send(fname)
-      v = process(fname, v) if has_processor?(fname)
-      if Array === v
-        v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_hash : v2 } 
+    if field_names
+      field_names.each do |fname|
+        next if sensitive? && self.class.sensitive_field?(fname)
+        v = self.send(fname)
+        if has_processor?(fname)
+          v = process(fname, v)
+          self.send("#{fname}=", v) unless frozen?
+        end
+        if Array === v
+          v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_hash : v2 } 
+        end
+        tmp[fname] = v.kind_of?(Storable) ? v.to_hash : v
       end
-      tmp[fname] = v.kind_of?(Storable) ? v.to_hash : v
     end
     tmp
   end
@@ -316,7 +321,10 @@ class Storable
     fields.collect do |fname|
       next if sensitive? && self.class.sensitive_field?(fname)
       v = self.send(fname)
-      v = process(fname, v) if has_processor?(fname)
+      if has_processor?(fname)
+        v = process(fname, v)
+        self.send("#{fname}=", v) unless frozen?
+      end
       if Array === v
         v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_a : v2 } 
       end
@@ -329,9 +337,6 @@ class Storable
     hash = to_hash
     if YAJL_LOADED # set by Storable
       ret = Yajl::Encoder.encode(hash)
-      #raise "DELANO"
-      #ret.force_encoding("ISO-8859-1")
-      #p [:to, ret.encoding.name] if ret.respond_to?(:encoding)
       ret
     elsif JSON_LOADED
       JSON.generate(hash, *from, &blk)
