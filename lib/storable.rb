@@ -42,7 +42,7 @@ class Storable
   
   @debug = false
   class << self
-    attr_accessor :sensitive_fields, :field_names, :field_types, :debug
+    attr_accessor :sensitive_fields, :field_names, :field_types, :field_opts, :debug
   end
   
   # Passes along fields to inherited classes
@@ -66,37 +66,61 @@ class Storable
   # data is available by the standard accessors, class.product and class.product= etc...
   # The value of the field will be cast to the type (if provided) when read from a file. 
   # The value is not touched when the type is not provided. 
-  def self.field(args={}, &processor)
+  def self.field(*args, &processor)
     # TODO: Examine casting from: http://codeforpeople.com/lib/ruby/fattr/fattr-1.0.3/
-    args = {args => nil} unless args.kind_of?(Hash)
-
+    field_definitions = {}
+    if args.first.kind_of?(Hash)
+      args.first.each_pair do |fname,klass|
+        field_definitions[fname] = { :class => klass }
+      end
+    else
+      fname, opts = *args
+      if opts.nil?
+        field_definitions[fname] = {}
+      elsif Hash === opts
+        field_definitions[fname] = opts
+      else
+        raise ArgumentError, "Second argument must be a hash" 
+      end
+    end
+    
     self.field_names ||= []
     self.field_types ||= {}
-    args.each_pair do |m,t|
-      self.field_names << m
-      self.field_types[m] = t unless t.nil?
+    self.field_opts ||= {}
+    field_definitions.each_pair do |fname,opts|
+      self.field_names << fname
+      self.field_opts[fname] = opts
+      self.field_types[fname] = opts[:class] unless opts[:class].nil?
       
       # This processor automatically converts a Proc object
       # to a String of its source. 
-      processor = proc_processor if t == Proc && processor.nil?
+      processor = proc_processor if opts[:class] == Proc && processor.nil?
       
       unless processor.nil?
-        define_method("_storable_processor_#{m}", &processor)
+        define_method("_storable_processor_#{fname}", &processor)
       end
       
-      if method_defined?(m) # don't redefine the getter method
-        STDERR.puts "method exists: #{self}##{m}" if Storable.debug
+      if method_defined?(fname) # don't redefine the getter method
+        STDERR.puts "method exists: #{self}##{fname}" if Storable.debug
       else
-        define_method(m) do 
-          instance_variable_get("@#{m}") 
+        define_method(fname) do 
+          ret = instance_variable_get("@#{fname}") || opts[:default]
+          if ret.nil? 
+            if opts[:default]
+              ret = opts[:default]
+            elsif opts[:meth]
+              ret = self.send(opts[:meth])
+            end
+          end
+          ret
         end
       end
       
-      if method_defined?("#{m}=") # don't redefine the setter methods
-        STDERR.puts "method exists: #{self}##{m}=" if Storable.debug
+      if method_defined?("#{fname}=") # don't redefine the setter methods
+        STDERR.puts "method exists: #{self}##{fname}=" if Storable.debug
       else
-        define_method("#{m}=") do |val| 
-          instance_variable_set("@#{m}",val)
+        define_method("#{fname}=") do |val| 
+          instance_variable_set("@#{fname}",val)
         end
       end
     end

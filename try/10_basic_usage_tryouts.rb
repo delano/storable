@@ -19,6 +19,13 @@ class ::D < A
   field :five
   sensitive_fields :five
 end
+class Explicit < Storable
+  field :six, :class => Symbol, :default => :guesswork
+  field :seven, :class => Symbol, :meth => :someval
+  def someval
+    :anything
+  end
+end
 
 ## Has instance methods
 A.instance_methods(false).collect(&:to_s).sort
@@ -77,4 +84,14 @@ d.one = 100
 d2 = d.to_hash
 d2[:one]
 #=> 100
+
+## Can take a value from opt[:default]
+explicit = Explicit.new
+explicit.six
+#=> :guesswork
+
+## Can take a value from opt[:default]
+explicit = Explicit.new
+explicit.seven
+#=> :anything
 
