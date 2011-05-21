@@ -104,7 +104,7 @@ class Storable
         STDERR.puts "method exists: #{self}##{fname}" if Storable.debug
       else
         define_method(fname) do 
-          ret = instance_variable_get("@#{fname}") || opts[:default]
+          ret = instance_variable_get("@#{fname}")
           if ret.nil? 
             if opts[:default]
               ret = opts[:default]

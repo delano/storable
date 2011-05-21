@@ -1,8 +1,11 @@
 STORABLE, CHANGES
 
 * TODO: https://github.com/delano/storable/pull/2
-* TODO: Handle nested hashes and arrays.                                 
+* TODO: Handle nested hashes and arrays.
 
+#### 0.8.9 (GREAT RAPTURE) ##########################
+
+* FIXED: Removed bad default value setting.
 
 #### 0.8.8 (2011-05-20) #############################
 
