@@ -6,8 +6,6 @@ STORABLE, CHANGES
 
 #### 0.8.7 (2010-05-20) #############################
 
-* CHANGE: to_hash and to_array will set field values if the object isn't 
-  frozen and the field has a processor.
 
 #### 0.8.6 (2010-12-31) #############################
 

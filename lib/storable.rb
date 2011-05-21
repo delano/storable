@@ -302,10 +302,7 @@ class Storable
       field_names.each do |fname|
         next if sensitive? && self.class.sensitive_field?(fname)
         v = self.send(fname)
-        if has_processor?(fname)
-          v = process(fname, v)
-          self.send("#{fname}=", v) unless frozen?
-        end
+        v = process(fname, v) if has_processor?(fname)
         if Array === v
           v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_hash : v2 } 
         end
@@ -321,10 +318,7 @@ class Storable
     fields.collect do |fname|
       next if sensitive? && self.class.sensitive_field?(fname)
       v = self.send(fname)
-      if has_processor?(fname)
-        v = process(fname, v)
-        self.send("#{fname}=", v) unless frozen?
-      end
+      v = process(fname, v) if has_processor?(fname)
       if Array === v
         v = v.collect { |v2| v2.kind_of?(Storable) ? v2.to_a : v2 } 
       end
@@ -513,7 +507,8 @@ class Storable
     end
     def proc_processor
       Proc.new do |val|
-        (Proc === val) ? val.source : val 
+        ret = (Proc === val) ? val.source : val 
+        ret
       end
     end
     # If the object already has a value for +@id+
