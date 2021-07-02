@@ -1,4 +1,5 @@
-##
+
+#
 # Based on:
 # https://github.com/imedo/background
 # https://github.com/imedo/background_lite
@@ -6,10 +7,17 @@
 # https://github.com/notro/storable
 #
 
-require 'stringio'
-require 'irb/ruby-token'  # loads local copy for ruby 2.7+
+begin
+  require 'irb/ruby-token'  # ruby <2.7
+rescue
+  require 'lib/core_ext'  # ruby >=2.7
+end
+
 require 'irb/ruby-lex'
+require 'stringio'
+
 SCRIPT_LINES__ = {} unless defined? SCRIPT_LINES__
+
 
 class ProcString < String
   # Filename where the proc is defined
@@ -124,8 +132,8 @@ module ProcSource
       lines[0] = spaces << lines[0][stoken.char_no .. -1]
     end
     ps = ProcString.new lines.join
-    ps.file, ps.lines = filename, start_line .. start_line+etoken.line_no-1
-
+    ps.file = filename
+    ps.lines = start_line .. start_line+etoken.line_no-1
     ps
   end
 
@@ -213,7 +221,7 @@ class Proc  # :nodoc:
       inspection = inspect
       md = @@regexp.match(inspection)
       exmsg = 'Unable to parse proc inspect (%s)' % inspection
-      raise Exception(exmsg)
+      raise Exception, exmsg if md.nil?
       source_location = md.captures
     end
 

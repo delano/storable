@@ -1,3 +1,4 @@
+require 'pry'
 require 'proc_source'
 
 # NOTE: These tests were converted from the specs in
@@ -14,7 +15,7 @@ require 'proc_source'
 @subject.file = "test.rb"
 @subject.file
 #=> "test.rb"
-  
+
 ## #lines can be set
 @subject.lines = 1..10
 #=> (1..10)
@@ -24,14 +25,14 @@ require 'proc_source'
 ps = ProcString.new "do\n false\n end"
 ps.to_proc.class
 #=> Proc
-  
+
 ## should connect #file and #lines to the proc
 ps = ProcString.new "do\n false\n end"
 ps.file = "to_proc_test"
 ps.lines = (100..102)
 ps.to_proc.inspect.index('to_proc_test:100').nil?
 #=> false
-  
+
 ## should fail if #file is set and #lines is a non Range
 ps = ProcString.new "do\n false\n end"
 ps.file = "to_proc_test"
@@ -42,7 +43,7 @@ rescue RuntimeError
   :success
 end
 #=> :success
-  
+
 ## should create a lambda
 ## Test is from: http://en.wikipedia.org/wiki/Closure_(computer_science)#Closure_leaving
 ps = ProcString.new "do\n return false\n end"

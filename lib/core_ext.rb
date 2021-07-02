@@ -1,3 +1,9 @@
+
+#
+# RubyToken was removed in >= 2.7
+# Direct copy from Ruby 2.6.6 source
+#
+
 # frozen_string_literal: false
 #
 #   irb/ruby-token.rb - ruby tokens
