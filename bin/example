@@ -1,8 +1,9 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
+#
 # Storable -- A working example
 #
-# If your reading this via the rdocs you won't be able to see the code
+# If your reading this via the docs you won't be able to see the code
 # See: http://github.com/delano/storable/blob/master/bin/example
 #
 # Usage: bin/example
@@ -25,11 +26,11 @@ class Machine < Storable
 end
 
 mac1 = Machine.new              # Instances of Machine have accessors
-mac1.environment = "stage"      # just like regular attributes. 
+mac1.environment = "stage"      # just like regular attributes.
 mac1.role = "app"
 mac1.position = 1
 
-puts "# YAML", mac1.to_yaml     # Note: the field order is maintained     
+puts "# YAML", mac1.to_yaml     # Note: the field order is maintained
 puts "# CSV", mac1.to_csv       # => stage,app,1
 puts "# JSON", mac1.to_json     # Note: field order not maintained.
 
