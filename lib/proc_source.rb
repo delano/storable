@@ -24,11 +24,9 @@ class ProcString < String
   # Filename where the proc is defined
   attr_accessor :file
 
-  # Range of lines where the proc is defined
-  #   ex. (12..16)
+  # Range of lines where the proc is defined. e.g. (12..16)
   attr_accessor :lines
-
-  attr_accessor :arity, :kind     # :nodoc:  FIXME: Should be removed?
+  attr_accessor :arity, :kind
 
   # Return a Proc object
   # If #lines and #file is specified, these are tied to the proc.
@@ -50,7 +48,6 @@ class ProcString < String
 end
 
 class RubyToken::Token
-
   # These EXPR_BEG tokens don't have associated end tags
   FAKIES = [
     RubyToken::TkWHEN,
@@ -83,7 +80,6 @@ end
 # Big thanks to the imedo dev team!
 #
 module ProcSource
-
   def self.find(filename, start_line=1, block_only=true)
     lines, lexer = nil, nil
     retried = 0

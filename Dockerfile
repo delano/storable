@@ -8,34 +8,46 @@
 #  Usage:
 #
 #   $ bin/tryouts
-#   $ VERSION=2.6.6 bin/tryouts
+#   $ VERSION=2.7.3 bin/tryouts
 #
 #     OR
 #
 #   $ export NAME=tryouts RUN_HOME=/run/host-services
 #   $ docker build -t $NAME .
-#   $ docker run -d --name $NAME -it --volume ${PWD}:/code --rm -v $RUN_HOME/ssh-auth.sock:$RUN_HOME/ssh-auth.sock -e SSH_AUTH_SOCK="$RUN_HOME/ssh-auth.sock" $NAME $COMMAND
+#   $
 #   $ dssh $NAME
 #   $ docker stop $NAME
 #
 
+# Set the default version, unless `--build-arg VERSION=1.2.3`
 ARG VERSION=2.6.6
 FROM ruby:$VERSION
+
+# Bring VERSION back from the dead
 ARG VERSION
 
-# The home directory for the application in the container
-ARG CODE_ROOT=/code
+# These arguments are for the build and as defaults for ENV
+ARG CONTAINER_SHELL=/bin/bash
 ARG OWNER=coach
-ARG COMMAND=/bin/bash
 ARG HOME=/home/$OWNER
+ARG CODE_HOME=/code
+ARG CODE_WOKE=100%
 ARG BUNDLER_FROZEN=0
 
-ARG PACKAGES="ruby1.9.1 openssh-client screen git"
+ENV BUNDLE_HOME=$HOME/.bundle
+ENV CODE_HOME=$CODE_HOME
 
-WORKDIR $CODE_ROOT
+ENV GEMFILE=Gemfile-${VERSION}
+ENV TRYOUTS_CACHE=$HOME/.tryouts/cache
+ENV VERSION=$VERSION
+
+ENV GEMFILE_TARGET=$TRYOUTS_CACHE/Gemfile
+
+ARG PACKAGES="ruby-dev openssh-client git sudo"
+ENV CONTAINER_SHELL=$CONTAINER_SHELL
 
 # Create the most dedicated user
-RUN adduser --disabled-password --home $HOME --shell $COMMAND $OWNER
+RUN adduser --disabled-password --home $HOME --shell $CONTAINER_SHELL $OWNER
 
 # Get the latest package list (but skip upgrading for speed)
 RUN set -eux && apt-get update -y
@@ -43,9 +55,7 @@ RUN set -eux && apt-get update -y
 # Install the system dependencies
 RUN apt-get install -y $PACKAGES
 
-# Major and minor parts of the version
-RUN echo ${VERSION} | egrep -o '[0-9]{1,2}.[0-9]{1,2}' > .ruby-version
-RUN echo ${VERSION} | egrep -o '[0-9]{1,2}.[0-9]{1,2}' > $HOME/.ruby-version-yay
+RUN apt-get autoremove && apt-get clean
 
 # This path is mounted in bin/tryouts
 WORKDIR $HOME
@@ -55,12 +65,7 @@ RUN gem install bundler -v '1.17.3'
 
 # For <= 2.2, use "--system 2" otherwise just "--system`"
 RUN gem update --system 2
-# RUN gem install debugger -v 1.1.4
 
-# ENV BUNDLE_SILENCE_ROOT_WARNING=1
-RUN mkdir -p /usr/local/bundle && chown -R $OWNER /usr/local/bundle
-RUN mkdir -p .bundle .gem && chown -R $OWNER .bundle $HOME/.gem
-RUN bundle config --global frozen $BUNDLER_FROZEN
 
 ##
 # Gear down into regular user world
@@ -69,28 +74,28 @@ RUN bundle config --global frozen $BUNDLER_FROZEN
 # but not COPY, ADD which take --chown argument instead
 USER $OWNER
 
-##
-# Install rbenv with build capability
-#
-RUN git clone git://github.com/sstephenson/rbenv.git .rbenv
-RUN git clone git://github.com/sstephenson/ruby-build.git .rbenv/plugins/ruby-build
+WORKDIR $TRYOUTS_CACHE
 
-ENV PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$PATH
+COPY $GEMFILE Gemfile
 
-RUN rbenv local system \
-  && rbenv rehash \
-  && rbenv shims
+# Major and minor parts of the version
+RUN echo ${VERSION} | egrep -o '[0-9]{1,2}.[0-9]{1,2}' > $TRYOUTS_CACHE/.ruby-version
 
-# This path is mounted in bin/tryouts
-WORKDIR $CODE_ROOT
+# Creates the path as the current user. Without this, any
+# attempt to change files will raise a permissions error.
+WORKDIR $CODE_HOME
 
-# Get. Ready. to Buuuuundllllle
-ENV GEMFILE="Gemfile-${VERSION}"
-COPY ${GEMFILE} $CODE_ROOT/Gemfile
+RUN bundle config set --global path $BUNDLE_HOME
 
-# For <= 2.2, plain-jane is best, "-j4 --retry 3" for everything els
-RUN bundle install
+# Get. Ready. to. Buuuuundllllle
+# For <= 2.2, plain-jane; for > 2.2, "-j4 --retry 3"
+RUN bundle install \
+  --gemfile $GEMFILE_TARGET \
+  --path $BUNDLE_HOME \
+  --no-cache --clean \
+  --jobs 4
 
-ENV VERSION=$VERSION
-ENV COMMAND=$COMMAND
-CMD $COMMAND
+USER root
+RUN usermod -a -G sudo $OWNER
+RUN groupadd docker
+RUN usermod -a -G docker $OWNER
