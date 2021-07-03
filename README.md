@@ -78,8 +78,8 @@ Via Rubygems, one of:
     $ sudo gem install delano-storable --source http://gems.github.com/
 
 or via download:
-* storable-latest.tar.gz[http://github.com/delano/storable/tarball/latest]
-* storable-latest.zip[http://github.com/delano/storable/zipball/latest]
+* [storable-latest.tar.gz](http://github.com/delano/storable/tarball/latest)
+* [storable-latest.zip](http://github.com/delano/storable/zipball/latest)
 
 
 ## Prerequisites
@@ -90,20 +90,20 @@ or via download:
 ## Credits
 
 * Delano Mandelbaum (delano@solutious.com)
-* lib/proc_source.rb is based on http://github.com/imedo/background
+* lib/proc_source.rb is based on [imedo/background](http://github.com/imedo/background)
 * OrderedHash implementation by Jan Molic
 
 
 ## Thanks
 
-* Pierre Riteau (priteau[https://github.com/priteau]) for bug fixes.
-* notro[https://github.com/priteau] for proc_source improvements.
+* Pierre Riteau ([priteau](https://github.com/priteau)) for bug fixes.
+* [notro](https://github.com/notro) for proc_source improvements.
 
 
 ## More Info
 
-* GitHub[http://github.com/delano/storable]
+* [GitHub](http://github.com/delano/storable)
 
 ## License
 
-See: LICENSE.txt
+See: [storable.gemspec](https://github.com/delano/storable/blob/main/storable.gemspec)
