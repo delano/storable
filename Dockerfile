@@ -77,8 +77,8 @@ RUN bundle config set --local path $BUNDLE_HOME
 
 COPY $GEMFILE Gemfile
 
-# Major and minor parts of the version
-RUN echo ${VERSION} | egrep -o '[0-9]{1,2}.[0-9]{1,2}' > $TRYOUTS_CACHE/.ruby-version
+# Output the full version for rbenv
+RUN echo ${VERSION} > $TRYOUTS_CACHE/.ruby-version
 
 # Creates the path as the current user. Without this, any
 # attempt to change files will raise a permissions error.
