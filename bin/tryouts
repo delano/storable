@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#
+# Create docker containers by ruby version
+#
+#   Environment variables:
+#
+#     NAME=tryouts
+#     SHELL=/bin/sh
+#     RUN_HOME=/run/host-services
+#     VERSION=2.6.4
+#     IMAGE=tryouts
+
+##
+# Uncomment to force cache-busting
+# NOCACHE=--no-cache
+NAME=tryouts
+SHELL=/bin/bash
+RUN_HOME=/run/host-services
+VERSION=1.9.3
+IMAGE="${NAME}-${VERSION}"
+
+docker
+docker build -t $IMAGE $NOCACHE \
+    --build-arg VERSION=$VERSION \
+    --build-arg SHELL=$SHELL . \
+  && docker run -d \
+    --name $IMAGE \
+    -it --volume ${PWD}:/code --rm \
+    -v $RUN_HOME/ssh-auth.sock:$RUN_HOME/ssh-auth.sock \
+    -e SSH_AUTH_SOCK="$RUN_HOME/ssh-auth.sock" \
+    $IMAGE \
+  && docker exec -it $IMAGE $SHELL
+
+

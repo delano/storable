@@ -279,8 +279,7 @@ val1 = @p1.call(2,3,5,7)
   p1_j.match(/sum = 0.*#{__FILE__}.*#{l1},#{l2}/m).nil?,
   p2.inspect.match(/#{__FILE__}:#{l1}/m).nil?,
   p2[:source],
-  # val1,
-  # binding.pry && false
-  # p2[:call](2,3,5,7)
+  val1,
+  p2.call(2,3,5,7)
 ]
 #=> [false, false, @p1.source, 935, 935]

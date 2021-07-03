@@ -1,4 +1,4 @@
-require 'pry'
+#require 'pry'
 require 'proc_source'
 
 # NOTE: These tests were converted from the specs in

@@ -37,4 +37,3 @@ puts "# JSON", mac1.to_json     # Note: field order not maintained.
 mac2 = Machine.from_yaml(mac1.to_yaml)
 puts mac2.environment           # => "stage"
 puts mac2.position.class        # => Fixnum
-
