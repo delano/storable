@@ -1,9 +1,8 @@
-# This is Git's per-user configuration file.
+# Default git config - 2021-07-03
+
 [core]
-user = delano
-email = delano@solutious.com
-	ignorecase = false
-	pager = less -r
+  ignorecase = false
+  pager = less -r
 
 [color]
 	ui = true
@@ -31,15 +30,12 @@ email = delano@solutious.com
   lg = log -p
   sig = log --show-signature
   brd = branch --sort=-committerdate
+
   # MIT License
   #
   # Copyright (c) [2017] [Libin Varghese]
-  stash-search = "!f() { git show $(git stash list | cut -d\":\" -f 1) | grep \"$@\" ; }; f" 
+  stash-search = "!f() { git show $(git stash list | cut -d\":\" -f 1) | grep \"$@\" ; }; f"
 
-[user]
-	name = delano
-	email = delano@solutious.com
-	signingkey = AE63BC489CC3BC2E
 [push]
 	default = matching
 [init]
@@ -48,7 +44,6 @@ email = delano@solutious.com
 [branch "master"]
     remote = origin
     merge = refs/heads/master
-
 
 [commit]
 	gpgsign = true
@@ -61,9 +56,9 @@ email = delano@solutious.com
 [difftool "diffmerge"]
 	cmd = /usr/local/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
-	tool = diffmerge
+	tool = /usr/local/bin/diffmerge
 [mergetool "diffmerge"]
-	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	cmd = /usr/local/bin/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
 
 [pager]
