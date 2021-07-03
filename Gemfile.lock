@@ -16,14 +16,16 @@ GEM
       sysinfo (>= 0.7.3)
 
 PLATFORMS
-  x86_64-darwin-19
-  x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
-  bundler
+  bundler (>= 2)
   pry
   rubygems-update (= 3.2.21)
   tryouts
+
+RUBY VERSION
+   ruby 2.6.6p146
 
 BUNDLED WITH
    2.2.21

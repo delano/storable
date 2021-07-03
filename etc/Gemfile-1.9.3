@@ -1,0 +1,20 @@
+# frozen_string_literal: false
+
+#
+# We keep separate gemfiles for specific versions to account
+# for subtle but important changes like the ruby version and
+# patch-level. We use platforms here anyway so it will be a
+# quick copy paste if we decide to consolidate them,
+#
+
+ruby "1.9.3", :patchlevel => "551"
+source "https://rubygems.org"
+
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+gem "bundler", '=1.17.3', :platforms => :ruby_19
+gem "rubygems-update", :platforms => :ruby_19
+gem "debugger", "=1.1.4", :platforms => :ruby_19
+gem "pry", "=0.9.9", :platforms => :ruby_19
+gem "pry-doc"
+gem "tryouts"

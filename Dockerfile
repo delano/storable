@@ -33,21 +33,21 @@ ARG HOME=/home/$OWNER
 ARG CODE_HOME=/code
 ARG CODE_WOKE=100%
 ARG BUNDLER_FROZEN=0
+ARG PACKAGES="ruby-dev openssh-client git sudo"
 
 ENV BUNDLE_HOME=$HOME/.bundle
 ENV CODE_HOME=$CODE_HOME
-
-ENV GEMFILE=Gemfile-${VERSION}
+ENV GEMFILE=etc/Gemfile-${VERSION}
 ENV TRYOUTS_CACHE=$HOME/.tryouts/cache
 ENV VERSION=$VERSION
-
 ENV GEMFILE_TARGET=$TRYOUTS_CACHE/Gemfile
-
-ARG PACKAGES="ruby-dev openssh-client git sudo"
 ENV CONTAINER_SHELL=$CONTAINER_SHELL
 
 # Create the most dedicated user
 RUN adduser --disabled-password --home $HOME --shell $CONTAINER_SHELL $OWNER
+RUN usermod -a -G sudo $OWNER
+RUN groupadd docker
+RUN usermod -a -G docker $OWNER
 
 # Get the latest package list (but skip upgrading for speed)
 RUN set -eux && apt-get update -y
@@ -59,13 +59,10 @@ RUN apt-get autoremove && apt-get clean
 
 # This path is mounted in bin/tryouts
 WORKDIR $HOME
+COPY etc/.gemrc .
 
-RUN gem install bundler -v '1.17.3'
-# RUN gem install bundler
-
-# For <= 2.2, use "--system 2" otherwise just "--system`"
-RUN gem update --system 2
-
+RUN gem update --system
+RUN gem install bundler
 
 ##
 # Gear down into regular user world
@@ -73,8 +70,10 @@ RUN gem update --system 2
 # This change effects RUN, CMD, ENTRYPOINT
 # but not COPY, ADD which take --chown argument instead
 USER $OWNER
-
 WORKDIR $TRYOUTS_CACHE
+
+RUN bundle config set --local clean 'true'
+RUN bundle config set --local path $BUNDLE_HOME
 
 COPY $GEMFILE Gemfile
 
@@ -91,11 +90,4 @@ RUN bundle config set --global path $BUNDLE_HOME
 # For <= 2.2, plain-jane; for > 2.2, "-j4 --retry 3"
 RUN bundle install \
   --gemfile $GEMFILE_TARGET \
-  --path $BUNDLE_HOME \
-  --no-cache --clean \
   --jobs 4
-
-USER root
-RUN usermod -a -G sudo $OWNER
-RUN groupadd docker
-RUN usermod -a -G docker $OWNER
