@@ -3,33 +3,54 @@
 #
 # Create docker containers by ruby version
 #
-#   Environment variables:
+#   Environment variables (with example values):
 #
 #     NAME=tryouts
-#     SHELL=/bin/sh
+#     COMMAND=/bin/sh
 #     RUN_HOME=/run/host-services
 #     VERSION=2.6.4
-#     IMAGE=tryouts
+#     IMAGE="${NAME}-${VERSION}"
+#     NOCACHE=0
+#
+#   Usage:
+#
+#     $ bin/tryouts
+#     $ VERSION=2.6.2 bin/tryouts
+#     $ NOCACHE=1 bin/tryouts
+#
+#   Generating a private-public keypair (optional):
+#
+#     $ openssl req -newkey rsa:2048 \
+#         -new -nodes -x509 -days 90 \
+#         -keyout $DOCKER_HOME/serverkey.pem \
+#         -out $DOCKER_HOME/server.pem
+#
 
-##
-# Uncomment to force cache-busting
-# NOCACHE=--no-cache
-NAME=tryouts
-SHELL=/bin/bash
-RUN_HOME=/run/host-services
-VERSION=1.9.3
-IMAGE="${NAME}-${VERSION}"
+# Shorthand for establishing an env vars with sane defaults, while allowing
+# the outside caller to specific their own override values.
+: ${NAME:=tryouts}
+: ${COMMAND:=/bin/bash}
+: ${RUN_HOME:=/run/host-services}
+: ${VERSION:=1.9.3}
+: ${NOCACHE:=''}
+: ${DOCKER_HOME:=$HOME/.docker}
 
-docker
-docker build -t $IMAGE $NOCACHE \
+IMAGE="img-${VERSION}"
+CONTAINER="${NAME}-${VERSION}"
+
+if [ -n "$NOCACHE" ]; then
+  NOCACHE=--no-cache
+fi
+
+# Build a fresh image, launch a container, and connect to the shell
+# TODO: Look into ca.pem not found issue with --tlsverify (2021-07-02)
+docker build \
+    -t $IMAGE $NOCACHE \
     --build-arg VERSION=$VERSION \
-    --build-arg SHELL=$SHELL . \
-  && docker run -d \
-    --name $IMAGE \
+    --build-arg COMMAND=$COMMAND . \
+  && docker run \
+    --name $CONTAINER \
     -it --volume ${PWD}:/code --rm \
     -v $RUN_HOME/ssh-auth.sock:$RUN_HOME/ssh-auth.sock \
     -e SSH_AUTH_SOCK="$RUN_HOME/ssh-auth.sock" \
-    $IMAGE \
-  && docker exec -it $IMAGE $SHELL
-
-
+    $IMAGE $COMMAND
