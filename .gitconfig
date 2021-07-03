@@ -1,0 +1,73 @@
+# This is Git's per-user configuration file.
+[core]
+user = delano
+email = delano@solutious.com
+	ignorecase = false
+	pager = less -r
+
+[color]
+	ui = true
+	diff = always
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  sig = log --show-signature
+  brd = branch --sort=-committerdate
+  # MIT License
+  #
+  # Copyright (c) [2017] [Libin Varghese]
+  stash-search = "!f() { git show $(git stash list | cut -d\":\" -f 1) | grep \"$@\" ; }; f" 
+
+[user]
+	name = delano
+	email = delano@solutious.com
+	signingkey = AE63BC489CC3BC2E
+[push]
+	default = matching
+[init]
+	templatedir = ~/.git-templates
+
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+
+
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
+
+[diff]
+    tool = diffmerge
+	submodule = log
+[difftool "diffmerge"]
+	cmd = /usr/local/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
+
+[pager]
+	branch = false
+	tag = false
+[status]
+	submodulesummary = true
