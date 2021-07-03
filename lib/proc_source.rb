@@ -103,7 +103,9 @@ module ProcSource
       tokens = lexer.instance_variable_get '@tokens'
     end
 
-    tokens.each do |token|
+    # tokens.each
+
+    while (token = lexer.token) do
       if RubyToken::TkIDENTIFIER === token
         # nothing
       elsif token.open_tag? || RubyToken::TkfLBRACE === token
