@@ -13,7 +13,6 @@ end
 
 ## should handle a simple one line proc with brackets
 p = Proc.new { false }
-# binding.pry
 p.source
 #=> "{ false }\n"
 
@@ -77,7 +76,6 @@ p.source.gsub(/ +/, " ").strip
 
 ## should handle hash assignment {:a=>1} in code with {} singleline block
 p = Proc.new { hash = {:a=>1} }
-# binding.pry
 p.source
 #=> "{ hash = {:a=>1} }\n"
 
@@ -251,7 +249,6 @@ end
 l1 = __LINE__ + 1
 p1 = Proc.new do false end
 p1_j = JSON.generate p1
-# binding.pry
 p2 = JSON.parse p1.to_json
 [
   p1_j.match(/do false end/m).nil?,

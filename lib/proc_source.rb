@@ -7,10 +7,11 @@
 # https://github.com/notro/storable
 #
 
-begin
-  require 'irb/ruby-token'  # ruby <2.7
-rescue
-  require 'lib/core_ext'  # ruby >=2.7
+# RubyToken was removed in Ruby 2.7
+if RUBY_VERSION < "2.7"
+  require 'irb/ruby-token'
+else
+  require './lib/core_ext.rb'
 end
 
 require 'irb/ruby-lex'
@@ -88,7 +89,6 @@ module ProcSource
     retried = 0
     loop do
       lines = get_lines(filename, start_line)
-      # binding.pry
       return nil if lines.nil?
       if !line_has_open?(lines.join) && start_line >= 0
         start_line -= 1 and retried +=1 and redo
@@ -99,7 +99,15 @@ module ProcSource
     end
 
     stoken, etoken, nesting = nil, nil, 0
-    while token = lexer.token
+
+    if RUBY_VERSION < "2.7"
+      tokens = lexer.instance_variable_get '@OP'
+    else
+      lexer.lex
+      tokens = lexer.instance_variable_get '@tokens'
+    end
+
+    tokens.each do |token|
       if RubyToken::TkIDENTIFIER === token
         # nothing
       elsif token.open_tag? || RubyToken::TkfLBRACE === token
@@ -121,8 +129,6 @@ module ProcSource
         # nothing
       end
     end
-
-    # binding.pry
 
     lines = lines[stoken.line_no-1 .. etoken.line_no-1]
 
@@ -312,5 +318,4 @@ if $0 == __FILE__
   proc = @blk.source.to_proc
   proc.call(1)
 end
-
 
