@@ -9,19 +9,8 @@
   s.licenses = ["MIT"]  # https://spdx.org/licenses/MIT-Modern-Variant.html
   s.executables = %w()
   s.files = %w(
-    .dockerignore
-    Dockerfile
-    Gemfile
-    Gemfile.lock
     README.md
     Rakefile
-    bin/docker-entrypoint.sh
-    bin/example
-    bin/tryouts
-    etc/.gemrc
-    etc/Gemfile-1.9.3
-    etc/Gemfile-2.6.6
-    etc/Gemfile-2.7.3
     lib/core_ext.rb
     lib/proc_source.rb
     lib/storable.rb
