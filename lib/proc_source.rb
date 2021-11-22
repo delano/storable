@@ -9,8 +9,8 @@
 
 begin
   require 'irb/ruby-token'  # ruby <2.7
-rescue
-  require 'lib/core_ext'  # ruby >=2.7
+rescue LoadError
+  require 'core_ext'        # ruby >=2.7
 end
 
 require 'irb/ruby-lex'
