@@ -1,12 +1,13 @@
 @spec = Gem::Specification.new do |s|
   s.name = "storable"
-  s.version = "0.9-RC1"
+  s.version = "0.9-RC2"
   s.summary = "Ruby classes as strings"
   s.description = "Storable: Marshal Ruby classes into and out of multiple formats (yaml, json, csv, tsv)"
   s.authors = ["Delano Mandelbaum"]
   s.email = "gems@solutious.com"
   s.homepage = "https://github.com/delano/storable/"
   s.licenses = ["MIT"]  # https://spdx.org/licenses/MIT-Modern-Variant.html
+  s.executables = %w()
   s.files = %w(
     README.md
     Rakefile

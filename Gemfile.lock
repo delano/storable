@@ -1,15 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    coderay (1.0.9)
+    coderay (1.1.3)
     drydock (0.6.9)
-    method_source (0.7.1)
-    pry (0.9.9)
-      coderay (~> 1.0.5)
-      method_source (~> 0.7.1)
-      slop (>= 2.4.4, < 3)
-    rubygems-update (2.7.11)
-    slop (2.4.4)
+    method_source (1.0.0)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    rubygems-update (3.2.21)
     storable (0.8.9)
     sysinfo (0.8.1)
       drydock
@@ -18,12 +16,16 @@ GEM
       sysinfo (>= 0.7.3)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
-  pry (= 0.9.9)
-  rubygems-update
+  bundler (>= 2)
+  pry
+  rubygems-update (= 3.2.21)
   tryouts
 
+RUBY VERSION
+   ruby 2.6.6p146
+
 BUNDLED WITH
-   1.17.3
+   2.2.21

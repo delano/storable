@@ -7,6 +7,7 @@
 # https://github.com/notro/storable
 #
 
+# RubyToken was removed in Ruby 2.7
 begin
   require 'irb/ruby-token'  # ruby <2.7
 rescue LoadError
@@ -23,11 +24,9 @@ class ProcString < String
   # Filename where the proc is defined
   attr_accessor :file
 
-  # Range of lines where the proc is defined
-  #   ex. (12..16)
+  # Range of lines where the proc is defined. e.g. (12..16)
   attr_accessor :lines
-
-  attr_accessor :arity, :kind     # :nodoc:  FIXME: Should be removed?
+  attr_accessor :arity, :kind
 
   # Return a Proc object
   # If #lines and #file is specified, these are tied to the proc.
@@ -49,7 +48,6 @@ class ProcString < String
 end
 
 class RubyToken::Token
-
   # These EXPR_BEG tokens don't have associated end tags
   FAKIES = [
     RubyToken::TkWHEN,
@@ -82,13 +80,11 @@ end
 # Big thanks to the imedo dev team!
 #
 module ProcSource
-
   def self.find(filename, start_line=1, block_only=true)
     lines, lexer = nil, nil
     retried = 0
     loop do
       lines = get_lines(filename, start_line)
-      # binding.pry
       return nil if lines.nil?
       if !line_has_open?(lines.join) && start_line >= 0
         start_line -= 1 and retried +=1 and redo
@@ -99,7 +95,17 @@ module ProcSource
     end
 
     stoken, etoken, nesting = nil, nil, 0
-    while token = lexer.token
+
+    if RUBY_VERSION < "2.7"
+      tokens = lexer.instance_variable_get '@OP'
+    else
+      lexer.lex
+      tokens = lexer.instance_variable_get '@tokens'
+    end
+
+    # tokens.each
+
+    while (token = lexer.token) do
       if RubyToken::TkIDENTIFIER === token
         # nothing
       elsif token.open_tag? || RubyToken::TkfLBRACE === token
@@ -121,8 +127,6 @@ module ProcSource
         # nothing
       end
     end
-
-    # binding.pry
 
     lines = lines[stoken.line_no-1 .. etoken.line_no-1]
 
@@ -312,5 +316,4 @@ if $0 == __FILE__
   proc = @blk.source.to_proc
   proc.call(1)
 end
-
 

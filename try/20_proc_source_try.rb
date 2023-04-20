@@ -6,6 +6,8 @@ require 'proc_source'
 #
 
 @subject = ProcString.new "{ false }"
+subject = ProcString.new "{ false }"
+
 
 ## string should be set
 @subject
