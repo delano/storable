@@ -8,10 +8,10 @@
 #
 
 # RubyToken was removed in Ruby 2.7
-if RUBY_VERSION < "2.7"
-  require 'irb/ruby-token'
-else
-  require './lib/core_ext.rb'
+begin
+  require 'irb/ruby-token'  # ruby <2.7
+rescue LoadError
+  require 'core_ext'        # ruby >=2.7
 end
 
 require 'irb/ruby-lex'
