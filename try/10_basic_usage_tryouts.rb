@@ -1,5 +1,4 @@
-require 'storable'
-
+require "storable"
 
 class ::A < Storable
   field :one => String
@@ -9,7 +8,7 @@ class ::A < Storable
 end
 class ::B < Storable
   field :one => String
-  field :two 
+  field :two
   field :three => Time
 end
 class ::C < Storable
@@ -42,7 +41,7 @@ a.to_array
 #=> ["string", 1, Time.parse("2010-03-04 23:00"), true]
 
 ## "Field types are optional"
-b = B.from_array "string", 1, Time.parse("2010-03-04 23:00") 
+b = B.from_array "string", 1, Time.parse("2010-03-04 23:00")
 b = B.from_json b.to_json
 [b.one, b.two, b.three]
 #=> ["string", 1, Time.parse("2010-03-04 23:00")]
@@ -55,7 +54,7 @@ c = C.from_array calc
 c= C.from_json c.to_json
 c.calc.call
 #=> 4
-  
+
 ## Can specify a sensitive instance
 d = D.new
 d.five = 100
@@ -71,7 +70,7 @@ d2 = d.to_hash
 d2[:five]
 #=> nil
 
-## Sensitive fields don't appear at as nil in to_array
+## Sensitive fields don"t appear at as nil in to_array
 d = D.new
 d.five = 100
 d.sensitive!
@@ -94,4 +93,3 @@ explicit.six
 explicit = Explicit.new
 explicit.seven
 #=> :anything
-

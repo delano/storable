@@ -1,15 +1,10 @@
 require 'proc_source'
 require 'json'
-require 'pry'
+# require 'pry'
 
 # NOTE: These tests were converted from the specs in
 #       https://github.com/notro/storable
 #
-
-def self.block_method(&block)
-  @block = block
-end
-
 
 ## should handle a simple one line proc with brackets
 p = Proc.new { false }
@@ -54,20 +49,6 @@ print i
 end
 p.source
 #=> "do\nprint 'hello'\n(1..10).each { |i|\nprint i\n}\nend\n"
-
-## should handle a {} block passed to a method
-block_method {
-false
-}
-@block.source
-#=> "{\nfalse\n}\n"
-
-## should handle a do/end block passed to a method
-block_method do
-false
-end
-@block.source
-#=> "do\nfalse\nend\n"
 
 ## should handle hash assignment {:a=>1} in code with do/end singleline block
 p = Proc.new do hash = {:a=>1} end

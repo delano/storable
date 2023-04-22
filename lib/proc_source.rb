@@ -1,18 +1,4 @@
 
-#
-# Based on:
-# https://github.com/imedo/background
-# https://github.com/imedo/background_lite
-# With improvements by:
-# https://github.com/notro/storable
-#
-
-# RubyToken was removed in Ruby 2.7
-begin
-  require 'irb/ruby-token'  # ruby <2.7
-rescue LoadError
-  require 'core_ext'        # ruby >=2.7
-end
 
 require 'irb/ruby-lex'
 require 'stringio'
@@ -47,68 +33,51 @@ class ProcString < String
   end
 end
 
-class RubyToken::Token
-  # These EXPR_BEG tokens don't have associated end tags
-  FAKIES = [
-    RubyToken::TkWHEN,
-    RubyToken::TkELSIF,
-    RubyToken::TkELSE,
-    RubyToken::TkTHEN,
-  ]
-
-  def name
-    @name ||= nil
-  end
-
-  def open_tag?
-    return false if name.nil? || get_props.nil?
-    is_open = (
-      (get_props[1] == RubyToken::EXPR_BEG) &&
-      (self.class.to_s !~ /_MOD/)  &&  # ignore onliner if, unless, etc...
-      (!FAKIES.member?(self.class))
-    )
-    is_open
-  end
-
-  def get_props
-    RubyToken::TkReading2Token[name]
-  end
-
-end
 
 # Based heavily on code from http://github.com/imedo/background
 # Big thanks to the imedo dev team!
 #
 module ProcSource
+
   def self.find(filename, start_line=1, block_only=true)
-    lines, lexer = nil, nil
+    lines = nil
+    lexer = nil
+
     retried = 0
     loop do
       lines = get_lines(filename, start_line)
-      return nil if lines.nil?
+      return if lines.nil?
+
       if !line_has_open?(lines.join) && start_line >= 0
         start_line -= 1 and retried +=1 and redo
       end
+      lines_str = lines.join
+      sio = StringIO.new(lines_str)
       lexer = RubyLex.new
-      lexer.set_input(StringIO.new(lines.join))
+
+      if RUBY_VERSION >= "3.0"
+        lexer.set_input(sio, context: {})
+      else
+        lexer.
+        set_input(sio)
+      end
       break
     end
 
     stoken, etoken, nesting = nil, nil, 0
 
-    if RUBY_VERSION < "2.7"
-      tokens = lexer.instance_variable_get '@OP'
-    else
-      lexer.lex
-      tokens = lexer.instance_variable_get '@tokens'
-    end
+    lexer.lex
+    tokens = lexer.instance_variable_get '@tokens'
 
     # tokens.each
 
-    while (token = lexer.token) do
-      if RubyToken::TkIDENTIFIER === token
+    while (token = tokens) do
+      # require 'pry'; binding.pry
+      if token.is_a?(Array)
+        p token
+      elsif RubyToken::TkIDENTIFIER === token
         # nothing
-      elsif token.open_tag? || RubyToken::TkfLBRACE === token
+      elsif RubyToken::TkfLBRACE === token
         nesting += 1
         stoken = token if nesting == 1
       elsif RubyToken::TkEND === token || RubyToken::TkRBRACE === token
@@ -141,73 +110,8 @@ module ProcSource
     ps
   end
 
-  # A hack for Ruby 1.9, otherwise returns true.
-  #
-  # Ruby 1.9 returns an incorrect line number
-  # when a block is specified with do/end. It
-  # happens b/c the line number returned by
-  # Ruby 1.9 is based on the first line in the
-  # block which contains a token (i.e. not a
-  # new line or comment etc...).
-  #
-  # NOTE: This won't work in cases where the
-  # incorrect line also contains a "do".
-  #
-  def self.line_has_open?(str)
-    return true unless RUBY_VERSION >= '1.9' && RUBY_VERSION < '2.0'
-    lexer = RubyLex.new
-    lexer.set_input(StringIO.new(str))
-    success = false
-    while token = lexer.token
-      case token
-      when RubyToken::TkNL
-        break
-      when RubyToken::TkDO
-        success = true
-      when RubyToken::TkfLBRACE
-        success = true
-      when RubyToken::TkCONSTANT
-        if token.name == "Proc" &&
-           lexer.token.is_a?(RubyToken::TkDOT)
-          method = lexer.token
-          if method.is_a?(RubyToken::TkIDENTIFIER) &&
-             method.name == "new"
-            success = true
-          end
-        end
-      end
-    end
-    success
-  end
-
   def self.get_lines(filename, start_line = 1)
-    case filename
-      when nil
-        nil
-
-      # We're in irb
-      when "(irb)"
-        IRB.conf[:MAIN_CONTEXT].io.line(start_line .. -2)
-
-      # Or an eval
-      when /^\(eval.+\)$/
-        EVAL_LINES__[filename][start_line .. -2]
-
-      # Or most likely a .rb file
-      else
-        # Ruby already parsed this file? (see disclaimer above)
-        if defined?(SCRIPT_LINES__) && SCRIPT_LINES__[filename]
-          SCRIPT_LINES__[filename][(start_line - 1) .. -1]
-
-        # If the file exists we're going to try reading it in
-        elsif File.exist?(filename)
-          begin
-            File.readlines(filename)[(start_line - 1) .. -1]
-          rescue
-            nil
-          end
-        end
-    end
+    nil
   end
 end
 
@@ -218,16 +122,7 @@ class Proc  # :nodoc:
   def source_descriptor
     return [@file, @line] if @file && @line
 
-    source_location = nil
-    if RUBY_VERSION >= '2.7'
-      source_location = *self.source_location
-    else
-      inspection = inspect
-      md = @@regexp.match(inspection)
-      exmsg = 'Unable to parse proc inspect (%s)' % inspection
-      raise Exception, exmsg if md.nil?
-      source_location = md.captures
-    end
+    source_location = *self.source_location
 
     file, line = *source_location
     @file, @line = [file, line.to_i]
@@ -316,4 +211,3 @@ if $0 == __FILE__
   proc = @blk.source.to_proc
   proc.call(1)
 end
-
