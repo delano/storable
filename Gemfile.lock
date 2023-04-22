@@ -9,7 +9,7 @@ GEM
     parallel (1.23.0)
     parser (3.2.2.0)
       ast (~> 2.4.1)
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     rainbow (3.1.1)
@@ -28,7 +28,7 @@ GEM
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
-    rubygems-update (3.2.21)
+    rubygems-update (3.4.12)
     storable (0.8.9)
     sysinfo (0.8.1)
       drydock
@@ -42,14 +42,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (>= 2)
+  bundler (>= 2.4.12)
   pry
-  rubocop (~> 1.18)
-  rubygems-update (= 3.2.21)
+  rubocop
+  rubygems-update (>= 3.2)
   tryouts
 
-RUBY VERSION
-   ruby 2.7.8p225
-
 BUNDLED WITH
-   2.2.21
+   2.4.12
